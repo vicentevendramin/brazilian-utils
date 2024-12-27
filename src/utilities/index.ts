@@ -11,3 +11,4 @@ export { format as formatCNPJ, generate as generateCNPJ, isValid as isValidCNPJ 
 export { capitalize } from './capitalize';
 export { getStates } from './states';
 export { getCities } from './cities';
+export { getAllNationalHolidays } from './holidays';

@@ -30,6 +30,7 @@ describe('Public API', () => {
     'capitalize',
     'formatCurrency',
     'parseCurrency',
+    'getAllNationalHolidays',
   ];
 
   Object.keys(API).forEach((method) => {
