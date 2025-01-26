@@ -1,29 +1,24 @@
 import { type BuildConfig, build } from "bun";
 import dts from "bun-plugin-dts";
 
-type CustomBuildConfig = Omit<BuildConfig, "naming"> & {
-	naming: string;
-};
-
-const CONFIG: CustomBuildConfig = {
+const CONFIG: BuildConfig = {
 	minify: true,
 	outdir: "./dist",
-	naming: "[dir]/brazilian-utils.{format}.[ext]",
 	plugins: [dts()],
 	splitting: true,
 	sourcemap: "linked",
 	entrypoints: ["./src/index.ts"],
 };
 
-const FORMATS: Exclude<BuildConfig["format"], undefined>[] = ["esm", "cjs"];
-
-for (const format of FORMATS) {
+await Promise.all([
 	build({
 		...CONFIG,
-		naming:
-			typeof CONFIG.naming === "string"
-				? CONFIG.naming.replace("{format}", format)
-				: CONFIG.naming,
-		format,
-	});
-}
+		naming: "[dir]/brazilian-utils.esm.[ext]",
+		format: "esm",
+	}),
+	build({
+		...CONFIG,
+		naming: "[dir]/brazilian-utils.esm.[ext]",
+		format: "cjs",
+	}),
+]);

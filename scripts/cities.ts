@@ -30,6 +30,7 @@ type City = {
 const response = await fetch(
 	"https://servicodados.ibge.gov.br/api/v1/localidades/municipios",
 );
+
 const json = (await response.json()) as City[];
 
 const cities = json
@@ -46,7 +47,7 @@ const cities = json
 		{} as Record<string, string[]>,
 	);
 
-write(
+await write(
 	resolve(import.meta.dir, "..", "./src/_internals/cities.ts"),
-	`export const DATA = ${JSON.stringify(cities, null, 2)}`,
+	`export const DATA = ${JSON.stringify(cities)}`,
 );
