@@ -4,11 +4,10 @@ export default defineConfig({
 	test: {
 		browser: {
 			provider: "webdriverio",
-			headless: false,
 			instances: [
 				{ browser: "edge" },
 				{ browser: "chrome" },
-				{ browser: "safari" },
+				{ browser: "safari", headless: false },
 				{ browser: "firefox" },
 			],
 		},
