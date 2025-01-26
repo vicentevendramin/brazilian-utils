@@ -1,0 +1,74 @@
+name: CI Tests
+
+on: [push, pull_request]
+
+jobs:
+  test-node:
+    name: Test on Node.js (${{ matrix.node-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16, 18, 20, 22] 
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Run tests
+        run: npm run test
+
+  test-bun:
+    name: Test on Bun (latest)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Bun
+        uses: oven-sh/setup-bun@v1
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Run tests
+        run: bun test
+
+  test-browsers:
+    name: Test on Browsers (${{ matrix.browser }} (latest)
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        browser: [edge, chrome, firefox]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests in ${{ matrix.browser }}
+        run: npm run test:${{ matrix.browser }}-browser
+
+  test-safari:
+    name: Test on Safari
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests in Safari
+        run: npm run test:safari-browser

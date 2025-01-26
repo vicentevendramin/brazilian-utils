@@ -1,75 +1,42 @@
 {
-  "name": "@brazilian-utils/brazilian-utils",
-  "version": "1.0.0-rc.12",
-  "main": "dist/index.js",
-  "module": "dist/brazilian-utils.esm.js",
-  "typings": "dist/index.d.ts",
-  "sideEffects": false,
-  "files": [
-    "dist"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/brazilian-utils/brazilian-utils"
-  },
-  "scripts": {
-    "start": "tsdx watch",
-    "prebuild": "npm run update-cities",
-    "build": "tsdx build",
-    "prepublishOnly": "npm run build",
-    "test": "tsdx test --coverage",
-    "lint": "tsdx lint ./src/**/**/*.ts --fix",
-    "prettify": "prettier --write ./src/**/**/*.ts",
-    "commit": "npx git-cz",
-    "release": "release-it",
-    "docs": "docsify serve docs",
-    "update-cities": "node scripts/getCitiesFromIBGE.js && prettier --write ./src/common/cities.ts"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
-  },
-  "lint-staged": {
-    "*.ts": [
-      "tsdx lint --fix",
-      "prettier --write"
-    ]
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
-  },
-  "prettier": {
-    "semi": true,
-    "printWidth": 120,
-    "singleQuote": true,
-    "trailingComma": "es5"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "devDependencies": {
-    "@commitlint/cli": "^12.1.4",
-    "@commitlint/config-conventional": "^12.1.4",
-    "@release-it/conventional-changelog": "^1.1.4",
-    "@types/jest": "^26.0.23",
-    "cz-conventional-changelog": "^3.3.0",
-    "docsify-cli": "^4.4.2",
-    "husky": "^6.0.0",
-    "lint-staged": "^11.0.0",
-    "node-fetch": "^2.6.1",
-    "prettier": "^2.3.1",
-    "prismjs": "^1.23.0",
-    "release-it": "^14.8.0",
-    "tsdx": "^0.14.1",
-    "typescript": "^4.1.2"
-  }
+	"name": "@brazilian-utils/brazilian-utils",
+	"version": "1.0.0-rc.13",
+	"license": "MIT",
+	"description": "Brazilian Utils is a library focused on solving problems that we face daily in the development of applications for the Brazilian business.",
+	"repository": "https://github.com/brazilian-utils/brazilian-utils",
+	"sideEffects": false,
+	"type": "module",
+	"main": "./dist/brazilian-utils.cjs.js",
+	"files": ["./dist"],
+	"module": "./dist/brazilian-utils.esm.js",
+	"exports": {
+		".": {
+			"import": "./dist/brazilian-utils.esm.js",
+			"require": "./dist/brazilian-utils.cjs.js"
+		}
+	},
+	"scripts": {
+		"test": "vitest",
+		"test:edge-browser": "vitest --browser=edge",
+		"test:chrome-browser": "vitest --browser=chrome",
+		"test:safari-browser": "vitest --browser=safari",
+		"test:firefox-browser": "vitest --browser=firefox",
+		"lint": "biome lint --write .",
+		"prebuild": "bun run build:cities",
+		"build": "bun ./scripts/build.ts && biome lint --write ./dist/index.d.ts",
+		"build:cities": "bun ./scripts/cities.ts && biome format --write ./src/_internals/cities.ts",
+		"prepublishOnly": "bun run build",
+		"format": "biome format --write ."
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.9.4",
+		"@types/bun": "^1.2.0",
+		"@vitest/browser": "^3.0.4",
+		"bun-plugin-dts": "^0.3.0",
+		"vitest": "^3.0.4",
+		"webdriverio": "^9.7.1"
+	}
 }
