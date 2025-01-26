@@ -19,14 +19,14 @@
 		"test": "vitest",
 		"test:edge-browser": "vitest --browser=edge",
 		"test:chrome-browser": "vitest --browser=chrome",
-		"test:safari-browser": "vitest --browser=safari",
+		"test:safari-browser": "vitest --browser=safari --browser.headless=false",
 		"test:firefox-browser": "vitest --browser=firefox",
-		"lint": "biome lint --write .",
+		"check": "biome check --write .",
 		"prebuild": "bun run build:cities",
-		"build": "bun ./scripts/build.ts && biome lint --write ./dist/index.d.ts",
-		"build:cities": "bun ./scripts/cities.ts && biome format --write ./src/_internals/cities.ts",
+		"build": "bun ./scripts/build.ts && biome check --write ./dist/index.d.ts",
+		"build:cities": "bun ./scripts/cities.ts && biome check --write ./src/_internals/cities.ts",
 		"prepublishOnly": "bun run build",
-		"format": "biome format --write ."
+		"ci": "biome ci"
 	},
 	"publishConfig": {
 		"access": "public"

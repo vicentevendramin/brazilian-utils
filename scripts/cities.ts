@@ -1,5 +1,5 @@
-import { write } from "bun";
 import { resolve } from "node:path";
+import { write } from "bun";
 
 type City = {
 	id: number;

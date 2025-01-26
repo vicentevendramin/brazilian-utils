@@ -1,4 +1,4 @@
-import { format, type FormatParams } from "../_internals/format";
+import { type FormatParams, format } from "../_internals/format";
 import { sanitizeToDigits } from "../_internals/sanitize-to-digits";
 
 export const LENGTH = 11;

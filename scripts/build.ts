@@ -1,5 +1,5 @@
+import { type BuildConfig, build } from "bun";
 import dts from "bun-plugin-dts";
-import { build, type BuildConfig } from "bun";
 
 type CustomBuildConfig = Omit<BuildConfig, "naming"> & {
 	naming: string;

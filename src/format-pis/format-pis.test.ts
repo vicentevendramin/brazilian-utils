@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { formatPis, LENGTH } from "./format-pis";
+import { LENGTH, formatPis } from "./format-pis";
 
 describe("formatPis", () => {
 	it("when it is a no formatted string", () => {

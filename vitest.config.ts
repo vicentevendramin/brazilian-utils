@@ -7,7 +7,7 @@ export default defineConfig({
 			instances: [
 				{ browser: "edge" },
 				{ browser: "chrome" },
-				{ browser: "safari", headless: false },
+				{ browser: "safari" },
 				{ browser: "firefox" },
 			],
 		},
