@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [16, 18, 20, 22] 
+        node-version: [18, 20, 22] 
 
     steps:
       - name: Checkout code
@@ -26,7 +26,7 @@ jobs:
         run: npm run test
 
   test-bun:
-    name: Test on Bun (latest)
+    name: Test on Bun
     runs-on: ubuntu-latest
 
     steps:
@@ -43,7 +43,7 @@ jobs:
         run: bun test
 
   test-browsers:
-    name: Test on Browsers (${{ matrix.browser }} (latest)
+    name: Test on Browsers (${{ matrix.browser }})
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -60,7 +60,7 @@ jobs:
         run: npm run test:${{ matrix.browser }}-browser
 
   test-safari:
-    name: Test on Safari
+    name: Test on Browsers (safari)
     runs-on: macos-latest
 
     steps:
