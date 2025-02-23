@@ -8,29 +8,28 @@ export type FormatParams = { value: string; pattern: string; pad?: boolean };
  * @param {string} params.value - The value to be formatted.
  * @param {string} params.pattern - The pattern to format the value against.
  * @returns {string} The formatted value.
+ *
+ * @example
+ * ```typescript
+ * format({ value: "123456", pattern: "000-000" }); // "123-456"
+ * format({ value: "123", pattern: "0000-000", pad: true }); // "0123-000"
+ * ```
  */
-export const format = ({ pad, value, pattern }: FormatParams) => {
+export const format = ({ pad, value, pattern }: FormatParams): string => {
 	let formatted = "";
 	let digitIndex = 0;
 
 	if (pad) {
-		const separatorsLength = pattern
-			.split("")
-			.filter((char) => char !== "0").length;
+		const separatorsLength = pattern.replace(/0/g, "").length;
 		value = value.padStart(pattern.length - separatorsLength, "0");
 	}
 
-	for (let i = 0; i < pattern.length; i++) {
-		if (pattern[i] === "0") {
-			if (digitIndex < value.length) {
-				formatted += value[digitIndex++];
-			} else {
-				break;
-			}
-		} else {
-			if (digitIndex < value.length) {
-				formatted += pattern[i];
-			}
+	for (const char of pattern) {
+		if (char === "0") {
+			if (digitIndex >= value.length) break;
+			formatted += value[digitIndex++];
+		} else if (digitIndex < value.length) {
+			formatted += char;
 		}
 	}
 

@@ -1,0 +1,78 @@
+import { describe, expect, it } from "vitest";
+import { formatCurrency } from "./format-currency";
+
+describe("formatCurrency", () => {
+	it("should formatCurrency positive currency into BRL", () => {
+		expect(formatCurrency(0.01)).toBe("0,01");
+		expect(formatCurrency(0.1)).toBe("0,10");
+		expect(formatCurrency(1)).toBe("1,00");
+		expect(formatCurrency(10)).toBe("10,00");
+		expect(formatCurrency(10.1)).toBe("10,10");
+		expect(formatCurrency(10.01)).toBe("10,01");
+		expect(formatCurrency(100.01)).toBe("100,01");
+		expect(formatCurrency(1000.01)).toBe("1.000,01");
+		expect(formatCurrency(10000.01)).toBe("10.000,01");
+		expect(formatCurrency(100000.01)).toBe("100.000,01");
+		expect(formatCurrency(1000000.01)).toBe("1.000.000,01");
+	});
+
+	it("should formatCurrency negative currency into BRL", () => {
+		expect(formatCurrency(-0.01)).toBe("-0,01");
+		expect(formatCurrency(-0.1)).toBe("-0,10");
+		expect(formatCurrency(-1)).toBe("-1,00");
+		expect(formatCurrency(-10)).toBe("-10,00");
+		expect(formatCurrency(-10.1)).toBe("-10,10");
+		expect(formatCurrency(-10.01)).toBe("-10,01");
+		expect(formatCurrency(-100.01)).toBe("-100,01");
+		expect(formatCurrency(-1000.01)).toBe("-1.000,01");
+		expect(formatCurrency(-10000.01)).toBe("-10.000,01");
+		expect(formatCurrency(-100000.01)).toBe("-100.000,01");
+		expect(formatCurrency(-1000000.01)).toBe("-1.000.000,01");
+	});
+
+	it("should formatCurrency positive currency into BRL with currency sign", () => {
+		expect(formatCurrency(0.01, { symbol: true })).toBe("R$ 0,01");
+		expect(formatCurrency(0.1, { symbol: true })).toBe("R$ 0,10");
+		expect(formatCurrency(1, { symbol: true })).toBe("R$ 1,00");
+		expect(formatCurrency(10, { symbol: true })).toBe("R$ 10,00");
+		expect(formatCurrency(10.1, { symbol: true })).toBe("R$ 10,10");
+		expect(formatCurrency(10.01, { symbol: true })).toBe("R$ 10,01");
+		expect(formatCurrency(100.01, { symbol: true })).toBe("R$ 100,01");
+		expect(formatCurrency(1000.01, { symbol: true })).toBe("R$ 1.000,01");
+		expect(formatCurrency(10000.01, { symbol: true })).toBe("R$ 10.000,01");
+		expect(formatCurrency(100000.01, { symbol: true })).toBe("R$ 100.000,01");
+		expect(formatCurrency(1000000.01, { symbol: true })).toBe(
+			"R$ 1.000.000,01",
+		);
+	});
+
+	it("should formatCurrency negative currency into BRL with currency sign", () => {
+		expect(formatCurrency(-0.01, { symbol: true })).toBe("-R$ 0,01");
+		expect(formatCurrency(-0.1, { symbol: true })).toBe("-R$ 0,10");
+		expect(formatCurrency(-1, { symbol: true })).toBe("-R$ 1,00");
+		expect(formatCurrency(-10, { symbol: true })).toBe("-R$ 10,00");
+		expect(formatCurrency(-10.1, { symbol: true })).toBe("-R$ 10,10");
+		expect(formatCurrency(-10.01, { symbol: true })).toBe("-R$ 10,01");
+		expect(formatCurrency(-100.01, { symbol: true })).toBe("-R$ 100,01");
+		expect(formatCurrency(-1000.01, { symbol: true })).toBe("-R$ 1.000,01");
+		expect(formatCurrency(-10000.01, { symbol: true })).toBe("-R$ 10.000,01");
+		expect(formatCurrency(-100000.01, { symbol: true })).toBe("-R$ 100.000,01");
+		expect(formatCurrency(-1000000.01, { symbol: true })).toBe(
+			"-R$ 1.000.000,01",
+		);
+	});
+
+	it("should formatCurrency with different precision", () => {
+		expect(formatCurrency(0.01, { precision: 3 })).toBe("0,010");
+		expect(formatCurrency(0.1, { precision: 3 })).toBe("0,100");
+		expect(formatCurrency(1.1, { precision: 3 })).toBe("1,100");
+		expect(formatCurrency(1.01, { precision: 3 })).toBe("1,010");
+		expect(formatCurrency(1.001, { precision: 3 })).toBe("1,001");
+		expect(formatCurrency(10.001, { precision: 3 })).toBe("10,001");
+		expect(formatCurrency(100.001, { precision: 3 })).toBe("100,001");
+		expect(formatCurrency(1000.001, { precision: 3 })).toBe("1.000,001");
+		expect(formatCurrency(10000.001, { precision: 3 })).toBe("10.000,001");
+		expect(formatCurrency(100000.001, { precision: 3 })).toBe("100.000,001");
+		expect(formatCurrency(1000000.001, { precision: 3 })).toBe("1.000.000,001");
+	});
+});

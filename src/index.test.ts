@@ -2,7 +2,15 @@ import { describe, expect, test } from "vitest";
 
 import * as brazilianUtils from ".";
 
-const PUBLIC = ["formatCnpj", "formatCpf", "formatPis"];
+const PUBLIC = [
+	"describeNumber",
+	"formatCep",
+	"formatCnpj",
+	"formatCpf",
+	"formatCurrency",
+	"formatPis",
+	"formatProcessoJuridico",
+];
 
 describe("Public API", () => {
 	for (const util of Object.keys(brazilianUtils)) {

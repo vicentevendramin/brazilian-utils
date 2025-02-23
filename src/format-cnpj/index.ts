@@ -1,1 +1,1 @@
-export { formatCnpj } from "./format-cnpj";
+export { formatCnpj, type FormatCnpjOptions } from "./format-cnpj";

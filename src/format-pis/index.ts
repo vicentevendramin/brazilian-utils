@@ -1,1 +1,1 @@
-export { formatPis } from "./format-pis";
+export { formatPis, type FormatPisOptions } from "./format-pis";
