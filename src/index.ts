@@ -19,6 +19,7 @@ export {
 	formatCurrency,
 	type FormatCurrencyOptions,
 } from "./format-currency/format-currency";
+export { parseCurrency } from "./parse-currency/parse-currency";
 export {
 	formatPis,
 	type FormatPisOptions,
