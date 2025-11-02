@@ -33,6 +33,8 @@ describe("isValidEmail", () => {
 	describe("should return true", () => {
 		test("when is a valid email", () => {
 			expect(isValidEmail("user@example.com")).toBe(true);
+			expect(isValidEmail("user__@example.com")).toBe(true);
+			expect(isValidEmail("user__user@example.com")).toBe(true);
 		});
 
 		test("when is a valid email with subdomain", () => {
