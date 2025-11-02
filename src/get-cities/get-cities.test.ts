@@ -14,7 +14,7 @@ describe("getCities", () => {
 	});
 
 	it("should return empty array if state does not exist", () => {
-		// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+		// biome-ignore lint/suspicious/noExplicitAny: testing invalid inputs
 		expect(getCities("ACC" as any)).toEqual([]);
 	});
 

@@ -1,8 +1,6 @@
 import { DATA as CITIES_DATA } from "../_internals/cities";
 import type { StateCode } from "../_internals/states";
 
-const sortAlphabetically = (a: string, b: string): number => a.localeCompare(b);
-
 /**
  * Returns a list of city names for a given Brazilian state, or all cities if no state is specified.
  *

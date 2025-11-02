@@ -8,23 +8,29 @@ describe("isValidLicensePlate", () => {
 		});
 
 		it("when it is null", () => {
+			// biome-ignore lint/suspicious/noExplicitAny: testing invalid inputs
 			expect(isValidLicensePlate(null as any)).toBe(false);
 		});
 
 		it("when it is undefined", () => {
+			// biome-ignore lint/suspicious/noExplicitAny: testing invalid inputs
 			expect(isValidLicensePlate(undefined as any)).toBe(false);
 		});
 
 		it("when it is a boolean", () => {
+			// biome-ignore lint/suspicious/noExplicitAny: testing invalid inputs
 			expect(isValidLicensePlate(true as any)).toBe(false);
+			// biome-ignore lint/suspicious/noExplicitAny: testing invalid inputs
 			expect(isValidLicensePlate(false as any)).toBe(false);
 		});
 
 		it("when it is an object", () => {
+			// biome-ignore lint/suspicious/noExplicitAny: testing invalid inputs
 			expect(isValidLicensePlate({} as any)).toBe(false);
 		});
 
 		it("when it is an array", () => {
+			// biome-ignore lint/suspicious/noExplicitAny: testing invalid inputs
 			expect(isValidLicensePlate([] as any)).toBe(false);
 		});
 
