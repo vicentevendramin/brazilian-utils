@@ -63,6 +63,7 @@ Adicionadas novas utilitários úteis:
 - `formatBoleto` - Formata números de boleto
 - `generateBoleto` - Gera números de boleto válidos aleatórios
 - `formatPis` - Formata números de PIS
+- `isValidRenavam` - Valida RENAVAM (número de registro de veículos)
 
 ### 📈 Melhor Suporte TypeScript
 
@@ -92,6 +93,7 @@ Todos os nomes de funções foram alterados de PascalCase para camelCase para se
 | `isValidMobilePhone` | `isValidMobilePhone` (inalterado) |
 | `isValidLandlinePhone` | `isValidLandlinePhone` (inalterado) |
 | `isValidLicensePlate` | `isValidLicensePlate` (inalterado) |
+| `isValidRenavam` | `isValidRenavam` (novo) |
 
 #### Funções de Formatação
 
@@ -183,6 +185,18 @@ import { formatPhone } from '@brazilian-utils/brazilian-utils';
 formatPhone('11900000000'); // 90000-0000
 formatPhone('11900000000', { mask: 'nanp' }); // (11) 90000-0000
 formatPhone('11900000000', { mask: 'auto' }); // Detecta automaticamente a máscara
+```
+
+### `isValidRenavam`
+
+Valida RENAVAM (Registro Nacional de Veículos Automotores). Suporta tanto o formato antigo (9 dígitos) quanto o novo formato (11 dígitos).
+
+```javascript
+import { isValidRenavam } from '@brazilian-utils/brazilian-utils';
+
+isValidRenavam('639884962'); // true (9 dígitos, formato antigo)
+isValidRenavam('00639884962'); // true (11 dígitos, formato novo)
+isValidRenavam('12345678901'); // false (checksum inválido)
 ```
 
 ## Mudanças na API

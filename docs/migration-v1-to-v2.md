@@ -63,6 +63,7 @@ Added new useful utilities:
 - `formatBoleto` - Format boleto numbers
 - `generateBoleto` - Generate valid random boleto numbers
 - `formatPis` - Format PIS numbers
+- `isValidRenavam` - Validate RENAVAM (vehicle registration number)
 
 ### 📈 Better TypeScript Support
 
@@ -92,6 +93,7 @@ All function names have been changed from PascalCase to camelCase to follow Java
 | `isValidMobilePhone` | `isValidMobilePhone` (unchanged) |
 | `isValidLandlinePhone` | `isValidLandlinePhone` (unchanged) |
 | `isValidLicensePlate` | `isValidLicensePlate` (unchanged) |
+| `isValidRenavam` | `isValidRenavam` (new) |
 
 #### Format Functions
 
@@ -183,6 +185,18 @@ import { formatPhone } from '@brazilian-utils/brazilian-utils';
 formatPhone('11900000000'); // 90000-0000
 formatPhone('11900000000', { mask: 'nanp' }); // (11) 90000-0000
 formatPhone('11900000000', { mask: 'auto' }); // Auto-detects mask
+```
+
+### `isValidRenavam`
+
+Validate RENAVAM (Registro Nacional de Veículos Automotores). Supports both old format (9 digits) and new format (11 digits).
+
+```javascript
+import { isValidRenavam } from '@brazilian-utils/brazilian-utils';
+
+isValidRenavam('639884962'); // true (9 digits, old format)
+isValidRenavam('00639884962'); // true (11 digits, new format)
+isValidRenavam('12345678901'); // false (invalid checksum)
 ```
 
 ## API Changes

@@ -1,6 +1,6 @@
-const validMercosulLicensePlateRegex = /^[a-z]{3}[0-9]{1}[a-z]{1}[0-9]{2}$/i;
+const mercosulRegex = /^[a-z]{3}[0-9]{1}[a-z]{1}[0-9]{2}$/i;
 
-const validBrazilianLicensePlateRegex = /^[a-z]{3}-?[0-9]{4}$/i;
+const brazilianLicensePlateRegex = /^[a-z]{3}-?[0-9]{4}$/i;
 
 /**
  * Validates if a Brazilian license plate (placa de carro) is valid.
@@ -21,8 +21,5 @@ const validBrazilianLicensePlateRegex = /^[a-z]{3}-?[0-9]{4}$/i;
 export const isValidLicensePlate = (value: string): boolean => {
 	if (!value || typeof value !== "string") return false;
 
-	return (
-		validMercosulLicensePlateRegex.test(value) ||
-		validBrazilianLicensePlateRegex.test(value)
-	);
+	return mercosulRegex.test(value) || brazilianLicensePlateRegex.test(value);
 };

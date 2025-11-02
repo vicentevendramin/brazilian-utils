@@ -67,4 +67,5 @@ export {
 } from "./is-valid-phone/is-valid-phone";
 export { isValidPis } from "./is-valid-pis/is-valid-pis";
 export { isValidProcessoJuridico } from "./is-valid-processo-juridico/is-valid-processo-juridico";
+export { isValidRenavam } from "./is-valid-renavam/is-valid-renavam";
 export { parseCurrency } from "./parse-currency/parse-currency";

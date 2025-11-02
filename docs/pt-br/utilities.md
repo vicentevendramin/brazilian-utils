@@ -180,6 +180,18 @@ isValidLicensePlate('ABC-1234'); // true (formato brasileiro com hífen)
 isValidLicensePlate('ABC1D23'); // true (formato Mercosul)
 ```
 
+## isValidRenavam
+
+Valida se o RENAVAM (Registro Nacional de Veículos Automotores) é válido. Suporta tanto o formato antigo (9 dígitos) quanto o novo formato (11 dígitos).
+
+```javascript
+import { isValidRenavam } from '@brazilian-utils/brazilian-utils';
+
+isValidRenavam('639884962'); // true (9 dígitos, formato antigo)
+isValidRenavam('00639884962'); // true (11 dígitos, formato novo)
+isValidRenavam('12345678901'); // false (checksum inválido)
+```
+
 ## isValidPis
 
 Valida se o PIS é válido.
