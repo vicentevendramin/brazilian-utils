@@ -1,7 +1,7 @@
 import { describe, expect, test } from "vitest";
 import { formatBoleto, LENGTH } from "./format-boleto";
 
-describe("format", () => {
+describe("formatBoleto", () => {
 	test("should format boleto with mask", () => {
 		expect(formatBoleto("")).toBe("");
 		expect(formatBoleto("1")).toBe("1");

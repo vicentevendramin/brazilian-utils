@@ -29,3 +29,7 @@ export {
 } from "./format-processo-juridico/format-processo-juridico";
 export { getStates } from "./get-states/get-states";
 export { getCities } from "./get-cities/get-cities";
+export { isValidCnpj } from "./is-valid-cnpj/is-valid-cnpj";
+export { generateCnpj } from "./generate-cnpj/generate-cnpj";
+export { isValidCpf } from "./is-valid-cpf/is-valid-cpf";
+export { generateCpf } from "./generate-cpf/generate-cpf";

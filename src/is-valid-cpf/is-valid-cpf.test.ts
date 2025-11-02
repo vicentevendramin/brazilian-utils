@@ -1,0 +1,77 @@
+import { describe, expect, test } from "vitest";
+import { LENGTH, RESERVED_NUMBERS } from "./is-valid-cpf";
+import { isValidCpf } from "./is-valid-cpf";
+import { generateCpf } from "../generate-cpf/generate-cpf";
+
+describe("isValidCpf", () => {
+	describe("should return false", () => {
+		test("when it is on the RESERVED_NUMBERS", () => {
+			for (const cpf of RESERVED_NUMBERS) {
+				expect(isValidCpf(cpf)).toBe(false);
+			}
+		});
+
+		test("when it is an empty string", () => {
+			expect(isValidCpf("")).toBe(false);
+		});
+
+		test("when it is null", () => {
+			// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+			expect(isValidCpf(null as any)).toBe(false);
+		});
+
+		test("when it is undefined", () => {
+			// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+			expect(isValidCpf(undefined as any)).toBe(false);
+		});
+
+		test("when it is a boolean", () => {
+			// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+			expect(isValidCpf(true as any)).toBe(false);
+			// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+			expect(isValidCpf(false as any)).toBe(false);
+		});
+
+		test("when it is an object", () => {
+			// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+			expect(isValidCpf({} as any)).toBe(false);
+		});
+
+		test("when it is an array", () => {
+			// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+			expect(isValidCpf([] as any)).toBe(false);
+		});
+
+		test(`when dont match with CPF length (${LENGTH})`, () => {
+			expect(isValidCpf("123456")).toBe(false);
+		});
+
+		test("when contains only letters or special characters", () => {
+			expect(isValidCpf("abcabcabcde")).toBe(false);
+		});
+
+		test("when is a CPF invalid", () => {
+			expect(isValidCpf("11257245286")).toBe(false);
+		});
+
+		test("when is a CPF invalid test numbers with letters", () => {
+			expect(isValidCpf("foo391.838.38test0-66")).toBe(false);
+		});
+	});
+
+	describe("should return true", () => {
+		test("when is a CPF valid without mask", () => {
+			expect(isValidCpf("40364478829")).toBe(true);
+		});
+
+		test("when is a CPF valid with mask", () => {
+			expect(isValidCpf("962.718.458-60")).toBe(true);
+		});
+
+		test("should return true for randomly generated CPFs", () => {
+			for (let i = 0; i < 100; i++) {
+				expect(isValidCpf(generateCpf())).toBe(true);
+			}
+		});
+	});
+});

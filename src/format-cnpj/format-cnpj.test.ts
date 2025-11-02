@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { LENGTH, formatCnpj } from "./format-cnpj";
 
-describe("format", () => {
+describe("formatCnpj", () => {
 	it("should format cnpj with mask", () => {
 		expect(formatCnpj("")).toBe("");
 		expect(formatCnpj("4")).toBe("4");

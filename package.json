@@ -11,9 +11,9 @@
 	"module": "./dist/brazilian-utils.esm.js",
 	"exports": {
 		".": {
+			"types": "./dist/index.d.ts",
 			"import": "./dist/brazilian-utils.esm.js",
-			"require": "./dist/brazilian-utils.cjs.js",
-			"types": "./dist/index.d.ts"
+			"require": "./dist/brazilian-utils.cjs.js"
 		}
 	},
 	"scripts": {

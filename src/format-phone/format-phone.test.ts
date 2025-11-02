@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { formatPhone } from "./format-phone";
 
-describe("format", () => {
+describe("formatPhone", () => {
 	it("should sn format phone", () => {
 		expect(formatPhone("")).toBe("");
 		expect(formatPhone("9")).toBe("9");

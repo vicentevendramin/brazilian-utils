@@ -21,6 +21,10 @@ const PUBLIC = [
 	"formatPis",
 	"getStates",
 	"getCities",
+	"isValidCnpj",
+	"generateCnpj",
+	"isValidCpf",
+	"generateCpf",
 ];
 
 describe("Public API", () => {

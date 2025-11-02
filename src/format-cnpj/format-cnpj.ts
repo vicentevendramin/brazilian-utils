@@ -51,6 +51,6 @@ export const formatCnpj = (
 ): string =>
 	format({
 		pad: options?.pad,
-		value: sanitize(value, options?.version ?? 2),
+		value: sanitize(value, options?.version),
 		pattern: "00.000.000/0000-00",
 	});

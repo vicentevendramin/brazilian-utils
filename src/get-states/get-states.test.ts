@@ -2,7 +2,7 @@ import { getStates } from "./get-states";
 import { DATA } from "../_internals/states";
 import { describe, expect, it } from "vitest";
 
-describe("getState", () => {
+describe("getStates", () => {
 	it(`should return an array with ${DATA.length} states`, () => {
 		expect(getStates().length).toBe(DATA.length);
 	});

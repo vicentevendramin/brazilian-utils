@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { formatCep, LENGTH } from "./format-cep";
 
-describe("format", () => {
+describe("formatCep", () => {
 	it("should format CEP with mask", () => {
 		expect(formatCep("")).toBe("");
 		expect(formatCep("0")).toBe("0");
