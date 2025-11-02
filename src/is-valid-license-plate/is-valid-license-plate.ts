@@ -6,7 +6,7 @@ const validBrazilianLicensePlateRegex = /^[a-z]{3}-?[0-9]{4}$/i;
  * Validates if a Brazilian license plate (placa de carro) is valid.
  * Supports both the old Brazilian format (ABC-1234) and the new Mercosul format (ABC1D23).
  *
- * @param {string} licensePlate - The license plate value to be validated.
+ * @param {string} value - The license plate value to be validated.
  * @returns {boolean} True if the license plate is valid, false otherwise.
  *
  * @example
@@ -18,12 +18,11 @@ const validBrazilianLicensePlateRegex = /^[a-z]{3}-?[0-9]{4}$/i;
  * isValidLicensePlate("invalid"); // false
  * ```
  */
-export const isValidLicensePlate = (licensePlate: string): boolean => {
-	if (!licensePlate || typeof licensePlate !== "string") return false;
+export const isValidLicensePlate = (value: string): boolean => {
+	if (!value || typeof value !== "string") return false;
 
 	return (
-		validMercosulLicensePlateRegex.test(licensePlate) ||
-		validBrazilianLicensePlateRegex.test(licensePlate)
+		validMercosulLicensePlateRegex.test(value) ||
+		validBrazilianLicensePlateRegex.test(value)
 	);
 };
-
