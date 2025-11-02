@@ -1,5 +1,5 @@
-import { format } from "../_internals/format";
-import { sanitizeToDigits } from "../_internals/sanitize-to-digits";
+import { format } from "../_internals/format/format";
+import { sanitizeToDigits } from "../_internals/sanitize-to-digits/sanitize-to-digits";
 
 type Mask = "sn" | "nanp";
 

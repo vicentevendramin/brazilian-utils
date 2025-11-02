@@ -1,4 +1,4 @@
-import { sanitizeToDigits } from "../_internals/sanitize-to-digits";
+import { sanitizeToDigits } from "../_internals/sanitize-to-digits/sanitize-to-digits";
 
 export type FormatCurrencyOptions = {
 	symbol?: boolean;

@@ -12,7 +12,8 @@
 	"exports": {
 		".": {
 			"import": "./dist/brazilian-utils.esm.js",
-			"require": "./dist/brazilian-utils.cjs.js"
+			"require": "./dist/brazilian-utils.cjs.js",
+			"types": "./dist/index.d.ts"
 		}
 	},
 	"scripts": {
@@ -25,6 +26,7 @@
 		"prebuild": "bun run build:cities",
 		"build": "bun ./scripts/build.ts && biome check --write ./dist/index.d.ts",
 		"build:cities": "bun ./scripts/cities.ts && biome check --write ./src/_internals/cities.ts",
+		"build:states": "bun ./scripts/states.ts && biome check --write ./src/_internals/states.ts",
 		"prepublishOnly": "bun run build",
 		"ci": "biome ci"
 	},

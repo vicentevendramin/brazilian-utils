@@ -24,28 +24,37 @@ type City = {
 	};
 };
 
-/**
- * https://servicodados.ibge.gov.br/api/docs/localidades?versao=1
- */
 const response = await fetch(
 	"https://servicodados.ibge.gov.br/api/v1/localidades/municipios",
 );
 
 const json = (await response.json()) as City[];
 
-const cities = json
-	.sort((cityA, cityB) => (cityA.nome > cityB.nome ? 1 : -1))
-	.reduce(
-		(acc, city) => {
-			const stateInitials = city.microrregiao.mesorregiao.UF.sigla;
-			if (!acc[stateInitials]) {
-				acc[stateInitials] = [];
-			}
-			acc[stateInitials].push(city.nome);
-			return acc;
-		},
-		{} as Record<string, string[]>,
-	);
+const cities = Object.fromEntries(
+	Object.entries(
+		json.reduce(
+			(acc, city) => {
+				const stateInitials = city?.microrregiao?.mesorregiao?.UF?.sigla;
+
+				if (!stateInitials) return acc;
+
+				if (!acc[stateInitials]) {
+					acc[stateInitials] = [];
+				}
+
+				acc[stateInitials].push(city.nome);
+
+				return acc;
+			},
+			{} as Record<string, string[]>,
+		),
+	)
+		.sort(([a], [b]) => a.localeCompare(b))
+		.map(([state, cities]) => [
+			state,
+			cities.sort((a, b) => a.localeCompare(b)),
+		]),
+);
 
 await write(
 	resolve(import.meta.dir, "..", "./src/_internals/cities.ts"),
@@ -72,5 +81,5 @@ await write(
  * @property {string[]} ES - Cities in the state of Espírito Santo.
  * @property {string[]} MA - Cities in the state of Maranhão.
  */
-export const DATA = ${JSON.stringify(cities)}`,
+export const DATA = ${JSON.stringify(cities)} as const`,
 );

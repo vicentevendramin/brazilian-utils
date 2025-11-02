@@ -1,5 +1,5 @@
-import { type FormatParams, format } from "../_internals/format";
-import { sanitizeToDigits } from "../_internals/sanitize-to-digits";
+import { type FormatParams, format } from "../_internals/format/format";
+import { sanitizeToDigits } from "../_internals/sanitize-to-digits/sanitize-to-digits";
 
 export const LENGTH = 14;
 
@@ -51,6 +51,6 @@ export const formatCnpj = (
 ): string =>
 	format({
 		pad: options?.pad,
-		value: sanitize(value, options?.version),
+		value: sanitize(value, options?.version ?? 2),
 		pattern: "00.000.000/0000-00",
 	});

@@ -9,7 +9,18 @@ const PUBLIC = [
 	"formatCpf",
 	"formatCurrency",
 	"formatPis",
+	"getStates",
+	"getCities",
+	"formatBoleto",
+	"capitalize",
+	"formatCep",
+	"formatCnpj",
 	"formatProcessoJuridico",
+	"formatCpf",
+	"formatCurrency",
+	"formatPis",
+	"getStates",
+	"getCities",
 ];
 
 describe("Public API", () => {
