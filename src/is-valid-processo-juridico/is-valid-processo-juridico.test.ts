@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import { LENGTH, isValidProcessoJuridico } from "./is-valid-processo-juridico";
+import { isValidProcessoJuridico, LENGTH } from "./is-valid-processo-juridico";
 
 describe("isValidProcessoJuridico", () => {
 	describe("should return false", () => {

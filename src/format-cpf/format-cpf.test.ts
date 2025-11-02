@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { LENGTH, formatCpf } from "./format-cpf";
+import { formatCpf, LENGTH } from "./format-cpf";
 
 describe("formatCpf", () => {
 	it("should format CPF with mask", () => {

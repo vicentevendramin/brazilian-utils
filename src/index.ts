@@ -1,52 +1,52 @@
+export { type CapitalizeOptions, capitalize } from "./capitalize/capitalize";
 export {
-	formatBoleto,
 	type FormatBoletoOptions,
+	formatBoleto,
 } from "./format-boleto/format-boleto";
-export { capitalize, type CapitalizeOptions } from "./capitalize/capitalize";
 export {
-	formatCep,
 	type FormatCepOptions,
+	formatCep,
 } from "./format-cep/format-cep";
 export {
-	formatCnpj,
 	type FormatCnpjOptions,
+	formatCnpj,
 } from "./format-cnpj/format-cnpj";
 export {
-	formatCpf,
 	type FormatCpfOptions,
+	formatCpf,
 } from "./format-cpf/format-cpf";
 export {
-	formatCurrency,
 	type FormatCurrencyOptions,
+	formatCurrency,
 } from "./format-currency/format-currency";
-export { parseCurrency } from "./parse-currency/parse-currency";
 export {
-	formatPis,
 	type FormatPisOptions,
+	formatPis,
 } from "./format-pis/format-pis";
-export { isValidPis } from "./is-valid-pis/is-valid-pis";
 export {
-	formatProcessoJuridico,
 	type FormatProcessoJuridicoOptions,
+	formatProcessoJuridico,
 } from "./format-processo-juridico/format-processo-juridico";
-export { getStates } from "./get-states/get-states";
-export { getCities } from "./get-cities/get-cities";
-export { isValidBoleto } from "./is-valid-boleto/is-valid-boleto";
 export { generateBoleto } from "./generate-boleto/generate-boleto";
-export { isValidCnpj } from "./is-valid-cnpj/is-valid-cnpj";
 export { generateCnpj } from "./generate-cnpj/generate-cnpj";
-export { isValidCep } from "./is-valid-cep/is-valid-cep";
-export { isValidEmail } from "./is-valid-email/is-valid-email";
-export { isValidProcessoJuridico } from "./is-valid-processo-juridico/is-valid-processo-juridico";
-export {
-	isValidPhone,
-	type IsValidPhoneOptions,
-} from "./is-valid-phone/is-valid-phone";
-export {
-	isValidMobilePhone,
-	type IsValidMobilePhoneOptions,
-} from "./is-valid-mobile-phone/is-valid-mobile-phone";
-export { isValidLandlinePhone } from "./is-valid-landline-phone/is-valid-landline-phone";
-export { isValidCpf } from "./is-valid-cpf/is-valid-cpf";
-export { isValidIe } from "./is-valid-ie/is-valid-ie";
 export { generateCpf } from "./generate-cpf/generate-cpf";
+export { getCities } from "./get-cities/get-cities";
+export { getStates } from "./get-states/get-states";
+export { isValidBoleto } from "./is-valid-boleto/is-valid-boleto";
+export { isValidCep } from "./is-valid-cep/is-valid-cep";
+export { isValidCnpj } from "./is-valid-cnpj/is-valid-cnpj";
+export { isValidCpf } from "./is-valid-cpf/is-valid-cpf";
+export { isValidEmail } from "./is-valid-email/is-valid-email";
+export { isValidIe } from "./is-valid-ie/is-valid-ie";
+export { isValidLandlinePhone } from "./is-valid-landline-phone/is-valid-landline-phone";
+export {
+	type IsValidMobilePhoneOptions,
+	isValidMobilePhone,
+} from "./is-valid-mobile-phone/is-valid-mobile-phone";
+export {
+	type IsValidPhoneOptions,
+	isValidPhone,
+} from "./is-valid-phone/is-valid-phone";
+export { isValidPis } from "./is-valid-pis/is-valid-pis";
+export { isValidProcessoJuridico } from "./is-valid-processo-juridico/is-valid-processo-juridico";
+export { parseCurrency } from "./parse-currency/parse-currency";

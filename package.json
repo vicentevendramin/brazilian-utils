@@ -1,13 +1,15 @@
 {
 	"name": "@brazilian-utils/brazilian-utils",
-	"version": "1.0.0-rc.13",
+	"version": "2.0.0",
 	"license": "MIT",
 	"description": "Brazilian Utils is a library focused on solving problems that we face daily in the development of applications for the Brazilian business.",
 	"repository": "https://github.com/brazilian-utils/brazilian-utils",
 	"sideEffects": false,
 	"type": "module",
 	"main": "./dist/brazilian-utils.cjs.js",
-	"files": ["./dist"],
+	"files": [
+		"./dist"
+	],
 	"module": "./dist/brazilian-utils.esm.js",
 	"exports": {
 		".": {
@@ -34,11 +36,11 @@
 		"access": "public"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "1.9.4",
+		"@biomejs/biome": "2.3.2",
 		"@types/bun": "^1.2.0",
-		"@vitest/browser": "^3.0.4",
+		"@vitest/browser-webdriverio": "4.0.6",
 		"bun-plugin-dts": "^0.3.0",
-		"vitest": "^3.0.4",
+		"vitest": "4.0.6",
 		"webdriverio": "^9.7.1"
 	}
 }

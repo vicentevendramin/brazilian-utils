@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import { LENGTH, formatBoleto } from "./format-boleto";
+import { formatBoleto, LENGTH } from "./format-boleto";
 
 describe("formatBoleto", () => {
 	test("should format boleto with mask", () => {

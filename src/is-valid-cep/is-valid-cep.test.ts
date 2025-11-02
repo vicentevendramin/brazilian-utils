@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import { LENGTH, isValidCep } from "./is-valid-cep";
+import { isValidCep, LENGTH } from "./is-valid-cep";
 
 describe("isValidCep", () => {
 	describe("should return false", () => {
