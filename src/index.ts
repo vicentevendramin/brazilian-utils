@@ -27,6 +27,10 @@ export {
 	type FormatProcessoJuridicoOptions,
 	formatProcessoJuridico,
 } from "./format-processo-juridico/format-processo-juridico";
+export {
+	type FormatPhoneOptions,
+	formatPhone,
+} from "./format-phone/format-phone";
 export { generateBoleto } from "./generate-boleto/generate-boleto";
 export { generateCnpj } from "./generate-cnpj/generate-cnpj";
 export { generateCpf } from "./generate-cpf/generate-cpf";

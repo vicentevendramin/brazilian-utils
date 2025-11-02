@@ -20,6 +20,7 @@ const PUBLIC = [
 	"formatProcessoJuridico",
 	"formatCpf",
 	"formatCurrency",
+	"formatPhone",
 	"parseCurrency",
 	"formatPis",
 	"getStates",

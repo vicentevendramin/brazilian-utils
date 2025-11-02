@@ -22,12 +22,14 @@ const isValidDDD = (value: string): boolean => {
 
 const isValidMobileFirstNumber = (
 	value: string,
-	version: PhoneVersion,
+	version?: PhoneVersion,
 ): boolean => {
 	const firstDigit = value.charCodeAt(2) - 48;
-	if (version === 1) {
+
+	if (!version || version === 1) {
 		return MOBILE_VALID_FIRST_NUMBERS_V1.includes(firstDigit);
 	}
+
 	return MOBILE_VALID_FIRST_NUMBERS_V2.includes(firstDigit);
 };
 
@@ -40,7 +42,7 @@ const isValidMobileFirstNumber = (
  *
  * @example
  * ```typescript
- * isValidMobilePhone("(11) 98765-4321"); // true
+ * isValidMobilePhone("(11) 98765-4321"); // true (accepts both v1 and v2)
  * isValidMobilePhone("11987654321", { version: 2 }); // true
  * isValidMobilePhone("11712345678", { version: 1 }); // true
  * ```
@@ -52,11 +54,10 @@ export const isValidMobilePhone = (
 	if (!value || typeof value !== "string") return false;
 
 	const digits = sanitizeToDigits(value);
-	const version = options?.version ?? 2;
 
 	if (digits.length !== PHONE_MAX_LENGTH) return false;
 
 	if (!isValidDDD(digits)) return false;
 
-	return isValidMobileFirstNumber(digits, version);
+	return isValidMobileFirstNumber(digits, options?.version);
 };
