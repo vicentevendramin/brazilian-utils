@@ -1,6 +1,6 @@
-import { getStates } from "./get-states";
-import { DATA } from "../_internals/states";
 import { describe, expect, it } from "vitest";
+import { DATA } from "../_internals/states";
+import { getStates } from "./get-states";
 
 describe("getStates", () => {
 	it(`should return an array with ${DATA.length} states`, () => {

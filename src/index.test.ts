@@ -36,6 +36,7 @@ const PUBLIC = [
 	"generateCnpj",
 	"isValidCpf",
 	"generateCpf",
+	"isValidIe",
 ];
 
 describe("Public API", () => {

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { formatProcessoJuridico, LENGTH } from "./format-processo-juridico";
+import { LENGTH, formatProcessoJuridico } from "./format-processo-juridico";
 
 describe("formatProcessoJuridico", () => {
 	it("should format processo juridico with mask", () => {

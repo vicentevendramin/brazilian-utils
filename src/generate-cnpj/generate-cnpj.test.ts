@@ -1,6 +1,6 @@
 import { describe, expect, test } from "vitest";
-import { LENGTH, generateCnpj } from "./generate-cnpj";
 import { isValidCnpj } from "../is-valid-cnpj/is-valid-cnpj";
+import { LENGTH, generateCnpj } from "./generate-cnpj";
 
 describe("generateCnpj", () => {
 	describe("version 1 (numeric)", () => {

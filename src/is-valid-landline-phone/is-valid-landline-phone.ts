@@ -1,5 +1,5 @@
-import { sanitizeToDigits } from "../_internals/sanitize-to-digits/sanitize-to-digits";
 import { VALID_AREA_CODES } from "../_internals/area-codes";
+import { sanitizeToDigits } from "../_internals/sanitize-to-digits/sanitize-to-digits";
 
 export const PHONE_MIN_LENGTH = 10;
 

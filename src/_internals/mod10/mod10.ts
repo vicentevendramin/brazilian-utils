@@ -20,4 +20,3 @@ export const mod10 = (str: string): number => {
 	const mod = sum % 10;
 	return mod > 0 ? 10 - mod : 0;
 };
-

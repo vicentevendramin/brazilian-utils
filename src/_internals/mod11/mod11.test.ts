@@ -16,7 +16,11 @@ describe("mod11", () => {
 	});
 
 	test("should return valid check digit range", () => {
-		const values = ["123", "0019000009011497186016852452211467586000010265", "0019"];
+		const values = [
+			"123",
+			"0019000009011497186016852452211467586000010265",
+			"0019",
+		];
 		for (const value of values) {
 			const result = mod11(value);
 			expect(result).toBeGreaterThanOrEqual(1);
@@ -24,4 +28,3 @@ describe("mod11", () => {
 		}
 	});
 });
-

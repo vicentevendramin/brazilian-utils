@@ -1,7 +1,7 @@
 import { describe, expect, test } from "vitest";
+import { generateCpf } from "../generate-cpf/generate-cpf";
 import { LENGTH, RESERVED_NUMBERS } from "./is-valid-cpf";
 import { isValidCpf } from "./is-valid-cpf";
-import { generateCpf } from "../generate-cpf/generate-cpf";
 
 describe("isValidCpf", () => {
 	describe("should return false", () => {

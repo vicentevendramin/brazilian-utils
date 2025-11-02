@@ -1,6 +1,6 @@
+import { generateRandomNumber } from "../_internals/generate-random-number/generate-random-number";
 import { mod10 } from "../_internals/mod10/mod10";
 import { mod11 } from "../_internals/mod11/mod11";
-import { generateRandomNumber } from "../_internals/generate-random-number/generate-random-number";
 
 export const LENGTH = 47;
 

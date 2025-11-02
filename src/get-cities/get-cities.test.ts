@@ -1,7 +1,7 @@
-import { getStates } from "../get-states/get-states";
-import { getCities } from "./get-cities";
 import { describe, expect, it } from "vitest";
 import { DATA } from "../_internals/cities";
+import { getStates } from "../get-states/get-states";
+import { getCities } from "./get-cities";
 
 /**
  * https://cidades.ibge.gov.br/brasil/panorama

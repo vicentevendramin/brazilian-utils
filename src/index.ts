@@ -48,4 +48,5 @@ export {
 } from "./is-valid-mobile-phone/is-valid-mobile-phone";
 export { isValidLandlinePhone } from "./is-valid-landline-phone/is-valid-landline-phone";
 export { isValidCpf } from "./is-valid-cpf/is-valid-cpf";
+export { isValidIe } from "./is-valid-ie/is-valid-ie";
 export { generateCpf } from "./generate-cpf/generate-cpf";

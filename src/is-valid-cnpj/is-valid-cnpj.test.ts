@@ -1,7 +1,7 @@
 import { describe, expect, test } from "vitest";
+import { generateCnpj } from "../generate-cnpj/generate-cnpj";
 import { LENGTH, RESERVED_NUMBERS } from "./is-valid-cnpj";
 import { isValidCnpj } from "./is-valid-cnpj";
-import { generateCnpj } from "../generate-cnpj/generate-cnpj";
 
 describe("isValidCnpj", () => {
 	describe("should return false", () => {

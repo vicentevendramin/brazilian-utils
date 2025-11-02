@@ -1,5 +1,5 @@
 import { DATA as CITIES_DATA } from "../_internals/cities";
-import type { StateName, StateCode } from "../_internals/states";
+import type { StateCode, StateName } from "../_internals/states";
 import { getStates } from "../get-states/get-states";
 
 const sortAlphabetically = (a: string, b: string): number => a.localeCompare(b);
