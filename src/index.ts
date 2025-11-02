@@ -56,6 +56,7 @@ export { isValidCpf } from "./is-valid-cpf/is-valid-cpf";
 export { isValidEmail } from "./is-valid-email/is-valid-email";
 export { isValidIe } from "./is-valid-ie/is-valid-ie";
 export { isValidLandlinePhone } from "./is-valid-landline-phone/is-valid-landline-phone";
+export { isValidLicensePlate } from "./is-valid-license-plate/is-valid-license-plate";
 export {
 	type IsValidMobilePhoneOptions,
 	isValidMobilePhone,

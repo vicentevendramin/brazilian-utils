@@ -2,76 +2,76 @@
 
 Aqui você encontrará todos os utilitários disponíveis para uso.
 
-## isValidCPF
+## isValidCpf
 
 Valida se o CPF é válido.
 
 ```javascript
-import { isValidCPF } from '@brazilian-utils/brazilian-utils';
+import { isValidCpf } from '@brazilian-utils/brazilian-utils';
 
-isValidCPF('155151475'); // false
+isValidCpf('155151475'); // false
 ```
 
-## formatCPF
+## formatCpf
 
 Formata o CPF.
 
 ```javascript
-import { formatCPF } from '@brazilian-utils/brazilian-utils';
+import { formatCpf } from '@brazilian-utils/brazilian-utils';
 
-formatCPF('746506880'); // 746.506.880
-formatCPF('746506880', { pad: true }); // 007.465.068-80
+formatCpf('74650688000'); // 746.506.880-00
+formatCpf('746506880', { pad: true }); // 007.465.068-80
 ```
 
-## generateCPF
+## generateCpf
 
 Gera um CPF válido aleatório.
 
 ```javascript
-import { generateCPF } from '@brazilian-utils/brazilian-utils'
+import { generateCpf } from '@brazilian-utils/brazilian-utils'
 
-generateCPF();
+generateCpf();
 ```
 
-## isValidCNPJ
+## isValidCnpj
 
 Valida se o CNPJ é válido.
 
 ```javascript
-import { isValidCNPJ } from '@brazilian-utils/brazilian-utils';
+import { isValidCnpj } from '@brazilian-utils/brazilian-utils';
 
-isValidCNPJ('15515147234255'); // false
+isValidCnpj('15515147234255'); // false
 ```
 
-## formatCNPJ
+## formatCnpj
 
 Formata o CNPJ.
 
 ```javascript
-import { formatCNPJ } from '@brazilian-utils/brazilian-utils';
+import { formatCnpj } from '@brazilian-utils/brazilian-utils';
 
-formatCNPJ('245222000174'); // 24.522.200/0174
-formatCNPJ('245222000174', { pad: true }); // 00.245.222/0001-74
+formatCnpj('24522200000174'); // 24.522.200/0001-74
+formatCnpj('245222000174', { pad: true }); // 00.245.222/0001-74
 ```
 
-## generateCPF
+## generateCnpj
 
 Gera um CNPJ válido aleatório.
 
 ```javascript
-import { generateCNPJ } from '@brazilian-utils/brazilian-utils'
+import { generateCnpj } from '@brazilian-utils/brazilian-utils'
 
-generateCNPJ();
+generateCnpj();
 ```
 
-## isValidCEP
+## isValidCep
 
 Valida se o CEP é válido.
 
 ```javascript
-import { isValidCEP } from '@brazilian-utils/brazilian-utils';
+import { isValidCep } from '@brazilian-utils/brazilian-utils';
 
-isValidCEP('92500000'); // true
+isValidCep('92500000'); // true
 ```
 
 ## isValidBoleto
@@ -84,9 +84,41 @@ import { isValidBoleto } from '@brazilian-utils/brazilian-utils';
 isValidBoleto('00190000090114971860168524522114675860000102656'); // true
 ```
 
+## formatBoleto
+
+Formata um número de boleto.
+
+```javascript
+import { formatBoleto } from '@brazilian-utils/brazilian-utils';
+
+formatBoleto('00190000090114971860168524522114675860000102656'); // 00190.00009 01149.718601 68524.522114 6 75860000102656
+formatBoleto('1900000901149', { pad: true }); // 00000.00000 00000.000019 00000.901149 0 00000000000000
+```
+
+## generateBoleto
+
+Gera um boleto válido aleatório.
+
+```javascript
+import { generateBoleto } from '@brazilian-utils/brazilian-utils';
+
+generateBoleto(); // "00190000090114971860168524522114675860000102656"
+```
+
+## getBoletoInfo
+
+Extrai informações de um boleto (valor, data de vencimento, código do banco).
+
+```javascript
+import { getBoletoInfo } from '@brazilian-utils/brazilian-utils';
+
+getBoletoInfo('00190000090114971860168524522114675860000102656');
+// { amount: 102656, expirationDate: Date, bankCode: '001' }
+```
+
 ## isValidEmail
 
-Valida se email é valido.
+Valida se email é válido.
 
 ```javascript
 import { isValidEmail } from '@brazilian-utils/brazilian-utils';
@@ -96,7 +128,7 @@ isValidEmail('john.doe@hotmail.com'); // true
 
 ## isValidPhone
 
-Valida se o número de telefone (celular ou residencial) é valido.
+Valida se o número de telefone (celular ou residencial) é válido.
 
 ```javascript
 import { isValidPhone } from '@brazilian-utils/brazilian-utils';
@@ -104,9 +136,21 @@ import { isValidPhone } from '@brazilian-utils/brazilian-utils';
 isValidPhone('11900000000'); // true
 ```
 
+## formatPhone
+
+Formata número de telefone de acordo com padrões brasileiros.
+
+```javascript
+import { formatPhone } from '@brazilian-utils/brazilian-utils';
+
+formatPhone('11900000000'); // 90000-0000
+formatPhone('11900000000', { mask: 'nanp' }); // (11) 90000-0000
+formatPhone('11900000000', { mask: 'auto' }); // Detecta automaticamente a máscara baseado no comprimento
+```
+
 ## isValidMobilePhone
 
-Valida se o número de telefone celular é valido.
+Valida se o número de telefone celular é válido.
 
 ```javascript
 import { isValidMobilePhone } from '@brazilian-utils/brazilian-utils';
@@ -116,7 +160,7 @@ isValidMobilePhone('11900000000'); // true
 
 ## isValidLandlinePhone
 
-Valida se o número de telefone residencial é valido.
+Valida se o número de telefone residencial é válido.
 
 ```javascript
 import { isValidLandlinePhone } from '@brazilian-utils/brazilian-utils';
@@ -126,32 +170,65 @@ isValidLandlinePhone('1130000000'); // true
 
 ## isValidLicensePlate
 
-Valida se a placa de carro é válida.
+Valida se a placa de carro é válida. Suporta tanto o formato antigo brasileiro (ABC-1234) quanto o novo formato Mercosul (ABC1D23).
 
 ```javascript
 import { isValidLicensePlate } from '@brazilian-utils/brazilian-utils';
 
-isValidLicensePlate('ABC1234'); // true
+isValidLicensePlate('ABC1234'); // true (formato brasileiro)
+isValidLicensePlate('ABC-1234'); // true (formato brasileiro com hífen)
+isValidLicensePlate('ABC1D23'); // true (formato Mercosul)
 ```
 
-## isValidPIS
+## isValidPis
 
 Valida se o PIS é válido.
 
 ```javascript
-import { isValidPIS } from '@brazilian-utils/brazilian-utils';
+import { isValidPis } from '@brazilian-utils/brazilian-utils';
 
-isValidPIS('12056412547'); // false
+isValidPis('12056412547'); // false
 ```
 
-## formatCEP
+## formatPis
+
+Formata número de PIS.
+
+```javascript
+import { formatPis } from '@brazilian-utils/brazilian-utils';
+
+formatPis('12345678901'); // 123.45678.90-1
+formatPis('123456789', { pad: true }); // 001.23456.78-9
+```
+
+## formatCep
 
 Formata o CEP.
 
 ```javascript
-import { formatCEP } from '@brazilian-utils/brazilian-utils';
+import { formatCep } from '@brazilian-utils/brazilian-utils';
 
-formatCEP('92500000'); // 92500-000
+formatCep('92500000'); // 92500-000
+```
+
+## getAddressInfoByCep
+
+Busca informações de endereço para um CEP usando múltiplos provedores.
+
+```javascript
+import { getAddressInfoByCep } from '@brazilian-utils/brazilian-utils';
+
+// Usando todos os provedores (padrão)
+const address = await getAddressInfoByCep('01310100');
+// { cep: '01310100', state: 'SP', city: 'São Paulo', neighborhood: 'Bela Vista', street: 'Avenida Paulista' }
+
+// Usando provedores específicos
+const address = await getAddressInfoByCep('01310-100', {
+  providers: ['viacep', 'brasilapi']
+});
+
+// Usando número como entrada (será preenchido automaticamente com zeros à esquerda)
+const address = await getAddressInfoByCep(1310100);
 ```
 
 ## isValidProcessoJuridico
@@ -174,14 +251,14 @@ import { formatProcessoJuridico } from '@brazilian-utils/brazilian-utils';
 formatProcessoJuridico('00020802520125150049'); // 0002080-25.2012.515.0049
 ```
 
-## isValidIE
+## isValidIe
 
-Valida se a inscrição estadual de um estado é valida.
+Valida se a inscrição estadual de um estado é válida.
 
 ```javascript
-import { isValidIE } from '@brazilian-utils/brazilian-utils';
+import { isValidIe } from '@brazilian-utils/brazilian-utils';
 
-isValidIE('AC', '0187634580933'); // false
+isValidIe('AC', '0187634580933'); // false
 ```
 
 ## capitalize
@@ -260,12 +337,12 @@ getStates();
 
 ## getCities
 
-Retorna as cidades brasileiras.
+Retorna as cidades brasileiras. Retorna todas as cidades se nenhum estado for fornecido, ou cidades de um estado específico.
 
 ```javascript
 import { getCities } from '@brazilian-utils/brazilian-utils';
 
-// Retorna todas as cidades brasileiras.
+// Retorna todas as cidades brasileiras (ordenadas alfabeticamente).
 getCities();
 // [
 //   'Abadia de Goiás',
@@ -281,7 +358,7 @@ getCities();
 //   ... 5460 more items
 // ]
 
-// Retornas todas as cidades brasileiras do estado de São Paulo.
+// Retorna todas as cidades brasileiras do estado de São Paulo (ordenadas alfabeticamente).
 getCities('SP');
 // [
 //   "Adamantina",
@@ -296,4 +373,26 @@ getCities('SP');
 //   "Alfredo Marcondes",
 //   ... 635 more items
 // ]
+```
+
+## getHolidays
+
+Retorna feriados brasileiros para um determinado ano. Retorna feriados nacionais e opcionalmente feriados estaduais.
+
+```javascript
+import { getHolidays } from '@brazilian-utils/brazilian-utils';
+
+// Obtém todos os feriados nacionais de 2024
+getHolidays(2024);
+// [
+//   { name: 'Ano novo', date: Date('2024-01-01') },
+//   { name: 'Carnaval (terça-feira)', date: Date('2024-02-13') },
+//   { name: 'Sexta-feira Santa', date: Date('2024-03-29') },
+//   { name: 'Páscoa', date: Date('2024-03-31') },
+//   // ... mais feriados
+// ]
+
+// Obtém feriados para um estado específico
+getHolidays({ year: 2024, stateCode: 'SP' });
+// Inclui feriados nacionais mais feriados estaduais (ex: "Revolução Constitucionalista")
 ```

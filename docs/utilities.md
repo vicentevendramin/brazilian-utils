@@ -2,76 +2,76 @@
 
 Here you will find all the utilities available for use.
 
-## isValidCPF
+## isValidCpf
 
 Check if CPF is valid.
 
 ```javascript
-import { isValidCPF } from '@brazilian-utils/brazilian-utils';
+import { isValidCpf } from '@brazilian-utils/brazilian-utils';
 
-isValidCPF('155151475'); // false
+isValidCpf('155151475'); // false
 ```
 
-## formatCPF
+## formatCpf
 
 Format CPF.
 
 ```javascript
-import { formatCPF } from '@brazilian-utils/brazilian-utils';
+import { formatCpf } from '@brazilian-utils/brazilian-utils';
 
-formatCPF('746506880'); // 746.506.880
-formatCPF('746506880', { pad: true }); // 007.465.068-80
+formatCpf('74650688000'); // 746.506.880-00
+formatCpf('746506880', { pad: true }); // 007.465.068-80
 ```
 
-## generateCPF
+## generateCpf
 
 Generate a valid random CPF.
 
 ```javascript
-import { generateCPF } from '@brazilian-utils/brazilian-utils'
+import { generateCpf } from '@brazilian-utils/brazilian-utils'
 
-generateCPF();
+generateCpf();
 ```
 
-## isValidCNPJ
+## isValidCnpj
 
 Check if CNPJ is valid.
 
 ```javascript
-import { isValidCNPJ } from '@brazilian-utils/brazilian-utils';
+import { isValidCnpj } from '@brazilian-utils/brazilian-utils';
 
-isValidCNPJ('15515147234255'); // false
+isValidCnpj('15515147234255'); // false
 ```
 
-## formatCNPJ
+## formatCnpj
 
 Format CNPJ.
 
 ```javascript
-import { formatCNPJ } from '@brazilian-utils/brazilian-utils';
+import { formatCnpj } from '@brazilian-utils/brazilian-utils';
 
-formatCNPJ('245222000174'); // 24.522.200/0174
-formatCNPJ('245222000174', { pad: true }); // 00.245.222/0001-74
+formatCnpj('24522200000174'); // 24.522.200/0001-74
+formatCnpj('245222000174', { pad: true }); // 00.245.222/0001-74
 ```
 
-## isValidCEP
+## isValidCep
 
 Check if CEP ([brazilian postal code](https://en.wikipedia.org/wiki/C%C3%B3digo_de_Endere%C3%A7amento_Postal)) is valid.
 
 ```javascript
-import { isValidCEP } from '@brazilian-utils/brazilian-utils';
+import { isValidCep } from '@brazilian-utils/brazilian-utils';
 
-isValidCEP('92500000'); // true
+isValidCep('92500000'); // true
 ```
 
-## generateCNPJ
+## generateCnpj
 
 Generate a valid random CNPJ.
 
 ```javascript
-import { generateCNPJ } from '@brazilian-utils/brazilian-utils'
+import { generateCnpj } from '@brazilian-utils/brazilian-utils'
 
-generateCNPJ();
+generateCnpj();
 ```
 
 ## isValidBoleto
@@ -82,6 +82,38 @@ Check if boleto ([brazilian payment method](https://en.wikipedia.org/wiki/Boleto
 import { isValidBoleto } from '@brazilian-utils/brazilian-utils';
 
 isValidBoleto('00190000090114971860168524522114675860000102656'); // true
+```
+
+## formatBoleto
+
+Format a boleto number.
+
+```javascript
+import { formatBoleto } from '@brazilian-utils/brazilian-utils';
+
+formatBoleto('00190000090114971860168524522114675860000102656'); // 00190.00009 01149.718601 68524.522114 6 75860000102656
+formatBoleto('1900000901149', { pad: true }); // 00000.00000 00000.000019 00000.901149 0 00000000000000
+```
+
+## generateBoleto
+
+Generate a valid random boleto.
+
+```javascript
+import { generateBoleto } from '@brazilian-utils/brazilian-utils';
+
+generateBoleto(); // "00190000090114971860168524522114675860000102656"
+```
+
+## getBoletoInfo
+
+Extract information from a boleto (amount, expiration date, bank code).
+
+```javascript
+import { getBoletoInfo } from '@brazilian-utils/brazilian-utils';
+
+getBoletoInfo('00190000090114971860168524522114675860000102656');
+// { amount: 102656, expirationDate: Date, bankCode: '001' }
 ```
 
 ## isValidEmail
@@ -102,6 +134,18 @@ Check if phone number (mobile or landline) is valid.
 import { isValidPhone } from '@brazilian-utils/brazilian-utils';
 
 isValidPhone('11900000000'); // true
+```
+
+## formatPhone
+
+Format phone number according to Brazilian patterns.
+
+```javascript
+import { formatPhone } from '@brazilian-utils/brazilian-utils';
+
+formatPhone('11900000000'); // 90000-0000
+formatPhone('11900000000', { mask: 'nanp' }); // (11) 90000-0000
+formatPhone('11900000000', { mask: 'auto' }); // Automatically detects mask based on length
 ```
 
 ## isValidMobilePhone
@@ -126,37 +170,70 @@ isValidLandlinePhone('1130000000'); // true
 
 ## isValidLicensePlate
 
-Check if license plate is valid.
+Check if license plate is valid. Supports both the old Brazilian format (ABC-1234) and the new Mercosul format (ABC1D23).
 
 ```javascript
 import { isValidLicensePlate } from '@brazilian-utils/brazilian-utils';
 
-isValidLicensePlate('ABC1234'); // true
+isValidLicensePlate('ABC1234'); // true (Brazilian format)
+isValidLicensePlate('ABC-1234'); // true (Brazilian format with hyphen)
+isValidLicensePlate('ABC1D23'); // true (Mercosul format)
 ```
 
-## isValidPIS
+## isValidPis
 
 Check if PIS is valid.
 
 ```javascript
-import { isValidPIS } from '@brazilian-utils/brazilian-utils';
+import { isValidPis } from '@brazilian-utils/brazilian-utils';
 
-isValidPIS('12056412547'); // false
+isValidPis('12056412547'); // false
 ```
 
-## formatCEP
+## formatPis
+
+Format PIS number.
+
+```javascript
+import { formatPis } from '@brazilian-utils/brazilian-utils';
+
+formatPis('12345678901'); // 123.45678.90-1
+formatPis('123456789', { pad: true }); // 001.23456.78-9
+```
+
+## formatCep
 
 Format CEP ([brazilian postal code](https://en.wikipedia.org/wiki/C%C3%B3digo_de_Endere%C3%A7amento_Postal)).
 
 ```javascript
-import { formatCEP } from '@brazilian-utils/brazilian-utils';
+import { formatCep } from '@brazilian-utils/brazilian-utils';
 
-formatCEP('92500000'); // 92500-000
+formatCep('92500000'); // 92500-000
+```
+
+## getAddressInfoByCep
+
+Fetch address information for a given CEP using multiple providers.
+
+```javascript
+import { getAddressInfoByCep } from '@brazilian-utils/brazilian-utils';
+
+// Using all providers (default)
+const address = await getAddressInfoByCep('01310100');
+// { cep: '01310100', state: 'SP', city: 'São Paulo', neighborhood: 'Bela Vista', street: 'Avenida Paulista' }
+
+// Using specific providers
+const address = await getAddressInfoByCep('01310-100', {
+  providers: ['viacep', 'brasilapi']
+});
+
+// Using number input (will be padded automatically)
+const address = await getAddressInfoByCep(1310100);
 ```
 
 ## isValidProcessoJuridico
 
-Validate the processo jurídico number accordin to [CNJ's defintion](https://www.conjur.com.br/dl/resolucao-65-cnj.pdf).
+Validate the processo jurídico number according to [CNJ's definition](https://www.conjur.com.br/dl/resolucao-65-cnj.pdf).
 
 ```javascript
 import { isValidProcessoJuridico } from '@brazilian-utils/brazilian-utils';
@@ -174,14 +251,14 @@ import { formatProcessoJuridico } from '@brazilian-utils/brazilian-utils';
 formatProcessoJuridico('00020802520125150049'); // 0002080-25.2012.515.0049
 ```
 
-## isValidIE
+## isValidIe
 
 Check if inscrição estadual (state registration) is valid.
 
 ```javascript
-import { isValidIE } from '@brazilian-utils/brazilian-utils';
+import { isValidIe } from '@brazilian-utils/brazilian-utils';
 
-isValidIE('AC', '0187634580933'); // false
+isValidIe('AC', '0187634580933'); // false
 ```
 
 ## capitalize
@@ -260,12 +337,12 @@ getStates();
 
 ## getCities
 
-Get Brazilian cities.
+Get Brazilian cities. Returns all cities if no state is provided, or cities from a specific state.
 
 ```javascript
 import { getCities } from '@brazilian-utils/brazilian-utils';
 
-// Return all Brazilian cities.
+// Return all Brazilian cities (sorted alphabetically).
 getCities();
 // [
 //   'Abadia de Goiás',
@@ -281,7 +358,7 @@ getCities();
 //   ... 5460 more items
 // ]
 
-// Return all Brazilian cities of the São Paulo state.
+// Return all Brazilian cities of the São Paulo state (sorted alphabetically).
 getCities('SP');
 // [
 //   "Adamantina",
@@ -296,4 +373,26 @@ getCities('SP');
 //   "Alfredo Marcondes",
 //   ... 635 more items
 // ]
+```
+
+## getHolidays
+
+Get Brazilian holidays for a given year. Returns national holidays and optionally state-specific holidays.
+
+```javascript
+import { getHolidays } from '@brazilian-utils/brazilian-utils';
+
+// Get all national holidays for 2024
+getHolidays(2024);
+// [
+//   { name: 'Ano novo', date: Date('2024-01-01') },
+//   { name: 'Carnaval (terça-feira)', date: Date('2024-02-13') },
+//   { name: 'Sexta-feira Santa', date: Date('2024-03-29') },
+//   { name: 'Páscoa', date: Date('2024-03-31') },
+//   // ... more holidays
+// ]
+
+// Get holidays for a specific state
+getHolidays({ year: 2024, stateCode: 'SP' });
+// Includes national holidays plus state-specific holidays (e.g., "Revolução Constitucionalista")
 ```

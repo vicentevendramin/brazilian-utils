@@ -40,6 +40,7 @@ const PUBLIC = [
 	"isValidPhone",
 	"isValidMobilePhone",
 	"isValidLandlinePhone",
+	"isValidLicensePlate",
 	"isValidCnpj",
 	"generateCnpj",
 	"isValidCpf",
