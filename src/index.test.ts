@@ -7,6 +7,7 @@ const PUBLIC = [
 	"formatCep",
 	"formatCnpj",
 	"formatCpf",
+	"isValidRenavam",
 	"formatCurrency",
 	"parseCurrency",
 	"formatPis",
