@@ -282,7 +282,6 @@ getCities();
 // ]
 
 // Return all Brazilian cities of the São Paulo state.
-getCities('São Paulo');
 getCities('SP');
 // [
 //   "Adamantina",

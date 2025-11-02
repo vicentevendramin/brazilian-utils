@@ -21,11 +21,10 @@ describe("getCities", () => {
 	describe("return cities from states", () => {
 		const states = getStates();
 
-		for (const { code, name } of states) {
-			it(`should return cities from code ${code}/${name}`, () => {
+		for (const { code } of states) {
+			it(`should return cities from code ${code}`, () => {
 				const stateCities = DATA[code];
 				expect(getCities(code)).toMatchObject(stateCities);
-				expect(getCities(name)).toMatchObject(stateCities);
 			});
 		}
 	});

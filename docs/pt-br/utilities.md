@@ -282,7 +282,6 @@ getCities();
 // ]
 
 // Retornas todas as cidades brasileiras do estado de São Paulo.
-getCities('São Paulo');
 getCities('SP');
 // [
 //   "Adamantina",

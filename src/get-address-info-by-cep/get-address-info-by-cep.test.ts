@@ -5,12 +5,12 @@
  * Error handling tests use mocks to test specific error scenarios.
  */
 
-import { describe, expect, it, vi, beforeEach, afterEach } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
-	getAddressInfoByCep,
-	GetAddressInfoByCepValidationError,
 	GetAddressInfoByCepNotFoundError,
 	GetAddressInfoByCepServiceError,
+	GetAddressInfoByCepValidationError,
+	getAddressInfoByCep,
 } from "./get-address-info-by-cep";
 
 describe("getAddressInfoByCep", () => {

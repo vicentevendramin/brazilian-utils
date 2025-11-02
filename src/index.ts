@@ -34,16 +34,21 @@ export {
 export { generateBoleto } from "./generate-boleto/generate-boleto";
 export { generateCnpj } from "./generate-cnpj/generate-cnpj";
 export { generateCpf } from "./generate-cpf/generate-cpf";
-export { getCities } from "./get-cities/get-cities";
-export { getStates } from "./get-states/get-states";
 export {
-	type GetAddressInfoByCepOptions,
 	GetAddressInfoByCepError,
 	GetAddressInfoByCepNotFoundError,
+	type GetAddressInfoByCepOptions,
 	GetAddressInfoByCepServiceError,
 	GetAddressInfoByCepValidationError,
 	getAddressInfoByCep,
 } from "./get-address-info-by-cep/get-address-info-by-cep";
+export { getBoletoInfo } from "./get-boleto-info/get-boleto-info";
+export { getCities } from "./get-cities/get-cities";
+export {
+	type GetHolidaysOptions,
+	getHolidays,
+} from "./get-holidays/get-holidays";
+export { getStates } from "./get-states/get-states";
 export { isValidBoleto } from "./is-valid-boleto/is-valid-boleto";
 export { isValidCep } from "./is-valid-cep/is-valid-cep";
 export { isValidCnpj } from "./is-valid-cnpj/is-valid-cnpj";
