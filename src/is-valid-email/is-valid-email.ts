@@ -13,7 +13,7 @@
  */
 
 const EMAIL_REGEX =
-	/^(?!\.)(?!.*\.\.)([a-z0-9_'+\-\.]*)[a-z0-9_+-]@([a-z0-9][a-z0-9\-]*\.)+[a-z]{2,}$/i;
+	/^(?!\.)(?!.*\.\.)([a-z0-9_'+\-.]*)[a-z0-9_+-]@([a-z0-9][a-z0-9-]*\.)+[a-z]{2,}$/i;
 
 export const isValidEmail = (value: string): boolean => {
 	if (!value || typeof value !== "string") return false;
