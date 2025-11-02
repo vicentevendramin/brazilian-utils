@@ -64,6 +64,7 @@ Added new useful utilities:
 - `generateBoleto` - Generate valid random boleto numbers
 - `formatPis` - Format PIS numbers
 - `isValidRenavam` - Validate RENAVAM (vehicle registration number)
+- `describeNumber` - Convert numbers to Portuguese text (por extenso) with support for normal, currency, and percentage styles
 
 ### 📈 Better TypeScript Support
 
@@ -197,6 +198,25 @@ import { isValidRenavam } from '@brazilian-utils/brazilian-utils';
 isValidRenavam('639884962'); // true (9 digits, old format)
 isValidRenavam('00639884962'); // true (11 digits, new format)
 isValidRenavam('12345678901'); // false (invalid checksum)
+```
+
+### `describeNumber`
+
+Convert numbers to Portuguese text (por extenso). Supports three styles: normal (default), currency (monetary), and percentage.
+
+```javascript
+import { describeNumber } from '@brazilian-utils/brazilian-utils';
+
+// Normal style (default)
+describeNumber(128); // "cento e vinte e oito"
+describeNumber(10.5); // "dez vírgula cinco décimos"
+
+// Currency style
+describeNumber(128, { style: 'currency' }); // "cento e vinte e oito reais"
+describeNumber(10.50, { style: 'currency' }); // "dez reais e cinquenta centavos"
+
+// Percentage style
+describeNumber(128, { style: 'percentage' }); // "cento e vinte e oito por cento"
 ```
 
 ## API Changes

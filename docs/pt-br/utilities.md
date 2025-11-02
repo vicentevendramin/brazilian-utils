@@ -308,6 +308,32 @@ parseCurrency('10.756,11'); // 10756.11
 parseCurrency('R$ 10.59'); // 10.59
 ```
 
+## describeNumber
+
+Converte um número para sua representação em texto em português (por extenso). Suporta três estilos: normal, currency (monetário) e percentage (porcentagem).
+
+```javascript
+import { describeNumber } from '@brazilian-utils/brazilian-utils';
+
+// Estilo normal (padrão)
+describeNumber(128); // "cento e vinte e oito"
+describeNumber(10.5); // "dez vírgula cinco décimos"
+describeNumber(-1); // "menos um"
+
+// Estilo monetário
+describeNumber(128, { style: 'currency' }); // "cento e vinte e oito reais"
+describeNumber(10.50, { style: 'currency' }); // "dez reais e cinquenta centavos"
+describeNumber(0.01, { style: 'currency' }); // "um centavo"
+
+// Estilo porcentagem
+describeNumber(128, { style: 'percentage' }); // "cento e vinte e oito por cento"
+describeNumber(10.5, { style: 'percentage' }); // "dez vírgula cinco décimos por cento"
+describeNumber(3.01, { style: 'percentage' }); // "três vírgula um centésimo por cento"
+
+// Suporta entrada como string para números muito grandes
+describeNumber('999999999999999.99'); // Funciona com strings para números além do limite seguro de inteiros do JavaScript
+```
+
 ## getStates
 
 Retorna todos os estados brasileiros.

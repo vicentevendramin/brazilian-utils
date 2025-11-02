@@ -1,5 +1,9 @@
 export { type CapitalizeOptions, capitalize } from "./capitalize/capitalize";
 export {
+	type DescribeNumberOptions,
+	describeNumber,
+} from "./describe-number/describe-number";
+export {
 	type FormatBoletoOptions,
 	formatBoleto,
 } from "./format-boleto/format-boleto";

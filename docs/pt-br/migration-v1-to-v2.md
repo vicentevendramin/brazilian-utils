@@ -64,6 +64,7 @@ Adicionadas novas utilitários úteis:
 - `generateBoleto` - Gera números de boleto válidos aleatórios
 - `formatPis` - Formata números de PIS
 - `isValidRenavam` - Valida RENAVAM (número de registro de veículos)
+- `describeNumber` - Converte números para texto em português (por extenso) com suporte para estilos normal, currency (monetário) e percentage (porcentagem)
 
 ### 📈 Melhor Suporte TypeScript
 
@@ -197,6 +198,25 @@ import { isValidRenavam } from '@brazilian-utils/brazilian-utils';
 isValidRenavam('639884962'); // true (9 dígitos, formato antigo)
 isValidRenavam('00639884962'); // true (11 dígitos, formato novo)
 isValidRenavam('12345678901'); // false (checksum inválido)
+```
+
+### `describeNumber`
+
+Converte números para texto em português (por extenso). Suporta três estilos: normal (padrão), currency (monetário) e percentage (porcentagem).
+
+```javascript
+import { describeNumber } from '@brazilian-utils/brazilian-utils';
+
+// Estilo normal (padrão)
+describeNumber(128); // "cento e vinte e oito"
+describeNumber(10.5); // "dez vírgula cinco décimos"
+
+// Estilo monetário
+describeNumber(128, { style: 'currency' }); // "cento e vinte e oito reais"
+describeNumber(10.50, { style: 'currency' }); // "dez reais e cinquenta centavos"
+
+// Estilo porcentagem
+describeNumber(128, { style: 'percentage' }); // "cento e vinte e oito por cento"
 ```
 
 ## Mudanças na API

@@ -308,6 +308,32 @@ parseCurrency('10.756,11'); // 10756.11
 parseCurrency('R$ 10.59'); // 10.59
 ```
 
+## describeNumber
+
+Converts a number to its Portuguese text representation (por extenso). Supports three styles: normal, currency (monetary), and percentage.
+
+```javascript
+import { describeNumber } from '@brazilian-utils/brazilian-utils';
+
+// Normal style (default)
+describeNumber(128); // "cento e vinte e oito"
+describeNumber(10.5); // "dez vírgula cinco décimos"
+describeNumber(-1); // "menos um"
+
+// Currency style
+describeNumber(128, { style: 'currency' }); // "cento e vinte e oito reais"
+describeNumber(10.50, { style: 'currency' }); // "dez reais e cinquenta centavos"
+describeNumber(0.01, { style: 'currency' }); // "um centavo"
+
+// Percentage style
+describeNumber(128, { style: 'percentage' }); // "cento e vinte e oito por cento"
+describeNumber(10.5, { style: 'percentage' }); // "dez vírgula cinco décimos por cento"
+describeNumber(3.01, { style: 'percentage' }); // "três vírgula um centésimo por cento"
+
+// Supports string inputs for very large numbers
+describeNumber('999999999999999.99'); // Works with strings for numbers beyond JavaScript's safe integer limit
+```
+
 ## getStates
 
 Get all Brazilian states.
