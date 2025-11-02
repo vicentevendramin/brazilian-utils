@@ -21,6 +21,8 @@ const PUBLIC = [
 	"formatPis",
 	"getStates",
 	"getCities",
+	"isValidBoleto",
+	"generateBoleto",
 	"isValidCnpj",
 	"generateCnpj",
 	"isValidCpf",

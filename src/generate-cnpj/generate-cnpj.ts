@@ -36,7 +36,7 @@ const generateAlphanumericChecksum = (
 };
 
 const calculateCheckDigit = (base: string, weights: number[]): string => {
-	const mod = generateChecksum(base, weights) % 11;
+	const mod = generateChecksum({ base, weight: weights }) % 11;
 	return (mod < 2 ? 0 : 11 - mod).toString();
 };
 

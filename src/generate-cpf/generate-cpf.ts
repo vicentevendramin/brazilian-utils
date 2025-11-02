@@ -44,7 +44,7 @@ const getStateCode = (state?: StateCode): string => {
 };
 
 const calculateCheckDigit = (base: string, weight: number): string => {
-	const mod = generateChecksum(base, weight) % 11;
+	const mod = generateChecksum({ base, weight }) % 11;
 	return (mod < 2 ? 0 : 11 - mod).toString();
 };
 

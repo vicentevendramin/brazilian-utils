@@ -1,9 +1,14 @@
 import { sanitizeToDigits } from "../sanitize-to-digits/sanitize-to-digits";
 
-export function generateChecksum(
-	base: string | number,
-	weight: number | number[],
-): number {
+export interface GenerateChecksumParams {
+	base: string | number;
+	weight: number | number[];
+}
+
+export function generateChecksum({
+	base,
+	weight,
+}: GenerateChecksumParams): number {
 	const digits = sanitizeToDigits(base);
 
 	let sum = 0;
