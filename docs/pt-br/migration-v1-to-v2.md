@@ -64,6 +64,7 @@ Adicionadas novas utilitários úteis:
 - `generateBoleto` - Gera números de boleto válidos aleatórios
 - `formatPis` - Formata números de PIS
 - `isValidRenavam` - Valida RENAVAM (número de registro de veículos)
+- `isValidBankAccount` - Valida contas bancárias brasileiras com algoritmos específicos para principais bancos
 - `describeNumber` - Converte números para texto em português (por extenso) com suporte para estilos normal, currency (monetário) e percentage (porcentagem)
 
 ### 📈 Melhor Suporte TypeScript
@@ -198,6 +199,38 @@ import { isValidRenavam } from '@brazilian-utils/brazilian-utils';
 isValidRenavam('639884962'); // true (9 dígitos, formato antigo)
 isValidRenavam('00639884962'); // true (11 dígitos, formato novo)
 isValidRenavam('12345678901'); // false (checksum inválido)
+```
+
+### `isValidBankAccount`
+
+Valida contas bancárias brasileiras. Suporta algoritmos de validação específicos para os principais bancos (Banco do Brasil, Itaú, Bradesco, Santander, Caixa Econômica Federal) e validação genérica mod10/mod11 para outros bancos.
+
+```javascript
+import { isValidBankAccount } from '@brazilian-utils/brazilian-utils';
+
+// Banco do Brasil
+isValidBankAccount({
+  bankCode: '001',
+  agency: '1234',
+  account: '12345678',
+  digit: '5'
+}); // true (se válido)
+
+// Itaú
+isValidBankAccount({
+  bankCode: '341',
+  agency: '1234',
+  account: '12345',
+  digit: '6'
+}); // true (se válido)
+
+// Outros bancos usam validação genérica
+isValidBankAccount({
+  bankCode: '999',
+  agency: '1234',
+  account: '123456',
+  digit: '7'
+}); // true (se validação mod10/mod11 passar)
 ```
 
 ### `describeNumber`

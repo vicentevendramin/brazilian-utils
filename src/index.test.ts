@@ -14,6 +14,7 @@ const PUBLIC = [
 	"isValidPis",
 	"getStates",
 	"getCities",
+	"isValidBankAccount",
 	"formatBoleto",
 	"capitalize",
 	"formatCep",

@@ -53,6 +53,10 @@ export {
 	getHolidays,
 } from "./get-holidays/get-holidays";
 export { getStates } from "./get-states/get-states";
+export {
+	type IsValidBankAccountParams,
+	isValidBankAccount,
+} from "./is-valid-bank-account/is-valid-bank-account";
 export { isValidBoleto } from "./is-valid-boleto/is-valid-boleto";
 export { isValidCep } from "./is-valid-cep/is-valid-cep";
 export { isValidCnpj } from "./is-valid-cnpj/is-valid-cnpj";

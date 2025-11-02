@@ -273,6 +273,28 @@ import { isValidIe } from '@brazilian-utils/brazilian-utils';
 isValidIe('AC', '0187634580933'); // false
 ```
 
+## isValidBankAccount
+
+Valida se uma conta bancária brasileira é válida. Suporta algoritmos de validação específicos para os principais bancos (Banco do Brasil, Itaú, Bradesco, Santander, Caixa Econômica Federal) e validação genérica mod10/mod11 para outros bancos.
+
+```javascript
+import { isValidBankAccount } from '@brazilian-utils/brazilian-utils';
+
+isValidBankAccount({
+  bankCode: '001',
+  agency: '1234',
+  account: '12345678',
+  digit: '5'
+}); // true (se conta válida do Banco do Brasil)
+
+isValidBankAccount({
+  bankCode: '341',
+  agency: '1234',
+  account: '12345',
+  digit: '6'
+}); // true (se conta válida do Itaú)
+```
+
 ## capitalize
 
 Transforma primeira letra de cada palavra em maiúscula ignorando preposições.

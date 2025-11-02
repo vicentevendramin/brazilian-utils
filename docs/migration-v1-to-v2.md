@@ -64,6 +64,7 @@ Added new useful utilities:
 - `generateBoleto` - Generate valid random boleto numbers
 - `formatPis` - Format PIS numbers
 - `isValidRenavam` - Validate RENAVAM (vehicle registration number)
+- `isValidBankAccount` - Validate Brazilian bank accounts with specific algorithms for major banks
 - `describeNumber` - Convert numbers to Portuguese text (por extenso) with support for normal, currency, and percentage styles
 
 ### 📈 Better TypeScript Support
@@ -198,6 +199,38 @@ import { isValidRenavam } from '@brazilian-utils/brazilian-utils';
 isValidRenavam('639884962'); // true (9 digits, old format)
 isValidRenavam('00639884962'); // true (11 digits, new format)
 isValidRenavam('12345678901'); // false (invalid checksum)
+```
+
+### `isValidBankAccount`
+
+Validate Brazilian bank accounts. Supports specific validation algorithms for major banks (Banco do Brasil, Itaú, Bradesco, Santander, Caixa Econômica Federal) and generic mod10/mod11 validation for other banks.
+
+```javascript
+import { isValidBankAccount } from '@brazilian-utils/brazilian-utils';
+
+// Banco do Brasil
+isValidBankAccount({
+  bankCode: '001',
+  agency: '1234',
+  account: '12345678',
+  digit: '5'
+}); // true (if valid)
+
+// Itaú
+isValidBankAccount({
+  bankCode: '341',
+  agency: '1234',
+  account: '12345',
+  digit: '6'
+}); // true (if valid)
+
+// Other banks use generic validation
+isValidBankAccount({
+  bankCode: '999',
+  agency: '1234',
+  account: '123456',
+  digit: '7'
+}); // true (if mod10/mod11 validation passes)
 ```
 
 ### `describeNumber`

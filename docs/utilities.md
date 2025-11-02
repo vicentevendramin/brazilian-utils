@@ -273,6 +273,28 @@ import { isValidIe } from '@brazilian-utils/brazilian-utils';
 isValidIe('AC', '0187634580933'); // false
 ```
 
+## isValidBankAccount
+
+Check if a Brazilian bank account is valid. Supports specific validation algorithms for major banks (Banco do Brasil, Itaú, Bradesco, Santander, Caixa Econômica Federal) and generic mod10/mod11 validation for other banks.
+
+```javascript
+import { isValidBankAccount } from '@brazilian-utils/brazilian-utils';
+
+isValidBankAccount({
+  bankCode: '001',
+  agency: '1234',
+  account: '12345678',
+  digit: '5'
+}); // true (if valid Banco do Brasil account)
+
+isValidBankAccount({
+  bankCode: '341',
+  agency: '1234',
+  account: '12345',
+  digit: '6'
+}); // true (if valid Itaú account)
+```
+
 ## capitalize
 
 Transforms the first letter into a capital one of each word ignoring prepositions.
