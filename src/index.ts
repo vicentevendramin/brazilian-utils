@@ -24,6 +24,7 @@ export {
 	formatPis,
 	type FormatPisOptions,
 } from "./format-pis/format-pis";
+export { isValidPis } from "./is-valid-pis/is-valid-pis";
 export {
 	formatProcessoJuridico,
 	type FormatProcessoJuridicoOptions,

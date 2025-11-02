@@ -10,6 +10,7 @@ const PUBLIC = [
 	"formatCurrency",
 	"parseCurrency",
 	"formatPis",
+	"isValidPis",
 	"getStates",
 	"getCities",
 	"formatBoleto",
