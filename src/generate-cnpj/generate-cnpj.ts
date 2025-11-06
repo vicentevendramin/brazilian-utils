@@ -83,7 +83,8 @@ const generateAlphanumericCnpj = (): string => {
  * generateCnpj(2); // "Q0SLFMBD7VX439"
  * ```
  */
-export const generateCnpj = (version: 1 | 2 = 1): string => {
-	if (version === 1) return generateNumericCnpj();
+export const generateCnpj = (version?: 1 | 2): string => {
+	const versionToUse = (version ?? Math.random() < 0.5) ? 1 : 2;
+	if (versionToUse === 1) return generateNumericCnpj();
 	return generateAlphanumericCnpj();
 };

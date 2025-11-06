@@ -69,8 +69,11 @@ const isValidChecksum = (cnpj: string): boolean => {
  * Supports both numeric and alphanumeric CNPJ formats.
  *
  * @param {string} cnpj - The CNPJ value to be validated.
+ * @param {{version?: 1|2}} [options] - Optional options:
+ *    version = 1 -> validate numeric-only format
+ *    version = 2 -> validate alphanumeric format too
  * @returns {boolean} True if the CNPJ is valid, false otherwise.
- *
+ *  *
  * @example
  * ```typescript
  * isValidCnpj("12.345.678/0001-95"); // true
@@ -79,21 +82,28 @@ const isValidChecksum = (cnpj: string): boolean => {
  * isValidCnpj("12345678000190"); // false (invalid checksum)
  * ```
  */
-export const isValidCnpj = (cnpj: string): boolean => {
+export const isValidCnpj = (
+	cnpj: string,
+	options?: { version?: 1 | 2 },
+): boolean => {
 	if (!cnpj || typeof cnpj !== "string") return false;
 
 	const cleaned = cleanCnpj(cnpj);
 
 	if (cleaned.length !== LENGTH) return false;
 
+	const version = options?.version ?? 2;
+
 	let isNumeric = true;
 	let hasLetter = false;
 
-	for (let i = 0; i < LENGTH; i++) {
-		const code = cleaned.charCodeAt(i);
-		if (code < 48 || code > 57) {
-			isNumeric = false;
-			if (code >= 65 && code <= 90) hasLetter = true;
+	if (version !== 1) {
+		for (let i = 0; i < LENGTH; i++) {
+			const code = cleaned.charCodeAt(i);
+			if (code < 48 || code > 57) {
+				isNumeric = false;
+				if (code >= 65 && code <= 90) hasLetter = true;
+			}
 		}
 	}
 

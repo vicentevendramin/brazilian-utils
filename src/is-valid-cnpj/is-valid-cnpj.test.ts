@@ -57,7 +57,6 @@ describe("isValidCnpj", () => {
 			expect(isValidCnpj("11257245286531")).toBe(false);
 		});
 
-		// Novos testes para CNPJ alfanumérico inválido
 		test("when is an invalid alphanumeric CNPJ", () => {
 			expect(isValidCnpj("12.ABC.345/01DE-99")).toBe(false); // Invalid DV
 			expect(isValidCnpj("AB.1C2.D3E/4F5G-3")).toBe(false); // Too short
