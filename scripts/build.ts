@@ -18,7 +18,7 @@ await Promise.all([
 	}),
 	build({
 		...CONFIG,
-		naming: "[dir]/brazilian-utils.esm.[ext]",
+		naming: "[dir]/brazilian-utils.cjs.[ext]",
 		format: "cjs",
 	}),
 ]);
