@@ -1,0 +1,11 @@
+{
+	"$schema": "https://unpkg.com/release-it/schema/release-it.json",
+	"github": {
+		"release": true
+	},
+	"hooks": {
+		"before:init": ["bun run ci", "bun run test"],
+		"after:bump": "bun run build",
+		"after:release": "echo Successfully released ${name} v${version} to ${repo.repository}."
+	}
+}

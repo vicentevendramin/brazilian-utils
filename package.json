@@ -1,6 +1,6 @@
 {
 	"name": "@brazilian-utils/brazilian-utils",
-	"version": "2.0.0",
+	"version": "1.1.0",
 	"license": "MIT",
 	"description": "Brazilian Utils is a library focused on solving problems that we face daily in the development of applications for the Brazilian business.",
 	"repository": "https://github.com/brazilian-utils/brazilian-utils",
@@ -25,12 +25,13 @@
 		"test:safari-browser": "vitest --browser=safari --browser.headless=false",
 		"test:firefox-browser": "vitest --browser=firefox",
 		"check": "biome check --write .",
-		"prebuild": "bun run build:cities",
+		"prebuild": "bun run build:cities && bun run build:states",
 		"build": "bun ./scripts/build.ts && biome check --write ./dist/index.d.ts",
 		"build:cities": "bun ./scripts/cities.ts && biome check --write ./src/_internals/cities.ts",
 		"build:states": "bun ./scripts/states.ts && biome check --write ./src/_internals/states.ts",
 		"prepublishOnly": "bun run build",
-		"ci": "biome ci"
+		"ci": "biome ci",
+		"release": "release-it"
 	},
 	"publishConfig": {
 		"access": "public"
@@ -40,6 +41,7 @@
 		"@types/bun": "^1.2.0",
 		"@vitest/browser-webdriverio": "4.0.6",
 		"bun-plugin-dts": "^0.3.0",
+		"release-it": "^19.0.6",
 		"vitest": "4.0.6",
 		"webdriverio": "^9.7.1"
 	}

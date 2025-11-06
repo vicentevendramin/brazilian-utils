@@ -29,9 +29,9 @@ ou `<script>` tag (global `brazilianUtils`):
 Para usar um de nossos utilitários, basta importar a função necessária, como no exemplo abaixo:
 
 ```javascript
-import { isValidCPF } from '@brazilian-utils/brazilian-utils';
+import { isValidCpf } from '@brazilian-utils/brazilian-utils';
 
-isValidCPF('1232454233345'); // false
+isValidCpf('1232454233345'); // false
 ```
 
 Você pode conferir a lista de utilitários [clicando aqui](pt-br/utilities.md).

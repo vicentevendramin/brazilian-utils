@@ -66,9 +66,9 @@ or `<script>` tag (global `brazilianUtils`):
 To use one of our utilities you just need to import the required function as in the example below:
 
 ```javascript
-import { isValidCPF } from '@brazilian-utils/brazilian-utils';
+import { isValidCpf } from '@brazilian-utils/brazilian-utils';
 
-isValidCPF('1232454233345'); // false
+isValidCpf('1232454233345'); // false
 ```
 
 You can check a list of utilities [by clicking here](https://brazilian-utils.com.br/#/utilities).
