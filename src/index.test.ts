@@ -3,7 +3,6 @@ import { describe, expect, test } from "vitest";
 import * as brazilianUtils from ".";
 
 const PUBLIC = [
-	"describeNumber",
 	"formatCep",
 	"formatCnpj",
 	"formatCpf",

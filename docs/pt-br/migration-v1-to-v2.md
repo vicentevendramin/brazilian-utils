@@ -65,7 +65,6 @@ Adicionadas novas utilitários úteis:
 - `formatPis` - Formata números de PIS
 - `isValidRenavam` - Valida RENAVAM (número de registro de veículos)
 - `isValidBankAccount` - Valida contas bancárias brasileiras com algoritmos específicos para principais bancos
-- `describeNumber` - Converte números para texto em português (por extenso) com suporte para estilos normal, currency (monetário) e percentage (porcentagem)
 
 ### 📈 Melhor Suporte TypeScript
 
@@ -231,25 +230,6 @@ isValidBankAccount({
   account: '123456',
   digit: '7'
 }); // true (se validação mod10/mod11 passar)
-```
-
-### `describeNumber`
-
-Converte números para texto em português (por extenso). Suporta três estilos: normal (padrão), currency (monetário) e percentage (porcentagem).
-
-```javascript
-import { describeNumber } from '@brazilian-utils/brazilian-utils';
-
-// Estilo normal (padrão)
-describeNumber(128); // "cento e vinte e oito"
-describeNumber(10.5); // "dez vírgula cinco décimos"
-
-// Estilo monetário
-describeNumber(128, { style: 'currency' }); // "cento e vinte e oito reais"
-describeNumber(10.50, { style: 'currency' }); // "dez reais e cinquenta centavos"
-
-// Estilo porcentagem
-describeNumber(128, { style: 'percentage' }); // "cento e vinte e oito por cento"
 ```
 
 ## Mudanças na API
