@@ -1,4 +1,4 @@
-import { DATA, type State } from "../_internals/states";
+import { DATA, type State } from "../_internals/constants/states";
 
 /**
  * Retrieves a list of all Brazilian states with their codes and names.

@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { formatCep, LENGTH } from "./format-cep";
+import { LENGTH } from "./constants";
+import { formatCep } from "./format-cep";
 
 describe("formatCep", () => {
 	it("should format CEP with mask", () => {

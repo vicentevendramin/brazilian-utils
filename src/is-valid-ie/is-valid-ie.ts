@@ -1,5 +1,5 @@
+import type { StateCode } from "../_internals/constants/states";
 import { sanitizeToDigits } from "../_internals/sanitize-to-digits/sanitize-to-digits";
-import type { StateCode } from "../_internals/states";
 
 type IeValidator = (ie: string) => boolean;
 

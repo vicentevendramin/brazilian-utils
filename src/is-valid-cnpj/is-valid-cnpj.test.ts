@@ -1,6 +1,7 @@
 import { describe, expect, test } from "vitest";
 import { generateCnpj } from "../generate-cnpj/generate-cnpj";
-import { isValidCnpj, LENGTH, RESERVED_NUMBERS } from "./is-valid-cnpj";
+import { LENGTH, RESERVED_NUMBERS } from "./constants";
+import { isValidCnpj } from "./is-valid-cnpj";
 
 describe("isValidCnpj", () => {
 	describe("should return false", () => {
@@ -76,7 +77,7 @@ describe("isValidCnpj", () => {
 		for (let i = 0; i < 100; i++) {
 			const version = ((i % 2) + 1) as 1 | 2;
 			const cnpj = generateCnpj(version);
-			expect(isValidCnpj(cnpj)).toBe(true);
+			expect(isValidCnpj(cnpj, { version })).toBe(true);
 		}
 	});
 });

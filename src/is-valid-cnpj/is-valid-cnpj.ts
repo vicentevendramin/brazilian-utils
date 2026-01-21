@@ -1,19 +1,5 @@
 import { sanitizeToDigits } from "../_internals/sanitize-to-digits/sanitize-to-digits";
-
-export const LENGTH = 14;
-
-export const RESERVED_NUMBERS = [
-	"00000000000000",
-	"11111111111111",
-	"22222222222222",
-	"33333333333333",
-	"44444444444444",
-	"55555555555555",
-	"66666666666666",
-	"77777777777777",
-	"88888888888888",
-	"99999999999999",
-];
+import { LENGTH, RESERVED_NUMBERS } from "./constants";
 
 const RESERVED_SET = new Set(RESERVED_NUMBERS);
 
@@ -66,20 +52,25 @@ const isValidChecksum = (cnpj: string): boolean => {
 
 /**
  * Validates if a CNPJ (Cadastro Nacional da Pessoa Jurídica) is valid.
- * Supports both numeric and alphanumeric CNPJ formats.
+ * Supports both numeric (version 1) and alphanumeric (version 2) CNPJ formats.
  *
  * @param {string} cnpj - The CNPJ value to be validated.
  * @param {{version?: 1|2}} [options] - Optional options:
- *    version = 1 -> validate numeric-only format
- *    version = 2 -> validate alphanumeric format too
+ *    version = 1 -> validate numeric-only format (default)
+ *    version = 2 -> validate both numeric and alphanumeric formats
  * @returns {boolean} True if the CNPJ is valid, false otherwise.
- *  *
+ *
  * @example
  * ```typescript
+ * // Version 1 (numeric - default)
  * isValidCnpj("12.345.678/0001-95"); // true
  * isValidCnpj("12345678000195"); // true
  * isValidCnpj("00000000000000"); // false (reserved number)
  * isValidCnpj("12345678000190"); // false (invalid checksum)
+ *
+ * // Version 2 (alphanumeric)
+ * isValidCnpj("Q0.SLF.MBD/7VX4-39", { version: 2 }); // true (alphanumeric)
+ * isValidCnpj("Q0SLFMBD7VX439", { version: 2 }); // true (alphanumeric)
  * ```
  */
 export const isValidCnpj = (
@@ -92,7 +83,7 @@ export const isValidCnpj = (
 
 	if (cleaned.length !== LENGTH) return false;
 
-	const version = options?.version ?? 2;
+	const version = options?.version ?? 1;
 
 	let isNumeric = true;
 	let hasLetter = false;

@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { formatCnpj, LENGTH } from "./format-cnpj";
+import { LENGTH } from "./constants";
+import { formatCnpj } from "./format-cnpj";
 
 describe("formatCnpj", () => {
 	it("should format cnpj with mask", () => {

@@ -1,6 +1,7 @@
 import { describe, expect, test } from "vitest";
 import { isValidCnpj } from "../is-valid-cnpj/is-valid-cnpj";
-import { generateCnpj, LENGTH } from "./generate-cnpj";
+import { LENGTH } from "./constants";
+import { generateCnpj } from "./generate-cnpj";
 
 describe("generateCnpj", () => {
 	describe("version 1 (numeric)", () => {
@@ -47,7 +48,7 @@ describe("generateCnpj", () => {
 			const cnpj = generateCnpj(2);
 			expect(cnpj).toHaveLength(LENGTH);
 			expect(/^[0-9A-Z]+$/.test(cnpj)).toBe(true);
-			expect(isValidCnpj(cnpj)).toBe(true);
+			expect(isValidCnpj(cnpj, { version: 2 })).toBe(true);
 		});
 
 		test("should generate different alphanumeric CNPJs on multiple calls", () => {
@@ -69,7 +70,7 @@ describe("generateCnpj", () => {
 				const cnpj = generateCnpj(2);
 				// Add formatting and validate
 				const formatted = `${cnpj.slice(0, 2)}.${cnpj.slice(2, 5)}.${cnpj.slice(5, 8)}/${cnpj.slice(8, 12)}-${cnpj.slice(12)}`;
-				expect(isValidCnpj(formatted)).toBe(true);
+				expect(isValidCnpj(formatted, { version: 2 })).toBe(true);
 			}
 		});
 	});

@@ -28,7 +28,7 @@ const states = json
 	}));
 
 await write(
-	resolve(import.meta.dir, "..", "./src/_internals/states.ts"),
+	resolve(import.meta.dir, "..", "./src/_internals/constants/states.ts"),
 	`/**
  * @type {Array<{code: string, name: string, regionCode: string, regionName: string}>}
  */

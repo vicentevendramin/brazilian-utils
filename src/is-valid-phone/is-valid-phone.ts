@@ -1,10 +1,7 @@
 import { sanitizeToDigits } from "../_internals/sanitize-to-digits/sanitize-to-digits";
 import { isValidLandlinePhone } from "../is-valid-landline-phone/is-valid-landline-phone";
 import { isValidMobilePhone } from "../is-valid-mobile-phone/is-valid-mobile-phone";
-
-export const PHONE_MIN_LENGTH = 10;
-
-export const PHONE_MAX_LENGTH = 11;
+import { PHONE_MAX_LENGTH, PHONE_MIN_LENGTH } from "./constants";
 
 export type PhoneVersion = 1 | 2;
 

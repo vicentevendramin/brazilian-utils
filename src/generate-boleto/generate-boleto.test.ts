@@ -1,6 +1,7 @@
 import { describe, expect, test } from "vitest";
 import { isValidBoleto } from "../is-valid-boleto/is-valid-boleto";
-import { generateBoleto, LENGTH } from "./generate-boleto";
+import { LENGTH } from "./constants";
+import { generateBoleto } from "./generate-boleto";
 
 describe("generateBoleto", () => {
 	test("should generate a valid boleto", () => {

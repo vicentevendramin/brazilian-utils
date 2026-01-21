@@ -1,4 +1,4 @@
-import type { StateCode } from "../_internals/states";
+import type { StateCode } from "../_internals/constants/states";
 
 export type Holiday = {
 	name: string;

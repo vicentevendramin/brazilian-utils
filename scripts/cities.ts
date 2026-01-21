@@ -57,7 +57,7 @@ const cities = Object.fromEntries(
 );
 
 await write(
-	resolve(import.meta.dir, "..", "./src/_internals/cities.ts"),
+	resolve(import.meta.dir, "..", "./src/_internals/constants/cities.ts"),
 	`/**
  * A collection of Brazilian cities categorized by their respective states.
  * 

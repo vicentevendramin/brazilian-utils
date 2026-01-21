@@ -1,11 +1,11 @@
 import { sanitizeToDigits } from "../_internals/sanitize-to-digits/sanitize-to-digits";
-
-export const LENGTH = 20;
-
-const CHECK_DIGIT_START_POSITION = 7;
-const CHECK_DIGIT_LENGTH = 2;
-const MOD_97_10_QUOTIENT = 97;
-const MOD_97_10_SUM = 98;
+import {
+	CHECK_DIGIT_LENGTH,
+	CHECK_DIGIT_START_POSITION,
+	LENGTH,
+	MOD_97_10_QUOTIENT,
+	MOD_97_10_SUM,
+} from "./constants";
 
 const verifyCheckDigit = (value: string): boolean => {
 	const verificationDigits = Number.parseInt(

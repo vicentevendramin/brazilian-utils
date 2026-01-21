@@ -1,8 +1,6 @@
 import { type FormatParams, format } from "../_internals/format/format";
 import { sanitizeToDigits } from "../_internals/sanitize-to-digits/sanitize-to-digits";
 
-export const LENGTH = 47;
-
 export type FormatBoletoOptions = Pick<FormatParams, "pad">;
 
 /**

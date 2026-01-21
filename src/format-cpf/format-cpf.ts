@@ -1,8 +1,6 @@
 import { type FormatParams, format } from "../_internals/format/format";
 import { sanitizeToDigits } from "../_internals/sanitize-to-digits/sanitize-to-digits";
 
-export const LENGTH = 11;
-
 export type FormatCpfOptions = Pick<FormatParams, "pad">;
 /**
  * Formats a given CPF (Cadastro de Pessoas Físicas) value according to the Brazilian standard.

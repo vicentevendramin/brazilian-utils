@@ -1,7 +1,8 @@
 import { describe, expect, test } from "vitest";
-import { DATA } from "../_internals/states";
+import { DATA } from "../_internals/constants/states";
 import { isValidCpf } from "../is-valid-cpf/is-valid-cpf";
-import { generateCpf, LENGTH } from "./generate-cpf";
+import { LENGTH } from "./constants";
+import { generateCpf } from "./generate-cpf";
 
 describe("generateCpf", () => {
 	test(`should have the right length without mask (${LENGTH})`, () => {

@@ -2,8 +2,6 @@ import { generateRandomNumber } from "../_internals/generate-random-number/gener
 import { mod10 } from "../_internals/mod10/mod10";
 import { mod11 } from "../_internals/mod11/mod11";
 
-export const LENGTH = 47;
-
 /**
  * Generates a valid random Brazilian bank slip (boleto) number.
  *

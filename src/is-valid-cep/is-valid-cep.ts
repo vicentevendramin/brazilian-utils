@@ -1,6 +1,5 @@
 import { sanitizeToDigits } from "../_internals/sanitize-to-digits/sanitize-to-digits";
-
-export const LENGTH = 8;
+import { LENGTH } from "./constants";
 
 /**
  * Validates if a CEP (Brazilian postal code) is valid.

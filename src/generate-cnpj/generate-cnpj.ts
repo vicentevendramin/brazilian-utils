@@ -1,8 +1,6 @@
 import { generateChecksum } from "../_internals/generate-checksum/generate-checksum";
 import { generateRandomNumber } from "../_internals/generate-random-number/generate-random-number";
 
-export const LENGTH = 14;
-
 const BASE_LENGTH = 12;
 
 const FIRST_CHECK_DIGIT_WEIGHTS = [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
@@ -84,7 +82,7 @@ const generateAlphanumericCnpj = (): string => {
  * ```
  */
 export const generateCnpj = (version?: 1 | 2): string => {
-	const versionToUse = (version ?? Math.random() < 0.5) ? 1 : 2;
+	const versionToUse = version ?? 1;
 	if (versionToUse === 1) return generateNumericCnpj();
 	return generateAlphanumericCnpj();
 };

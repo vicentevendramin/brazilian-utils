@@ -2,6 +2,20 @@
 
 This guide will help you migrate from Brazilian Utils v1.x to v2.0.0.
 
+## TL;DR - Quick Migration
+
+**Good news!** v2.x maintains backward compatibility for most breaking changes:
+
+✅ **You can upgrade to v2.x without changing your code** - old function names like `formatCPF`, `isValidCNPJ`, etc. still work
+⚠️ **You'll receive deprecation warnings** - encouraging you to migrate to the new names
+🗑️ **Old names will be removed in v3.0.0** - so migrate gradually
+
+**However**, you must remove usage of these helper functions before upgrading:
+- `onlyNumbers` → use `string.replace(/\D/g, '')`
+- `isLastChar` → use `index === input.length - 1`
+- `generateChecksum` → now internal only
+- `generateRandomNumber` → now internal only
+
 ## Improvements in v2.0.0
 
 Version 2.0.0 brings significant improvements in architecture, tooling, and developer experience:
@@ -54,7 +68,7 @@ Reduced development dependencies while maintaining zero runtime dependencies:
 - Simpler maintenance and faster CI/CD pipelines
 - Zero runtime dependencies (maintained)
 
-### ✨ New Functions
+### ✨ New Functions & Features
 
 Added new useful utilities:
 - `getHolidays` - Get Brazilian holidays (national and state-specific)
@@ -66,6 +80,27 @@ Added new useful utilities:
 - `isValidRenavam` - Validate RENAVAM (vehicle registration number)
 - `isValidBankAccount` - Validate Brazilian bank accounts with specific algorithms for major banks
 
+#### Alphanumeric CNPJ Support (Version 2)
+
+v2.0.0 adds support for the new alphanumeric CNPJ format introduced by the Brazilian Federal Revenue. Both `isValidCnpj` and `generateCnpj` now support version 2 (alphanumeric) CNPJs:
+
+```javascript
+import { isValidCnpj, generateCnpj } from '@brazilian-utils/brazilian-utils';
+
+// Generate alphanumeric CNPJ
+const alphaCnpj = generateCnpj(2); // e.g., "Q0SLFMBD7VX439"
+
+// Validate alphanumeric CNPJ (requires version option)
+isValidCnpj("Q0.SLF.MBD/7VX4-39", { version: 2 }); // true
+isValidCnpj("Q0SLFMBD7VX439", { version: 2 }); // true
+
+// Version 1 (numeric) is the default
+isValidCnpj("12.345.678/0001-95"); // true (validates numeric only)
+isValidCnpj("12.345.678/0001-95", { version: 1 }); // true (explicit)
+```
+
+**Important**: By default, `isValidCnpj()` validates only numeric (version 1) CNPJs. To validate alphanumeric CNPJs, you must explicitly pass `{ version: 2 }`.
+
 ### 📈 Better TypeScript Support
 
 - Modern TypeScript configuration optimized for bundlers
@@ -76,7 +111,17 @@ Added new useful utilities:
 
 ### Function Names Changed (PascalCase → camelCase)
 
-All function names have been changed from PascalCase to camelCase to follow JavaScript naming conventions. You'll need to update all your imports and function calls.
+All function names have been changed from PascalCase to camelCase to follow JavaScript naming conventions.
+
+**⚠️ Important: Backward Compatibility**
+
+To make the migration easier, **v2.x still exports the old PascalCase names as deprecated aliases**. This means:
+
+- ✅ Your existing code using `formatCPF`, `isValidCNPJ`, etc. will continue to work in v2.x
+- ⚠️ You'll receive deprecation warnings in your IDE/TypeScript
+- 🗑️ The old names will be **removed in v3.0.0**
+
+**Recommendation:** While you can upgrade to v2.x without changing your code immediately, we recommend migrating to the new camelCase names as soon as possible to prepare for v3.0.0.
 
 #### Validation Functions
 
@@ -117,6 +162,19 @@ All function names have been changed from PascalCase to camelCase to follow Java
 | `generateCNPJ` | `generateCnpj` |
 | `generateBoleto` | `generateBoleto` (unchanged) |
 
+**⚠️ Note on `generateCnpj` behavior:**
+
+In v2.x, `generateCnpj()` without arguments defaults to version 1 (numeric CNPJ). In v3.0.0, this behavior will change to randomly select between version 1 (numeric) and version 2 (alphanumeric) CNPJs for better randomness. If you need a specific version, always pass the version parameter explicitly:
+
+```javascript
+// Recommended: Always specify the version
+generateCnpj(1); // Always generates numeric CNPJ
+generateCnpj(2); // Always generates alphanumeric CNPJ
+
+// Not recommended: Relying on default behavior
+generateCnpj(); // Currently generates numeric (v1), but will be random in v3.0.0
+```
+
 #### Other Functions
 
 | v1 | v2 |
@@ -145,6 +203,69 @@ import { isValidCpf, formatCpf, generateCnpj } from '@brazilian-utils/brazilian-
 const isValid = isValidCpf('12345678909');
 const formatted = formatCpf('12345678909');
 const cnpj = generateCnpj();
+```
+
+### Removed Helper Functions
+
+The following helper functions are no longer exported in the public API. These were internal utilities that should not have been exposed.
+
+**⚠️ Note:** Unlike the renamed functions above, these helpers do **NOT** have backward compatibility aliases. You must migrate away from them before upgrading to v2.x.
+
+#### `onlyNumbers`
+This function has been removed from the public API. It's now an internal utility called `sanitizeToDigits`.
+
+**Migration:**
+```javascript
+// v1 - Don't use this anymore
+import { onlyNumbers } from '@brazilian-utils/brazilian-utils';
+const digits = onlyNumbers('123-456');
+
+// v2 - Use a simple replacement
+const digits = '123-456'.replace(/\D/g, '');
+```
+
+#### `isLastChar`
+This function has been removed. Use a simple inline comparison instead.
+
+**Migration:**
+```javascript
+// v1 - Don't use this anymore
+import { isLastChar } from '@brazilian-utils/brazilian-utils';
+if (isLastChar(index, input)) { /* ... */ }
+
+// v2 - Use inline comparison
+if (index === input.length - 1) { /* ... */ }
+```
+
+#### `generateChecksum`
+This function is now internal and no longer exported in the public API.
+
+**Migration:**
+```javascript
+// v1 - Don't use this anymore
+import { generateChecksum } from '@brazilian-utils/brazilian-utils';
+
+// v2 - If you absolutely need it, import from internals (not recommended)
+// This is not part of the public API and may change without notice
+import { generateChecksum } from '@brazilian-utils/brazilian-utils/dist/_internals/generate-checksum/generate-checksum';
+```
+
+#### `generateRandomNumber`
+This function is now internal and no longer exported in the public API.
+
+**Migration:**
+```javascript
+// v1 - Don't use this anymore
+import { generateRandomNumber } from '@brazilian-utils/brazilian-utils';
+
+// v2 - Use your own implementation
+function generateRandomNumber(length) {
+  let result = '';
+  for (let i = 0; i < length; i++) {
+    result += Math.floor(Math.random() * 10).toString();
+  }
+  return result;
+}
 ```
 
 ## New Functions
@@ -298,8 +419,14 @@ getCities('SP'); // Returns sorted alphabetically
 
 ## Migration Checklist
 
+### Required (before upgrading to v2.x)
+- [ ] Remove usage of helper functions (`onlyNumbers`, `isLastChar`, `generateChecksum`, `generateRandomNumber`)
+
+### Optional (recommended before v3.0.0)
 - [ ] Update all imports to use camelCase function names
 - [ ] Replace all function calls with camelCase names
+
+### Review if applicable
 - [ ] Update error handling for `getAddressInfoByCep` if needed
 - [ ] Review usage of `getCities` if sorting was important
 - [ ] Test all validation and formatting functions

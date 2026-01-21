@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { DATA } from "../_internals/cities";
+import { DATA } from "../_internals/constants/cities";
 import { getStates } from "../get-states/get-states";
 import { getCities } from "./get-cities";
 

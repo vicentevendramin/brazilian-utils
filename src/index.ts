@@ -73,3 +73,50 @@ export { isValidPis } from "./is-valid-pis/is-valid-pis";
 export { isValidProcessoJuridico } from "./is-valid-processo-juridico/is-valid-processo-juridico";
 export { isValidRenavam } from "./is-valid-renavam/is-valid-renavam";
 export { parseCurrency } from "./parse-currency/parse-currency";
+
+// ============================================================================
+// DEPRECATED EXPORTS - Will be removed in v3.0.0
+// ============================================================================
+
+/**
+ * @deprecated Use `formatCep` instead. This alias will be removed in v3.0.0
+ */
+export { formatCep as formatCEP } from "./format-cep/format-cep";
+
+/**
+ * @deprecated Use `formatCnpj` instead. This alias will be removed in v3.0.0
+ */
+export { formatCnpj as formatCNPJ } from "./format-cnpj/format-cnpj";
+
+/**
+ * @deprecated Use `formatCpf` instead. This alias will be removed in v3.0.0
+ */
+export { formatCpf as formatCPF } from "./format-cpf/format-cpf";
+/**
+ * @deprecated Use `generateCnpj` instead. This alias will be removed in v3.0.0
+ */
+export { generateCnpj as generateCNPJ } from "./generate-cnpj/generate-cnpj";
+/**
+ * @deprecated Use `generateCpf` instead. This alias will be removed in v3.0.0
+ */
+export { generateCpf as generateCPF } from "./generate-cpf/generate-cpf";
+/**
+ * @deprecated Use `isValidCep` instead. This alias will be removed in v3.0.0
+ */
+export { isValidCep as isValidCEP } from "./is-valid-cep/is-valid-cep";
+/**
+ * @deprecated Use `isValidCnpj` instead. This alias will be removed in v3.0.0
+ */
+export { isValidCnpj as isValidCNPJ } from "./is-valid-cnpj/is-valid-cnpj";
+/**
+ * @deprecated Use `isValidCpf` instead. This alias will be removed in v3.0.0
+ */
+export { isValidCpf as isValidCPF } from "./is-valid-cpf/is-valid-cpf";
+/**
+ * @deprecated Use `isValidIe` instead. This alias will be removed in v3.0.0
+ */
+export { isValidIe as isValidIE } from "./is-valid-ie/is-valid-ie";
+/**
+ * @deprecated Use `isValidPis` instead. This alias will be removed in v3.0.0
+ */
+export { isValidPis as isValidPIS } from "./is-valid-pis/is-valid-pis";

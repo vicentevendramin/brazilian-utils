@@ -47,6 +47,17 @@ const PUBLIC = [
 	"isValidCpf",
 	"generateCpf",
 	"isValidIe",
+	// Deprecated exports (will be removed in v3.0.0)
+	"formatCEP",
+	"formatCNPJ",
+	"formatCPF",
+	"isValidCEP",
+	"isValidCNPJ",
+	"isValidCPF",
+	"isValidPIS",
+	"isValidIE",
+	"generateCNPJ",
+	"generateCPF",
 ];
 
 describe("Public API", () => {

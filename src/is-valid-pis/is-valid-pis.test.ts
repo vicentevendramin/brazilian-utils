@@ -1,5 +1,6 @@
 import { describe, expect, test } from "vitest";
-import { isValidPis, LENGTH, RESERVED_NUMBERS } from "./is-valid-pis";
+import { LENGTH, RESERVED_NUMBERS } from "./constants";
+import { isValidPis } from "./is-valid-pis";
 
 describe("isValidPis", () => {
 	describe("should return false", () => {

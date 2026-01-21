@@ -1,7 +1,10 @@
-import { VALID_AREA_CODES } from "../_internals/area-codes";
+import { VALID_AREA_CODES } from "../_internals/constants/area-codes";
 import { sanitizeToDigits } from "../_internals/sanitize-to-digits/sanitize-to-digits";
-
-export const PHONE_MAX_LENGTH = 11;
+import {
+	MOBILE_VALID_FIRST_NUMBERS_V1,
+	MOBILE_VALID_FIRST_NUMBERS_V2,
+	PHONE_MAX_LENGTH,
+} from "./constants";
 
 export type PhoneVersion = 1 | 2;
 
@@ -10,10 +13,6 @@ export type IsValidMobilePhoneOptions = {
 };
 
 const AREA_CODE_SET = new Set(VALID_AREA_CODES);
-
-const MOBILE_VALID_FIRST_NUMBERS_V1 = [6, 7, 8, 9];
-
-const MOBILE_VALID_FIRST_NUMBERS_V2 = [9];
 
 const isValidDDD = (value: string): boolean => {
 	const ddd = (value.charCodeAt(0) - 48) * 10 + (value.charCodeAt(1) - 48);

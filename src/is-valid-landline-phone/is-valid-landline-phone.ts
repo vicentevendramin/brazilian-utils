@@ -1,11 +1,8 @@
-import { VALID_AREA_CODES } from "../_internals/area-codes";
+import { VALID_AREA_CODES } from "../_internals/constants/area-codes";
 import { sanitizeToDigits } from "../_internals/sanitize-to-digits/sanitize-to-digits";
-
-export const PHONE_MIN_LENGTH = 10;
+import { LANDLINE_VALID_FIRST_NUMBERS, PHONE_MIN_LENGTH } from "./constants";
 
 const AREA_CODE_SET = new Set(VALID_AREA_CODES);
-
-const LANDLINE_VALID_FIRST_NUMBERS = [2, 3, 4, 5];
 
 const isValidDDD = (value: string): boolean => {
 	const ddd = (value.charCodeAt(0) - 48) * 10 + (value.charCodeAt(1) - 48);

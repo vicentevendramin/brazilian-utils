@@ -1,5 +1,6 @@
 import { describe, expect, test } from "vitest";
-import { isValidBoleto, LENGTH } from "./is-valid-boleto";
+import { LENGTH } from "./constants";
+import { isValidBoleto } from "./is-valid-boleto";
 
 describe("isValidBoleto", () => {
 	describe("should return false", () => {
