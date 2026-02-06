@@ -1,5 +1,5 @@
 <div align="center">
-<h1>🇧🇷 Brazilian Utils</h1>
+<img src="https://raw.githubusercontent.com/brazilian-utils/brand/main/github-hero/github-hero-js.png" width="100%" alt="Brazilian Utils" />
 
 <p>Utils library for Brazilian-specific businesses.</p>
 
