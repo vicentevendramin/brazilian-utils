@@ -118,14 +118,14 @@ describe("formatCnpj", () => {
 	});
 
 	it("should allow all alphabet letters for version 2 (including E, O, T, U)", () => {
-        expect(formatCnpj("12ABC34501DE35", { version: 2 })).toBe(
-            "12.ABC.345/01DE-35"
-        );
-        expect(formatCnpj("12.ABC.345/01DE-35", { version: 2 })).toBe(
-            "12.ABC.345/01DE-35"
-        );
-        expect(formatCnpj("12OUT345000199", { version: 2 })).toBe(
-            "12.OUT.345/0001-99"
-        );
-    });
+		expect(formatCnpj("12ABC34501DE35", { version: 2 })).toBe(
+			"12.ABC.345/01DE-35",
+		);
+		expect(formatCnpj("12.ABC.345/01DE-35", { version: 2 })).toBe(
+			"12.ABC.345/01DE-35",
+		);
+		expect(formatCnpj("12OUT345000199", { version: 2 })).toBe(
+			"12.OUT.345/0001-99",
+		);
+	});
 });

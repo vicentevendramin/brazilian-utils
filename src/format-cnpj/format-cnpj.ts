@@ -4,15 +4,15 @@ import { sanitizeToDigits } from "../_internals/sanitize-to-digits/sanitize-to-d
 export type FormatCnpjOptions = Pick<FormatParams, "pad"> & { version?: 1 | 2 };
 
 const sanitize = (
-    value: string | number,
-    version?: FormatCnpjOptions["version"],
+	value: string | number,
+	version?: FormatCnpjOptions["version"],
 ) => {
-    if (version === 2) {
-        const enhancedValue = value.toString();
-        return enhancedValue.replace(/[^A-Za-z0-9]/g, '').toUpperCase();
-    }
+	if (version === 2) {
+		const enhancedValue = value.toString();
+		return enhancedValue.replace(/[^A-Za-z0-9]/g, "").toUpperCase();
+	}
 
-    return sanitizeToDigits(value);
+	return sanitizeToDigits(value);
 };
 
 /**
