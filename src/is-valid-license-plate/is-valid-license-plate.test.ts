@@ -42,22 +42,20 @@ describe("isValidLicensePlate", () => {
 		});
 	});
 
-  describe("should return true", () => {
-    it("when brazilian license plate format is valid", () => {
-      expect(isValidLicensePlate("abc1234")).toBe(true);
-      expect(isValidLicensePlate("ABC1234")).toBe(true);
-      expect(isValidLicensePlate("abc-1234")).toBe(true);
-      expect(isValidLicensePlate("ABC-1234")).toBe(true);
-    });
+	describe("should return true", () => {
+		it("when brazilian license plate format is valid", () => {
+			expect(isValidLicensePlate("abc1234")).toBe(true);
+			expect(isValidLicensePlate("ABC1234")).toBe(true);
+			expect(isValidLicensePlate("abc-1234")).toBe(true);
+			expect(isValidLicensePlate("ABC-1234")).toBe(true);
+		});
 
-    it("when mercosul license plate format is valid", () => {
-      // Placas de Carro Mercosul (Letra na 5ª posição)
-      expect(isValidLicensePlate("abc1d23")).toBe(true);
-      expect(isValidLicensePlate("ABC1D23")).toBe(true);
-      
-      // Placas de Moto Mercosul (Letra na 6ª posição) - ADICIONE ESTAS LINHAS:
-      expect(isValidLicensePlate("ABC12D3")).toBe(true);
-      expect(isValidLicensePlate("abc12d3")).toBe(true);
+		it("when mercosul license plate format is valid", () => {
+			expect(isValidLicensePlate("abc1d23")).toBe(true);
+			expect(isValidLicensePlate("ABC1D23")).toBe(true);
+
+			expect(isValidLicensePlate("ABC12D3")).toBe(true);
+			expect(isValidLicensePlate("abc12d3")).toBe(true);
 		});
 	});
 });
