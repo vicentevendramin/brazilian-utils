@@ -1,4 +1,5 @@
-const mercosulRegex = /^[a-z]{3}[0-9]{1}[a-z]{1}[0-9]{2}$|^[a-z]{3}[0-9]{2}[a-z]{1}[0-9]{1}$/i;
+const mercosulRegex =
+	/^[a-z]{3}[0-9]{1}[a-z]{1}[0-9]{2}$|^[a-z]{3}[0-9]{2}[a-z]{1}[0-9]{1}$/i;
 
 const brazilianLicensePlateRegex = /^[a-z]{3}-?[0-9]{4}$/i;
 
