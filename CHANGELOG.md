@@ -1,3 +1,11 @@
+# [2.0.1](https://github.com/brazilian-utils/brazilian-utils/compare/2.0.0...2.0.1) (2026-03-30)
+
+
+### Bug Fixes
+
+* add support for Mercosul motorcycle license plates ([e918164](https://github.com/brazilian-utils/brazilian-utils/commit/e918164))
+* correct sanitization to accept the entire alphabet in alphanumeric CNPJ ([b1ad55e](https://github.com/brazilian-utils/brazilian-utils/commit/b1ad55e))
+
 # [2.0.0](https://github.com/brazilian-utils/brazilian-utils/compare/v1.1.0...2.0.0) (2026-01-21)
 
 
