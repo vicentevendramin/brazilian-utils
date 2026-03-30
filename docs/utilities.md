@@ -52,6 +52,7 @@ import { formatCnpj } from '@brazilian-utils/brazilian-utils';
 
 formatCnpj('24522200000174'); // 24.522.200/0001-74
 formatCnpj('245222000174', { pad: true }); // 00.245.222/0001-74
+formatCnpj('12OUT345000199', { version: 2 }); // 12.OUT.345/0001-99
 ```
 
 ## isValidCep
@@ -170,14 +171,15 @@ isValidLandlinePhone('1130000000'); // true
 
 ## isValidLicensePlate
 
-Check if license plate is valid. Supports both the old Brazilian format (ABC-1234) and the new Mercosul format (ABC1D23).
+Check if license plate is valid. Supports the old Brazilian format (ABC-1234) and the Mercosul formats for cars (ABC1D23) and motorcycles (ABC12D3).
 
 ```javascript
 import { isValidLicensePlate } from '@brazilian-utils/brazilian-utils';
 
 isValidLicensePlate('ABC1234'); // true (Brazilian format)
 isValidLicensePlate('ABC-1234'); // true (Brazilian format with hyphen)
-isValidLicensePlate('ABC1D23'); // true (Mercosul format)
+isValidLicensePlate('ABC1D23'); // true (Mercosul car format)
+isValidLicensePlate('ABC12D3'); // true (Mercosul motorcycle format)
 ```
 
 ## isValidRenavam

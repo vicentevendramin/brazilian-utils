@@ -1,3 +1,36 @@
+# [2.0.0](https://github.com/brazilian-utils/brazilian-utils/compare/v1.1.0...2.0.0) (2026-01-21)
+
+
+### Bug Fixes
+
+* adjust build and publish configuration ([33f367f](https://github.com/brazilian-utils/brazilian-utils/commit/33f367f))
+* adjust `is-valid-cnpj` and `generate-cnpj` behavior ([adfdecb](https://github.com/brazilian-utils/brazilian-utils/commit/adfdecb))
+* adjust formatting, lint, and public API coverage ([38e06a4](https://github.com/brazilian-utils/brazilian-utils/commit/38e06a4), [9e9cd6a](https://github.com/brazilian-utils/brazilian-utils/commit/9e9cd6a), [cb13d33](https://github.com/brazilian-utils/brazilian-utils/commit/cb13d33))
+* adjust project structure and CI ([3cdb483](https://github.com/brazilian-utils/brazilian-utils/commit/3cdb483), [f5a1dd7](https://github.com/brazilian-utils/brazilian-utils/commit/f5a1dd7))
+
+
+### Features
+
+* add all formatters ([84ee6d2](https://github.com/brazilian-utils/brazilian-utils/commit/84ee6d2))
+* add docs to cities data ([954e953](https://github.com/brazilian-utils/brazilian-utils/commit/954e953))
+* include more utilities in the public package ([8df157c](https://github.com/brazilian-utils/brazilian-utils/commit/8df157c), [c3cfe0d](https://github.com/brazilian-utils/brazilian-utils/commit/c3cfe0d))
+* add public API test coverage and migration guide for the release ([158778d](https://github.com/brazilian-utils/brazilian-utils/commit/158778d), [e185a51](https://github.com/brazilian-utils/brazilian-utils/commit/e185a51))
+
+# [1.1.0](https://github.com/brazilian-utils/brazilian-utils/compare/1.0.0-rc.12...v1.1.0) (2025-11-01)
+
+
+### Bug Fixes
+
+* remove unused files and resolve merge conflicts in the processo juridico work ([26b33cb](https://github.com/brazilian-utils/brazilian-utils/commit/26b33cb), [47497c7](https://github.com/brazilian-utils/brazilian-utils/commit/47497c7))
+* update the build workflow and package structure ([d690541](https://github.com/brazilian-utils/brazilian-utils/commit/d690541), [fe62b69](https://github.com/brazilian-utils/brazilian-utils/commit/fe62b69))
+
+
+### Features
+
+* add support for alphanumeric CNPJ ([84dcac7](https://github.com/brazilian-utils/brazilian-utils/commit/84dcac7))
+* add validation utilities for processo juridico numbers ([12ac657](https://github.com/brazilian-utils/brazilian-utils/commit/12ac657))
+* update cities data ([cdd6c9d](https://github.com/brazilian-utils/brazilian-utils/commit/cdd6c9d))
+
 # [1.0.0-rc.12](https://github.com/brazilian-utils/brazilian-utils/compare/1.0.0-rc.11...1.0.0-rc.12) (2020-10-27)
 
 
@@ -134,4 +167,3 @@ Closes: n
 * n
 
 Closes: n
-

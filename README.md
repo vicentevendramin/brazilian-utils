@@ -100,6 +100,12 @@ Our "thank you" goes to these wonderful people ([emoji key](https://github.com/k
     <td align="center"><a href="https://github.com/tbfreitas"><img src="https://avatars.githubusercontent.com/u/8523621?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Tarcísio Batista de Freitas Junior</b></sub></a><br /><a href="https://github.com/brazilian-utils/brazilian-utils/commits?author=tbfreitas" title="Documentation">📖</a></td>
     <td align="center"><a href="https://www.linkedin.com/in/lucas-carrias-474081195/"><img src="https://avatars.githubusercontent.com/u/24925816?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Lucas Carrias</b></sub></a><br /><a href="https://github.com/brazilian-utils/brazilian-utils/commits?author=LucasCarrias" title="Documentation">📖</a> <a href="https://github.com/brazilian-utils/brazilian-utils/commits?author=LucasCarrias" title="Tests">⚠️</a> <a href="https://github.com/brazilian-utils/brazilian-utils/commits?author=LucasCarrias" title="Code">💻</a> <a href="#tool-LucasCarrias" title="Tools">🔧</a></td>
   </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/matheusandre1"><img src="https://github.com/matheusandre1.png?size=100" width="100px;" alt=""/><br /><sub><b>matheusandre1</b></sub></a><br /><a href="https://github.com/brazilian-utils/brazilian-utils/commits?author=matheusandre1" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/Henrique-volponi"><img src="https://github.com/Henrique-volponi.png?size=100" width="100px;" alt=""/><br /><sub><b>Henrique-volponi</b></sub></a><br /><a href="https://github.com/brazilian-utils/brazilian-utils/commits?author=Henrique-volponi" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/lindsay-qive"><img src="https://github.com/lindsay-qive.png?size=100" width="100px;" alt=""/><br /><sub><b>lindsay-qive</b></sub></a><br /><a href="https://github.com/brazilian-utils/brazilian-utils/commits?author=lindsay-qive" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/vicentevendramin"><img src="https://github.com/vicentevendramin.png?size=100" width="100px;" alt=""/><br /><sub><b>vicentevendramin</b></sub></a><br /><a href="https://github.com/brazilian-utils/brazilian-utils/commits?author=vicentevendramin" title="Code">💻</a></td>
+  </tr>
 </table>
 
 <!-- markdownlint-restore -->

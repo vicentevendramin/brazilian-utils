@@ -52,6 +52,7 @@ import { formatCnpj } from '@brazilian-utils/brazilian-utils';
 
 formatCnpj('24522200000174'); // 24.522.200/0001-74
 formatCnpj('245222000174', { pad: true }); // 00.245.222/0001-74
+formatCnpj('12OUT345000199', { version: 2 }); // 12.OUT.345/0001-99
 ```
 
 ## generateCnpj
@@ -170,14 +171,15 @@ isValidLandlinePhone('1130000000'); // true
 
 ## isValidLicensePlate
 
-Valida se a placa de carro é válida. Suporta tanto o formato antigo brasileiro (ABC-1234) quanto o novo formato Mercosul (ABC1D23).
+Valida se a placa de carro ou moto é válida. Suporta o formato antigo brasileiro (ABC-1234) e os formatos Mercosul para carros (ABC1D23) e motos (ABC12D3).
 
 ```javascript
 import { isValidLicensePlate } from '@brazilian-utils/brazilian-utils';
 
 isValidLicensePlate('ABC1234'); // true (formato brasileiro)
 isValidLicensePlate('ABC-1234'); // true (formato brasileiro com hífen)
-isValidLicensePlate('ABC1D23'); // true (formato Mercosul)
+isValidLicensePlate('ABC1D23'); // true (formato Mercosul de carro)
+isValidLicensePlate('ABC12D3'); // true (formato Mercosul de moto)
 ```
 
 ## isValidRenavam
