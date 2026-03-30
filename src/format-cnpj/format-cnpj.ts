@@ -8,18 +8,8 @@ const sanitize = (
 	version?: FormatCnpjOptions["version"],
 ) => {
 	if (version === 2) {
-		const allowedChars = "0123456789ABCDFGHIJKLMNPQRSVWXYZ";
 		const enhancedValue = value.toString();
-
-		let result = "";
-
-		for (let i = 0; i < enhancedValue.length; i++) {
-			if (allowedChars.includes(enhancedValue[i].toUpperCase())) {
-				result += enhancedValue[i].toUpperCase();
-			}
-		}
-
-		return result;
+		return enhancedValue.replace(/[^A-Za-z0-9]/g, "").toUpperCase();
 	}
 
 	return sanitizeToDigits(value);
