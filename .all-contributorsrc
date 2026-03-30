@@ -1,5 +1,5 @@
 {
-	"projectName": "brazilian-utils",
+	"projectName": "javascript",
 	"projectOwner": "brazilian-utils",
 	"files": ["README.md"],
 	"imageSize": 100,
@@ -179,6 +179,34 @@
 			"avatar_url": "https://avatars.githubusercontent.com/u/24925816?v=4",
 			"profile": "https://www.linkedin.com/in/lucas-carrias-474081195/",
 			"contributions": ["doc", "test", "code", "tool"]
+		},
+		{
+			"login": "matheusandre1",
+			"name": "Matheus Andre",
+			"avatar_url": "https://github.com/matheusandre1.png",
+			"profile": "https://github.com/matheusandre1",
+			"contributions": ["doc"]
+		},
+		{
+			"login": "Henrique-volponi",
+			"name": "Henrique Volponi",
+			"avatar_url": "https://github.com/Henrique-volponi.png",
+			"profile": "https://github.com/Henrique-volponi",
+			"contributions": ["code"]
+		},
+		{
+			"login": "lindsay-qive",
+			"name": "Lindsay Ferreira",
+			"avatar_url": "https://github.com/lindsay-qive.png",
+			"profile": "https://github.com/lindsay-qive",
+			"contributions": ["code"]
+		},
+		{
+			"login": "vicentevendramin",
+			"name": "Vicente Vendramin",
+			"avatar_url": "https://github.com/vicentevendramin.png",
+			"profile": "https://github.com/vicentevendramin",
+			"contributions": ["code"]
 		}
 	],
 	"repoType": "github",
