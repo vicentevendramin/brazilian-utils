@@ -53,6 +53,9 @@ describe("isValidLicensePlate", () => {
 		it("when mercosul license plate format is valid", () => {
 			expect(isValidLicensePlate("abc1d23")).toBe(true);
 			expect(isValidLicensePlate("ABC1D23")).toBe(true);
+
+			expect(isValidLicensePlate("ABC12D3")).toBe(true);
+			expect(isValidLicensePlate("abc12d3")).toBe(true);
 		});
 	});
 });
