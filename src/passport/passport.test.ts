@@ -10,7 +10,7 @@ describe("passport", () => {
     describe("isValidPassport", () => {
       describe("should return false", () => {
         test("when passport is not a string", () => {
-          expect(isValidPassport(1 as any)).toBe(false);
+          expect(isValidPassport(1 as unknown as string)).toBe(false);
         });
     
         test("when passport length is different from 8", () => {
