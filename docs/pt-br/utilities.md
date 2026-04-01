@@ -503,3 +503,48 @@ getHolidays(2024);
 getHolidays({ year: 2024, stateCode: 'SP' });
 // Inclui feriados nacionais mais feriados estaduais (ex: "Revolução Constitucionalista")
 ```
+
+## isValidPassport
+
+Verifica se um número de passaporte brasileiro é válido (2 letras maiúsculas seguidas de 6 dígitos).
+
+```javascript
+import { isValidPassport } from '@brazilian-utils/brazilian-utils';
+
+isValidPassport('AB123456'); // true
+isValidPassport('Ab123456'); // false
+isValidPassport('12345678'); // false
+```
+
+## formatPassport
+
+Formata um número de passaporte brasileiro (maiúsculas, sem símbolos).
+
+```javascript
+import { formatPassport } from '@brazilian-utils/brazilian-utils';
+
+formatPassport('ab123456'); // 'AB123456'
+formatPassport('AB-123.456'); // 'AB123456'
+formatPassport('12345678'); // null
+```
+
+## generatePassport
+
+Gera um número de passaporte brasileiro válido aleatoriamente.
+
+```javascript
+import { generatePassport } from '@brazilian-utils/brazilian-utils';
+
+generatePassport(); // 'RY393097'
+```
+
+## parsePassport
+
+Remove símbolos ('-', '.' e espaços) de um número de passaporte.
+
+```javascript
+import { parsePassport } from '@brazilian-utils/brazilian-utils';
+
+parsePassport('AB-123.456'); // 'AB123456'
+parsePassport(' AB 123 456 '); // 'AB123456'
+```

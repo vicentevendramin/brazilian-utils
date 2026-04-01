@@ -503,3 +503,48 @@ getHolidays(2024);
 getHolidays({ year: 2024, stateCode: 'SP' });
 // Includes national holidays plus state-specific holidays (e.g., "Revolução Constitucionalista")
 ```
+
+## isValidPassport
+
+Check if a Brazilian passport number is valid (2 uppercase letters followed by 6 digits).
+
+```javascript
+import { isValidPassport } from '@brazilian-utils/brazilian-utils';
+
+isValidPassport('AB123456'); // true
+isValidPassport('Ab123456'); // false
+isValidPassport('12345678'); // false
+```
+
+## formatPassport
+
+Format a Brazilian passport number (uppercase, without symbols).
+
+```javascript
+import { formatPassport } from '@brazilian-utils/brazilian-utils';
+
+formatPassport('ab123456'); // 'AB123456'
+formatPassport('AB-123.456'); // 'AB123456'
+formatPassport('12345678'); // null
+```
+
+## generatePassport
+
+Generate a random valid Brazilian passport number.
+
+```javascript
+import { generatePassport } from '@brazilian-utils/brazilian-utils';
+
+generatePassport(); // 'RY393097'
+```
+
+## parsePassport
+
+Remove symbols ('-', '.', and whitespaces) from a passport number.
+
+```javascript
+import { parsePassport } from '@brazilian-utils/brazilian-utils';
+
+parsePassport('AB-123.456'); // 'AB123456'
+parsePassport(' AB 123 456 '); // 'AB123456'
+```
