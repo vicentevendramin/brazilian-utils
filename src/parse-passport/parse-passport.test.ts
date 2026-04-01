@@ -1,0 +1,26 @@
+import { describe, expect, test } from "vitest";
+import { parsePassport } from "./parse-passport";
+
+describe("parsePassport", () => {
+	describe("should return the string without symbols", () => {
+		test("when there are no symbols, returns the same string", () => {
+			expect(parsePassport("Ab123456")).toBe("Ab123456");
+		});
+
+		test("when there are spaces", () => {
+			expect(parsePassport(" AB 123 456 ")).toBe("AB123456");
+		});
+
+		test("when there are dashes", () => {
+			expect(parsePassport("-AB1-23-4-56-")).toBe("AB123456");
+		});
+
+		test("when there are dots", () => {
+			expect(parsePassport(".AB.1.23.456.")).toBe("AB123456");
+		});
+
+		test("when there are multiple symbols", () => {
+			expect(parsePassport(".A B.1.2-3.45 -. 6.")).toBe("AB123456");
+		});
+	});
+});

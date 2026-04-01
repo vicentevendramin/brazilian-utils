@@ -4,6 +4,7 @@ export { type FormatCepOptions, formatCep } from "./format-cep/format-cep";
 export { type FormatCnpjOptions, formatCnpj } from "./format-cnpj/format-cnpj";
 export { type FormatCpfOptions, formatCpf } from "./format-cpf/format-cpf";
 export { type FormatCurrencyOptions, formatCurrency } from "./format-currency/format-currency";
+export { formatPassport } from "./format-passport/format-passport";
 export { type FormatPhoneOptions, formatPhone } from "./format-phone/format-phone";
 export { type FormatPisOptions, formatPis } from "./format-pis/format-pis";
 export {
@@ -13,6 +14,7 @@ export {
 export { generateBoleto } from "./generate-boleto/generate-boleto";
 export { generateCnpj } from "./generate-cnpj/generate-cnpj";
 export { generateCpf } from "./generate-cpf/generate-cpf";
+export { generatePassport } from "./generate-passport/generate-passport";
 export {
 	GetAddressInfoByCepError,
 	GetAddressInfoByCepNotFoundError,
@@ -41,6 +43,7 @@ export {
 	type IsValidMobilePhoneOptions,
 	isValidMobilePhone,
 } from "./is-valid-mobile-phone/is-valid-mobile-phone";
+export { isValidPassport } from "./is-valid-passport/is-valid-passport";
 export { type IsValidPhoneOptions, isValidPhone } from "./is-valid-phone/is-valid-phone";
 export { isValidPis } from "./is-valid-pis/is-valid-pis";
 export { isValidProcessoJuridico } from "./is-valid-processo-juridico/is-valid-processo-juridico";
@@ -53,6 +56,7 @@ export { parseCurrency } from "./parse-currency/parse-currency";
 export { parsePhone } from "./parse-phone/parse-phone";
 export { parsePis } from "./parse-pis/parse-pis";
 export { parseProcessoJuridico } from "./parse-processo-juridico/parse-processo-juridico";
+export { parsePassport } from "./parse-passport/parse-passport";
 
 // ============================================================================
 // DEPRECATED EXPORTS - Will be removed in v3.0.0
