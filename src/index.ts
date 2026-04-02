@@ -72,7 +72,14 @@ export {
 export { isValidPis } from "./is-valid-pis/is-valid-pis";
 export { isValidProcessoJuridico } from "./is-valid-processo-juridico/is-valid-processo-juridico";
 export { isValidRenavam } from "./is-valid-renavam/is-valid-renavam";
+export { parseBoleto } from "./parse-boleto/parse-boleto";
+export { parseCep } from "./parse-cep/parse-cep";
+export { parseCnpj } from "./parse-cnpj/parse-cnpj";
+export { parseCpf } from "./parse-cpf/parse-cpf";
 export { parseCurrency } from "./parse-currency/parse-currency";
+export { parsePhone } from "./parse-phone/parse-phone";
+export { parsePis } from "./parse-pis/parse-pis";
+export { parseProcessoJuridico } from "./parse-processo-juridico/parse-processo-juridico";
 
 // ============================================================================
 // DEPRECATED EXPORTS - Will be removed in v3.0.0

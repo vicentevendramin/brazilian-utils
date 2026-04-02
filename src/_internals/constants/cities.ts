@@ -3745,7 +3745,6 @@ export const DATA = {
 	],
 	RN: [
 		"Acari",
-		"Açu",
 		"Afonso Bezerra",
 		"Água Nova",
 		"Alexandria",
@@ -3755,7 +3754,8 @@ export const DATA = {
 		"Antônio Martins",
 		"Apodi",
 		"Areia Branca",
-		"Arês",
+		"Arez",
+		"Assú",
 		"Baía Formosa",
 		"Baraúna",
 		"Barcelona",
@@ -3980,7 +3980,7 @@ export const DATA = {
 		"Pacaraima",
 		"Rorainópolis",
 		"São João da Baliza",
-		"São Luiz",
+		"São Luiz do Anauá",
 		"Uiramutã",
 	],
 	RS: [

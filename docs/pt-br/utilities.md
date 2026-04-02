@@ -23,6 +23,16 @@ formatCpf('74650688000'); // 746.506.880-00
 formatCpf('746506880', { pad: true }); // 007.465.068-80
 ```
 
+## parseCpf
+
+Remove a formatação do CPF e retorna apenas os dígitos.
+
+```javascript
+import { parseCpf } from '@brazilian-utils/brazilian-utils';
+
+parseCpf('746.506.880-00'); // 74650688000
+```
+
 ## generateCpf
 
 Gera um CPF válido aleatório.
@@ -53,6 +63,17 @@ import { formatCnpj } from '@brazilian-utils/brazilian-utils';
 formatCnpj('24522200000174'); // 24.522.200/0001-74
 formatCnpj('245222000174', { pad: true }); // 00.245.222/0001-74
 formatCnpj('12OUT345000199', { version: 2 }); // 12.OUT.345/0001-99
+```
+
+## parseCnpj
+
+Remove a formatação do CNPJ e retorna um valor normalizado.
+
+```javascript
+import { parseCnpj } from '@brazilian-utils/brazilian-utils';
+
+parseCnpj('24.522.200/0001-74'); // 24522200000174
+parseCnpj('12.OUT.345/0001-99', { version: 2 }); // 12OUT345000199
 ```
 
 ## generateCnpj
@@ -94,6 +115,16 @@ import { formatBoleto } from '@brazilian-utils/brazilian-utils';
 
 formatBoleto('00190000090114971860168524522114675860000102656'); // 00190.00009 01149.718601 68524.522114 6 75860000102656
 formatBoleto('1900000901149', { pad: true }); // 00000.00000 00000.000019 00000.901149 0 00000000000000
+```
+
+## parseBoleto
+
+Remove a formatação do boleto e retorna apenas os dígitos.
+
+```javascript
+import { parseBoleto } from '@brazilian-utils/brazilian-utils';
+
+parseBoleto('00190.00009 01149.718601 68524.522114 6 75860000102656'); // 00190000090114971860168524522114675860000102656
 ```
 
 ## generateBoleto
@@ -147,6 +178,16 @@ import { formatPhone } from '@brazilian-utils/brazilian-utils';
 formatPhone('11900000000'); // 90000-0000
 formatPhone('11900000000', { mask: 'nanp' }); // (11) 90000-0000
 formatPhone('11900000000', { mask: 'auto' }); // Detecta automaticamente a máscara baseado no comprimento
+```
+
+## parsePhone
+
+Remove a formatação do telefone e retorna apenas os dígitos.
+
+```javascript
+import { parsePhone } from '@brazilian-utils/brazilian-utils';
+
+parsePhone('(11) 90000-0000'); // 11900000000
 ```
 
 ## isValidMobilePhone
@@ -215,6 +256,16 @@ formatPis('12345678901'); // 123.45678.90-1
 formatPis('123456789', { pad: true }); // 001.23456.78-9
 ```
 
+## parsePis
+
+Remove a formatação do PIS e retorna apenas os dígitos.
+
+```javascript
+import { parsePis } from '@brazilian-utils/brazilian-utils';
+
+parsePis('123.45678.90-1'); // 12345678901
+```
+
 ## formatCep
 
 Formata o CEP.
@@ -223,6 +274,16 @@ Formata o CEP.
 import { formatCep } from '@brazilian-utils/brazilian-utils';
 
 formatCep('92500000'); // 92500-000
+```
+
+## parseCep
+
+Remove a formatação do CEP e retorna apenas os dígitos.
+
+```javascript
+import { parseCep } from '@brazilian-utils/brazilian-utils';
+
+parseCep('92500-000'); // 92500000
 ```
 
 ## getAddressInfoByCep
@@ -263,6 +324,16 @@ Formata um número no formato definido pelo [CNJ](https://www.conjur.com.br/dl/r
 import { formatProcessoJuridico } from '@brazilian-utils/brazilian-utils';
 
 formatProcessoJuridico('00020802520125150049'); // 0002080-25.2012.515.0049
+```
+
+## parseProcessoJuridico
+
+Remove a formatação do processo jurídico e retorna apenas os dígitos.
+
+```javascript
+import { parseProcessoJuridico } from '@brazilian-utils/brazilian-utils';
+
+parseProcessoJuridico('0002080-25.2012.515.0049'); // 00020802520125150049
 ```
 
 ## isValidIe

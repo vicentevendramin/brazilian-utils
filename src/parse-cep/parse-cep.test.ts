@@ -1,0 +1,12 @@
+import { describe, expect, it } from "vitest";
+import { parseCep } from "./parse-cep";
+
+describe("parseCep", () => {
+	it("should remove CEP mask characters", () => {
+		expect(parseCep("01001-000")).toBe("01001000");
+	});
+
+	it("should remove non numeric characters", () => {
+		expect(parseCep("a0.10cr01?00#ab0")).toBe("01001000");
+	});
+});
