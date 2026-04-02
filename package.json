@@ -1,6 +1,6 @@
 {
 	"name": "@brazilian-utils/brazilian-utils",
-	"version": "2.0.1",
+	"version": "2.1.0",
 	"license": "MIT",
 	"description": "Brazilian Utils is a library focused on solving problems that we face daily in the development of applications for the Brazilian business.",
 	"repository": "https://github.com/brazilian-utils/javascript",
