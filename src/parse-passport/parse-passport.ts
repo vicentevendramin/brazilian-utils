@@ -9,5 +9,7 @@
  * parsePassport("Ab-123456") // "Ab123456"
  * parsePassport("Ab -. 123456") // "Ab123456"
  */
-export const parsePassport = (passport: string): string =>
-	passport.replace(/[\s.-]/g, "");
+export const parsePassport = (passport: string): string => {
+	if (!passport || typeof passport !== "string") return "";
+	return passport.replace(/[^a-zA-Z0-9]/g, "");
+};

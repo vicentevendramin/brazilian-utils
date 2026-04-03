@@ -1,3 +1,6 @@
+import { generateRandomNumber } from "../_internals/generate-random-number/generate-random-number";
+import { LETTERS_LENGTH, DIGITS_LENGTH, ALPHABET_LENGTH, CHAR_CODE_A } from "./constants";
+
 /**
  * Generates a random valid Brazilian passport number.
  *
@@ -8,13 +11,11 @@
  * generatePassport() // "ZS840088"
  */
 export const generatePassport = (): string => {
-	const letters = Array.from({ length: 2 }, () =>
-		String.fromCharCode(65 + Math.floor(Math.random() * 26)),
-	).join("");
+    const letters = Array.from({ length: LETTERS_LENGTH }, () =>
+        String.fromCharCode(CHAR_CODE_A + Math.floor(Math.random() * ALPHABET_LENGTH)),
+    ).join("");
 
-	const digits = Array.from({ length: 6 }, () =>
-		Math.floor(Math.random() * 10),
-	).join("");
+    const digits = generateRandomNumber(DIGITS_LENGTH);
 
-	return `${letters}${digits}`;
+    return `${letters}${digits}`;
 };

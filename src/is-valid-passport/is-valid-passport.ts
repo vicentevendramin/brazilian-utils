@@ -1,3 +1,5 @@
+import { PASSPORT_REGEX } from "./constants";
+
 /**
  * Checks if a Brazilian passport number is valid.
  * To be considered valid, the input must be a string containing exactly two
@@ -14,7 +16,7 @@
  * isValidPassport("12345678") // false
  * isValidPassport("DC-221345") // false
  */
-export const isValidPassport = (passport: string): boolean => {
-	if (typeof passport !== "string") return false;
-	return /^[A-Z]{2}[0-9]{6}$/.test(passport);
+export const isValidPassport = (passport: string | number): boolean => {
+    if (passport === null || passport === undefined) return false;
+    return PASSPORT_REGEX.test(String(passport));
 };

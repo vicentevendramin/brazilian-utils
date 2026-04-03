@@ -525,7 +525,6 @@ import { formatPassport } from '@brazilian-utils/brazilian-utils';
 
 formatPassport('ab123456'); // 'AB123456'
 formatPassport('AB-123.456'); // 'AB123456'
-formatPassport('12345678'); // null
 ```
 
 ## generatePassport
