@@ -63,7 +63,6 @@ export default defineConfig({
 			fileName: "brazilian-utils",
 		},
 		outDir: "dist",
-		minify: "esbuild",
 		sourcemap: true,
 		rollupOptions: {
 			output: {
