@@ -1,10 +1,7 @@
 import { sanitizeToDigits } from "../_internals/sanitize-to-digits/sanitize-to-digits";
 import type { FormatCnpjOptions } from "../format-cnpj/format-cnpj";
 
-const sanitize = (
-	value: string | number,
-	version?: FormatCnpjOptions["version"],
-): string => {
+const sanitize = (value: string | number, version?: FormatCnpjOptions["version"]): string => {
 	if (version === 2) {
 		return value
 			.toString()

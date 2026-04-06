@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it } from "../_internals/test/runtime";
 import { parseCnpj } from "./parse-cnpj";
 
 describe("parseCnpj", () => {
@@ -11,8 +11,6 @@ describe("parseCnpj", () => {
 	});
 
 	it("should keep alphanumeric characters for version 2", () => {
-		expect(parseCnpj("Q0.SLF.MBD/7VX4-39", { version: 2 })).toBe(
-			"Q0SLFMBD7VX439",
-		);
+		expect(parseCnpj("Q0.SLF.MBD/7VX4-39", { version: 2 })).toBe("Q0SLFMBD7VX439");
 	});
 });

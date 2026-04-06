@@ -1,51 +1,44 @@
-#!/usr/bin/env bun
+#!/usr/bin/env node
 
-import { resolve } from "node:path";
+import { spawn } from "node:child_process";
+import { dirname, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 
-const scriptsDir = import.meta.dir;
+const scriptsDir = dirname(fileURLToPath(import.meta.url));
 
-const cities = Bun.spawn(["bun", resolve(scriptsDir, "cities.ts")], {
-	stdout: "inherit",
-	stderr: "inherit",
-});
+const run = (command: string, args: string[]): Promise<number | null> =>
+	new Promise((resolveExit) => {
+		const child = spawn(command, args, {
+			stdio: "inherit",
+		});
 
-const states = Bun.spawn(["bun", resolve(scriptsDir, "states.ts")], {
-	stdout: "inherit",
-	stderr: "inherit",
-});
+		child.on("close", (code) => resolveExit(code));
+		child.on("error", () => resolveExit(1));
+	});
 
 const [citiesResult, statesResult] = await Promise.all([
-	cities.exited,
-	states.exited,
+	run("node", [resolve(scriptsDir, "cities.ts")]),
+	run("node", [resolve(scriptsDir, "states.ts")]),
 ]);
 
 if (citiesResult !== 0 || statesResult !== 0) {
 	process.exit(1);
 }
 
-// Now run biome check on both generated files in parallel
-const biomeCities = Bun.spawn(
-	["biome", "check", "--write", "./src/_internals/constants/cities.ts"],
-	{
-		stdout: "inherit",
-		stderr: "inherit",
-	},
-);
+const generatedFiles = [
+	"./src/_internals/constants/cities.ts",
+	"./src/_internals/constants/states.ts",
+];
 
-const biomeStates = Bun.spawn(
-	["biome", "check", "--write", "./src/_internals/constants/states.ts"],
-	{
-		stdout: "inherit",
-		stderr: "inherit",
-	},
-);
+const formatResult = await run("vp", ["fmt", "--write", ...generatedFiles]);
 
-const [biomeCitiesResult, biomeStatesResult] = await Promise.all([
-	biomeCities.exited,
-	biomeStates.exited,
-]);
+if (formatResult !== 0) {
+	process.exit(1);
+}
 
-if (biomeCitiesResult !== 0 || biomeStatesResult !== 0) {
+const lintResult = await run("vp", ["lint", "--fix", ...generatedFiles]);
+
+if (lintResult !== 0) {
 	process.exit(1);
 }
 

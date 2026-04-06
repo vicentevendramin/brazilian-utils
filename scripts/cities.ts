@@ -1,5 +1,10 @@
-import { resolve } from "node:path";
-import { write } from "bun";
+#!/usr/bin/env node
+
+import { writeFile } from "node:fs/promises";
+import { dirname, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
+
+const scriptsDir = dirname(fileURLToPath(import.meta.url));
 
 type City = {
 	id: number;
@@ -24,9 +29,7 @@ type City = {
 	};
 };
 
-const response = await fetch(
-	"https://servicodados.ibge.gov.br/api/v1/localidades/municipios",
-);
+const response = await fetch("https://servicodados.ibge.gov.br/api/v1/localidades/municipios");
 
 const json = (await response.json()) as City[];
 
@@ -50,14 +53,11 @@ const cities = Object.fromEntries(
 		),
 	)
 		.sort(([a], [b]) => a.localeCompare(b))
-		.map(([state, cities]) => [
-			state,
-			cities.sort((a, b) => a.localeCompare(b)),
-		]),
+		.map(([state, cityNames]) => [state, cityNames.sort((a, b) => a.localeCompare(b))]),
 );
 
-await write(
-	resolve(import.meta.dir, "..", "./src/_internals/constants/cities.ts"),
+await writeFile(
+	resolve(scriptsDir, "..", "./src/_internals/constants/cities.ts"),
 	`/**
  * A collection of Brazilian cities categorized by their respective states.
  * 

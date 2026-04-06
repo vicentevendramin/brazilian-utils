@@ -4,8 +4,8 @@
 		"release": true
 	},
 	"hooks": {
-		"before:init": ["bun run ci", "bun run test"],
-		"after:bump": "bun run build",
+		"before:init": ["vp check", "vp test"],
+		"after:bump": "vp run build",
 		"after:release": "echo Successfully released ${name} v${version} to ${repo.repository}."
 	}
 }

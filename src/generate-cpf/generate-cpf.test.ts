@@ -1,5 +1,5 @@
-import { describe, expect, test } from "vitest";
 import { DATA } from "../_internals/constants/states";
+import { describe, expect, test } from "../_internals/test/runtime";
 import { isValidCpf } from "../is-valid-cpf/is-valid-cpf";
 import { LENGTH } from "./constants";
 import { generateCpf } from "./generate-cpf";

@@ -1,4 +1,4 @@
-import { describe, expect, test } from "vitest";
+import { describe, expect, test } from "../_internals/test/runtime";
 import { parseCurrency } from "./parse-currency";
 
 describe("parseCurrency", () => {
@@ -32,12 +32,10 @@ describe("parseCurrency", () => {
 		});
 
 		test("when it is null", () => {
-			// biome-ignore lint/suspicious/noExplicitAny: test case
 			expect(parseCurrency(null as any)).toBe(0);
 		});
 
 		test("when it is undefined", () => {
-			// biome-ignore lint/suspicious/noExplicitAny: test case
 			expect(parseCurrency(undefined as any)).toBe(0);
 		});
 

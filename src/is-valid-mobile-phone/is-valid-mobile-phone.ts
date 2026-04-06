@@ -19,10 +19,7 @@ const isValidDDD = (value: string): boolean => {
 	return AREA_CODE_SET.has(ddd as (typeof VALID_AREA_CODES)[number]);
 };
 
-const isValidMobileFirstNumber = (
-	value: string,
-	version?: PhoneVersion,
-): boolean => {
+const isValidMobileFirstNumber = (value: string, version?: PhoneVersion): boolean => {
 	const firstDigit = value.charCodeAt(2) - 48;
 
 	if (!version || version === 1) {
@@ -46,10 +43,7 @@ const isValidMobileFirstNumber = (
  * isValidMobilePhone("11712345678", { version: 1 }); // true
  * ```
  */
-export const isValidMobilePhone = (
-	value: string,
-	options?: IsValidMobilePhoneOptions,
-): boolean => {
+export const isValidMobilePhone = (value: string, options?: IsValidMobilePhoneOptions): boolean => {
 	if (!value || typeof value !== "string") return false;
 
 	const digits = sanitizeToDigits(value);

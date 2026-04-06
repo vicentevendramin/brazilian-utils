@@ -1,5 +1,10 @@
-import { resolve } from "node:path";
-import { write } from "bun";
+#!/usr/bin/env node
+
+import { writeFile } from "node:fs/promises";
+import { dirname, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
+
+const scriptsDir = dirname(fileURLToPath(import.meta.url));
 
 type State = {
 	id: number;
@@ -12,9 +17,7 @@ type State = {
 	};
 };
 
-const response = await fetch(
-	"https://servicodados.ibge.gov.br/api/v1/localidades/estados",
-);
+const response = await fetch("https://servicodados.ibge.gov.br/api/v1/localidades/estados");
 
 const json = (await response.json()) as State[];
 
@@ -27,8 +30,8 @@ const states = json
 		regionName: state.regiao.nome,
 	}));
 
-await write(
-	resolve(import.meta.dir, "..", "./src/_internals/constants/states.ts"),
+await writeFile(
+	resolve(scriptsDir, "..", "./src/_internals/constants/states.ts"),
 	`/**
  * @type {Array<{code: string, name: string, regionCode: string, regionName: string}>}
  */

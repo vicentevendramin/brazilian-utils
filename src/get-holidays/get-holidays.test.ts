@@ -1,4 +1,4 @@
-import { describe, expect, test } from "vitest";
+import { describe, expect, test } from "../_internals/test/runtime";
 import { getHolidays } from "./get-holidays";
 
 describe("getHolidays", () => {
@@ -131,13 +131,9 @@ describe("getHolidays", () => {
 		const mgHolidays = getHolidays({ year: 2024, stateCode: "MG" });
 
 		// RS should have Revolução Farroupilha
-		expect(rsHolidays.some((h) => h.name === "Revolução Farroupilha")).toBe(
-			true,
-		);
+		expect(rsHolidays.some((h) => h.name === "Revolução Farroupilha")).toBe(true);
 
 		// MG should have Aniversário de Minas Gerais
-		expect(
-			mgHolidays.some((h) => h.name === "Aniversário de Minas Gerais"),
-		).toBe(true);
+		expect(mgHolidays.some((h) => h.name === "Aniversário de Minas Gerais")).toBe(true);
 	});
 });

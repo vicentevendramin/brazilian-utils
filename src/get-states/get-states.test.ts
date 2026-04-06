@@ -1,5 +1,5 @@
-import { describe, expect, it } from "vitest";
 import { DATA } from "../_internals/constants/states";
+import { describe, expect, it } from "../_internals/test/runtime";
 import { getStates } from "./get-states";
 
 describe("getStates", () => {

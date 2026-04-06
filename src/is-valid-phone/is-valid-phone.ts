@@ -23,10 +23,7 @@ export type IsValidPhoneOptions = {
  * isValidPhone("1130000000"); // true (landline)
  * ```
  */
-export const isValidPhone = (
-	value: string,
-	options?: IsValidPhoneOptions,
-): boolean => {
+export const isValidPhone = (value: string, options?: IsValidPhoneOptions): boolean => {
 	if (!value || typeof value !== "string") return false;
 
 	const digits = sanitizeToDigits(value);

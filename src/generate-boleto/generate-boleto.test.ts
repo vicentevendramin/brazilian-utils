@@ -1,4 +1,4 @@
-import { describe, expect, test } from "vitest";
+import { describe, expect, test } from "../_internals/test/runtime";
 import { isValidBoleto } from "../is-valid-boleto/is-valid-boleto";
 import { LENGTH } from "./constants";
 import { generateBoleto } from "./generate-boleto";

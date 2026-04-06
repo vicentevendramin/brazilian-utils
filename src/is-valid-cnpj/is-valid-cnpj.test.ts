@@ -1,4 +1,4 @@
-import { describe, expect, test } from "vitest";
+import { describe, expect, test } from "../_internals/test/runtime";
 import { generateCnpj } from "../generate-cnpj/generate-cnpj";
 import { LENGTH, RESERVED_NUMBERS } from "./constants";
 import { isValidCnpj } from "./is-valid-cnpj";
@@ -16,29 +16,23 @@ describe("isValidCnpj", () => {
 		});
 
 		test("when it is null", () => {
-			// biome-ignore lint/suspicious/noExplicitAny: testing invalid inputs
 			expect(isValidCnpj(null as any)).toBe(false);
 		});
 
 		test("when it is undefined", () => {
-			// biome-ignore lint/suspicious/noExplicitAny: testing invalid inputs
 			expect(isValidCnpj(undefined as any)).toBe(false);
 		});
 
 		test("when it is a boolean", () => {
-			// biome-ignore lint/suspicious/noExplicitAny: testing invalid inputs
 			expect(isValidCnpj(true as any)).toBe(false);
-			// biome-ignore lint/suspicious/noExplicitAny: testing invalid inputs
 			expect(isValidCnpj(false as any)).toBe(false);
 		});
 
 		test("when it is an object", () => {
-			// biome-ignore lint/suspicious/noExplicitAny: testing invalid inputs
 			expect(isValidCnpj({} as any)).toBe(false);
 		});
 
 		test("when it is an array", () => {
-			// biome-ignore lint/suspicious/noExplicitAny: testing invalid inputs
 			expect(isValidCnpj([] as any)).toBe(false);
 		});
 

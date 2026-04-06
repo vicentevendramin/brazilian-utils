@@ -7,10 +7,12 @@
 
 [![Build Status](https://github.com/brazilian-utils/javascript/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/brazilian-utils/javascript/actions/workflows/build.yml?query=branch%3Amain) [![Coverage Status](https://codecov.io/gh/brazilian-utils/javascript/graph/badge.svg?branch=main)](https://codecov.io/gh/brazilian-utils/javascript?branch=main) [![Known Vulnerabilities](https://snyk.io/test/github/brazilian-utils/javascript/badge.svg?targetFile=package.json)](https://snyk.io/test/github/brazilian-utils/javascript?targetFile=package.json) [![Maintainability](https://api.codeclimate.com/v1/badges/05d3cd8492ed438bf51d/maintainability)](https://codeclimate.com/github/brazilian-utils/javascript/maintainability)
 [![Downloads per month](https://img.shields.io/npm/dm/@brazilian-utils/brazilian-utils.svg)](https://www.npmjs.com/package/@brazilian-utils/brazilian-utils) [![License: MIT](https://img.shields.io/github/license/brazilian-utils/javascript.svg)](LICENSE)
+
 </div>
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 **Table of Contents**
 
 - [Getting Started](#getting-started)
@@ -52,12 +54,32 @@ or `<script>` tag (global `brazilianUtils`):
 To use one of our utilities you just need to import the required function as in the example below:
 
 ```javascript
-import { isValidCpf } from '@brazilian-utils/brazilian-utils';
+import { isValidCpf } from "@brazilian-utils/brazilian-utils";
 
-isValidCpf('1232454233345'); // false
+isValidCpf("1232454233345"); // false
 ```
 
 You can check a list of utilities [by clicking here](https://brazilian-utils.com.br/#/utilities).
+
+## Development
+
+This repository uses Vite+ as the local toolchain.
+
+Requirements:
+
+- Node.js `^20.19.0 || >=22.12.0`
+- `vp` installed and available in your shell
+
+Common commands:
+
+```bash
+vp install
+vp check
+vp test
+vp run build
+```
+
+Release notes are published through [GitHub Releases](https://github.com/brazilian-utils/javascript/releases).
 
 ## Contributors
 

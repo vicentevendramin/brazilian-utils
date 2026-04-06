@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it } from "../_internals/test/runtime";
 import { LENGTH } from "./constants";
 import { formatProcessoJuridico } from "./format-processo-juridico";
 
@@ -19,30 +19,16 @@ describe("formatProcessoJuridico", () => {
 		expect(formatProcessoJuridico("000208025201")).toBe("0002080-25.201");
 		expect(formatProcessoJuridico("0002080252012")).toBe("0002080-25.2012");
 		expect(formatProcessoJuridico("00020802520125")).toBe("0002080-25.2012.5");
-		expect(formatProcessoJuridico("000208025201251")).toBe(
-			"0002080-25.2012.51",
-		);
-		expect(formatProcessoJuridico("0002080252012515")).toBe(
-			"0002080-25.2012.515",
-		);
-		expect(formatProcessoJuridico("00020802520125150")).toBe(
-			"0002080-25.2012.515.0",
-		);
-		expect(formatProcessoJuridico("000208025201251500")).toBe(
-			"0002080-25.2012.515.00",
-		);
-		expect(formatProcessoJuridico("0002080252012515004")).toBe(
-			"0002080-25.2012.515.004",
-		);
-		expect(formatProcessoJuridico("00020802520125150049")).toBe(
-			"0002080-25.2012.515.0049",
-		);
+		expect(formatProcessoJuridico("000208025201251")).toBe("0002080-25.2012.51");
+		expect(formatProcessoJuridico("0002080252012515")).toBe("0002080-25.2012.515");
+		expect(formatProcessoJuridico("00020802520125150")).toBe("0002080-25.2012.515.0");
+		expect(formatProcessoJuridico("000208025201251500")).toBe("0002080-25.2012.515.00");
+		expect(formatProcessoJuridico("0002080252012515004")).toBe("0002080-25.2012.515.004");
+		expect(formatProcessoJuridico("00020802520125150049")).toBe("0002080-25.2012.515.0049");
 	});
 
 	it(`should NOT add digits after the processo juridico length (${LENGTH})`, () => {
-		expect(formatProcessoJuridico("00020802520125150049123123")).toBe(
-			"0002080-25.2012.515.0049",
-		);
+		expect(formatProcessoJuridico("00020802520125150049123123")).toBe("0002080-25.2012.515.0049");
 	});
 
 	it("should remove all non numeric characters", () => {

@@ -21,14 +21,9 @@ export type FormatCurrencyOptions = {
  * formatCurrency("1234.56", { precision: 3 }); // "1.234,560"
  * ```
  */
-export const formatCurrency = (
-	value: string | number,
-	options?: FormatCurrencyOptions,
-): string => {
+export const formatCurrency = (value: string | number, options?: FormatCurrencyOptions): string => {
 	const enhancedValue =
-		typeof value === "string"
-			? Number.parseFloat(sanitizeToDigits(value) || "0")
-			: value;
+		typeof value === "string" ? Number.parseFloat(sanitizeToDigits(value) || "0") : value;
 
 	return new Intl.NumberFormat("pt-BR", {
 		style: options?.symbol ? "currency" : "decimal",

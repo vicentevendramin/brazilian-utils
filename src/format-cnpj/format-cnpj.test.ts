@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it } from "../_internals/test/runtime";
 import { LENGTH } from "./constants";
 import { formatCnpj } from "./format-cnpj";
 
@@ -51,15 +51,9 @@ describe("formatCnpj", () => {
 		expect(formatCnpj("468434850", { pad: true })).toBe("00.000.468/4348-50");
 		expect(formatCnpj("4684348500", { pad: true })).toBe("00.004.684/3485-00");
 		expect(formatCnpj("46843485000", { pad: true })).toBe("00.046.843/4850-00");
-		expect(formatCnpj("468434850001", { pad: true })).toBe(
-			"00.468.434/8500-01",
-		);
-		expect(formatCnpj("4684348500018", { pad: true })).toBe(
-			"04.684.348/5000-18",
-		);
-		expect(formatCnpj("46843485000186", { pad: true })).toBe(
-			"46.843.485/0001-86",
-		);
+		expect(formatCnpj("468434850001", { pad: true })).toBe("00.468.434/8500-01");
+		expect(formatCnpj("4684348500018", { pad: true })).toBe("04.684.348/5000-18");
+		expect(formatCnpj("46843485000186", { pad: true })).toBe("46.843.485/0001-86");
 	});
 
 	it("should format number cnpj with mask filling zeroes", () => {
@@ -76,9 +70,7 @@ describe("formatCnpj", () => {
 		expect(formatCnpj(46843485000, { pad: true })).toBe("00.046.843/4850-00");
 		expect(formatCnpj(468434850001, { pad: true })).toBe("00.468.434/8500-01");
 		expect(formatCnpj(4684348500018, { pad: true })).toBe("04.684.348/5000-18");
-		expect(formatCnpj(46843485000186, { pad: true })).toBe(
-			"46.843.485/0001-86",
-		);
+		expect(formatCnpj(46843485000186, { pad: true })).toBe("46.843.485/0001-86");
 	});
 
 	it(`should NOT add digits after the CNPJ length (${LENGTH})`, () => {
@@ -103,29 +95,17 @@ describe("formatCnpj", () => {
 		expect(formatCnpj("Q0SLFMBD7V", { version: 2 })).toBe("Q0.SLF.MBD/7V");
 		expect(formatCnpj("Q0SLFMBD7VX", { version: 2 })).toBe("Q0.SLF.MBD/7VX");
 		expect(formatCnpj("Q0SLFMBD7VX4", { version: 2 })).toBe("Q0.SLF.MBD/7VX4");
-		expect(formatCnpj("Q0SLFMBD7VX43", { version: 2 })).toBe(
-			"Q0.SLF.MBD/7VX4-3",
-		);
-		expect(formatCnpj("q0SLFMBD7VX439", { version: 2 })).toBe(
-			"Q0.SLF.MBD/7VX4-39",
-		);
+		expect(formatCnpj("Q0SLFMBD7VX43", { version: 2 })).toBe("Q0.SLF.MBD/7VX4-3");
+		expect(formatCnpj("q0SLFMBD7VX439", { version: 2 })).toBe("Q0.SLF.MBD/7VX4-39");
 	});
 
 	it("should remove non-alphanumeric characters for version 2", () => {
-		expect(formatCnpj("46.?ABC843.485/0001-86abc", { version: 2 })).toBe(
-			"46.ABC.843/4850-00",
-		);
+		expect(formatCnpj("46.?ABC843.485/0001-86abc", { version: 2 })).toBe("46.ABC.843/4850-00");
 	});
 
 	it("should allow all alphabet letters for version 2 (including E, O, T, U)", () => {
-		expect(formatCnpj("12ABC34501DE35", { version: 2 })).toBe(
-			"12.ABC.345/01DE-35",
-		);
-		expect(formatCnpj("12.ABC.345/01DE-35", { version: 2 })).toBe(
-			"12.ABC.345/01DE-35",
-		);
-		expect(formatCnpj("12OUT345000199", { version: 2 })).toBe(
-			"12.OUT.345/0001-99",
-		);
+		expect(formatCnpj("12ABC34501DE35", { version: 2 })).toBe("12.ABC.345/01DE-35");
+		expect(formatCnpj("12.ABC.345/01DE-35", { version: 2 })).toBe("12.ABC.345/01DE-35");
+		expect(formatCnpj("12OUT345000199", { version: 2 })).toBe("12.OUT.345/0001-99");
 	});
 });

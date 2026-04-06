@@ -9,10 +9,7 @@ import {
 
 const verifyCheckDigit = (value: string): boolean => {
 	const verificationDigits = Number.parseInt(
-		value.substring(
-			CHECK_DIGIT_START_POSITION,
-			CHECK_DIGIT_START_POSITION + CHECK_DIGIT_LENGTH,
-		),
+		value.substring(CHECK_DIGIT_START_POSITION, CHECK_DIGIT_START_POSITION + CHECK_DIGIT_LENGTH),
 		10,
 	);
 

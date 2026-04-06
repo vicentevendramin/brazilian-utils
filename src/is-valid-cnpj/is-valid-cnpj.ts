@@ -7,8 +7,7 @@ const WEIGHTS_1 = [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
 
 const WEIGHTS_2 = [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
 
-const FORMAT_REGEX =
-	/^[0-9A-Z]{2}\.?[0-9A-Z]{3}\.?[0-9A-Z]{3}\/?[0-9A-Z]{4}-?[0-9]{2}$/;
+const FORMAT_REGEX = /^[0-9A-Z]{2}\.?[0-9A-Z]{3}\.?[0-9A-Z]{3}\/?[0-9A-Z]{4}-?[0-9]{2}$/;
 
 const NUMERIC_FORMAT_REGEX = /^\d{2}\.?\d{3}\.?\d{3}\/?\d{4}-?\d{2}$/;
 
@@ -21,10 +20,7 @@ const cleanCnpj = (cnpj: string): string => {
 			(char >= "A" && char <= "Z") ||
 			(char >= "a" && char <= "z")
 		) {
-			result +=
-				char >= "a" && char <= "z"
-					? String.fromCharCode(char.charCodeAt(0) - 32)
-					: char;
+			result += char >= "a" && char <= "z" ? String.fromCharCode(char.charCodeAt(0) - 32) : char;
 		}
 	}
 	return result;
@@ -73,10 +69,7 @@ const isValidChecksum = (cnpj: string): boolean => {
  * isValidCnpj("Q0SLFMBD7VX439", { version: 2 }); // true (alphanumeric)
  * ```
  */
-export const isValidCnpj = (
-	cnpj: string,
-	options?: { version?: 1 | 2 },
-): boolean => {
+export const isValidCnpj = (cnpj: string, options?: { version?: 1 | 2 }): boolean => {
 	if (!cnpj || typeof cnpj !== "string") return false;
 
 	const cleaned = cleanCnpj(cnpj);
@@ -102,9 +95,7 @@ export const isValidCnpj = (
 		const numeric = sanitizeToDigits(cnpj);
 
 		return (
-			NUMERIC_FORMAT_REGEX.test(cnpj) &&
-			!RESERVED_SET.has(numeric) &&
-			isValidChecksum(numeric)
+			NUMERIC_FORMAT_REGEX.test(cnpj) && !RESERVED_SET.has(numeric) && isValidChecksum(numeric)
 		);
 	}
 

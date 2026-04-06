@@ -1,4 +1,4 @@
-import { describe, expect, test } from "vitest";
+import { describe, expect, test } from "../_internals/test/runtime";
 import { LENGTH, RESERVED_NUMBERS } from "./constants";
 import { isValidPis } from "./is-valid-pis";
 
@@ -15,29 +15,23 @@ describe("isValidPis", () => {
 		});
 
 		test("when it is null", () => {
-			// biome-ignore lint/suspicious/noExplicitAny: test case
 			expect(isValidPis(null as any)).toBe(false);
 		});
 
 		test("when it is undefined", () => {
-			// biome-ignore lint/suspicious/noExplicitAny: test case
 			expect(isValidPis(undefined as any)).toBe(false);
 		});
 
 		test("when it is a boolean", () => {
-			// biome-ignore lint/suspicious/noExplicitAny: test case
 			expect(isValidPis(true as any)).toBe(false);
-			// biome-ignore lint/suspicious/noExplicitAny: test case
 			expect(isValidPis(false as any)).toBe(false);
 		});
 
 		test("when is an object", () => {
-			// biome-ignore lint/suspicious/noExplicitAny: test case
 			expect(isValidPis({} as any)).toBe(false);
 		});
 
 		test("when is an array", () => {
-			// biome-ignore lint/suspicious/noExplicitAny: test case
 			expect(isValidPis([] as any)).toBe(false);
 		});
 

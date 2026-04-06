@@ -1,12 +1,7 @@
 import { mod10 } from "../_internals/mod10/mod10";
 import { mod11 } from "../_internals/mod11/mod11";
 import { sanitizeToDigits } from "../_internals/sanitize-to-digits/sanitize-to-digits";
-import {
-	CHECK_DIGIT_POSITION,
-	CONVERT_POSITIONS,
-	LENGTH,
-	PARTIALS,
-} from "./constants";
+import { CHECK_DIGIT_POSITION, CONVERT_POSITIONS, LENGTH, PARTIALS } from "./constants";
 
 const isValidPartials = (digits: string): boolean => {
 	for (const { start, end, checkIdx } of PARTIALS) {
@@ -27,8 +22,7 @@ const parseToBoleto = (digits: string): string => {
 
 const isValidCheckDigit = (boleto: string): boolean => {
 	const withoutCheckDigit =
-		boleto.substring(0, CHECK_DIGIT_POSITION) +
-		boleto.substring(CHECK_DIGIT_POSITION + 1);
+		boleto.substring(0, CHECK_DIGIT_POSITION) + boleto.substring(CHECK_DIGIT_POSITION + 1);
 	const expected = mod11(withoutCheckDigit);
 	return boleto.charCodeAt(CHECK_DIGIT_POSITION) - 48 === expected;
 };

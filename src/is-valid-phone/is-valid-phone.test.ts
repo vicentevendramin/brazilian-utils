@@ -1,4 +1,4 @@
-import { describe, expect, test } from "vitest";
+import { describe, expect, test } from "../_internals/test/runtime";
 import { isValidPhone } from "./is-valid-phone";
 
 describe("isValidPhone", () => {
@@ -8,7 +8,6 @@ describe("isValidPhone", () => {
 		});
 
 		test("when it is null", () => {
-			// biome-ignore lint/suspicious/noExplicitAny: test case
 			expect(isValidPhone(null as any)).toBe(false);
 		});
 

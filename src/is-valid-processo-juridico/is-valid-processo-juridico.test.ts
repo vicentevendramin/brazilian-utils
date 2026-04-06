@@ -1,4 +1,4 @@
-import { describe, expect, test } from "vitest";
+import { describe, expect, test } from "../_internals/test/runtime";
 import { LENGTH } from "./constants";
 import { isValidProcessoJuridico } from "./is-valid-processo-juridico";
 
@@ -9,12 +9,10 @@ describe("isValidProcessoJuridico", () => {
 		});
 
 		test("when it is null", () => {
-			// biome-ignore lint/suspicious/noExplicitAny: test case
 			expect(isValidProcessoJuridico(null as any)).toBe(false);
 		});
 
 		test("when it is undefined", () => {
-			// biome-ignore lint/suspicious/noExplicitAny: test case
 			expect(isValidProcessoJuridico(undefined as any)).toBe(false);
 		});
 

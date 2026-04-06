@@ -22,10 +22,7 @@ const generateAlphanumericCnpjBase = (): string => {
 
 const charToCnpjValue = (char: string): number => char.charCodeAt(0) - 48;
 
-const generateAlphanumericChecksum = (
-	cnpj: string,
-	weights: number[],
-): number => {
+const generateAlphanumericChecksum = (cnpj: string, weights: number[]): number => {
 	let sum = 0;
 	for (let i = 0; i < cnpj.length; i++) {
 		sum += charToCnpjValue(cnpj[i]) * weights[i];
@@ -38,10 +35,7 @@ const calculateCheckDigit = (base: string, weights: number[]): string => {
 	return (mod < 2 ? 0 : 11 - mod).toString();
 };
 
-const calculateAlphanumericCheckDigit = (
-	base: string,
-	weights: number[],
-): string => {
+const calculateAlphanumericCheckDigit = (base: string, weights: number[]): string => {
 	const mod = generateAlphanumericChecksum(base, weights) % 11;
 	return (mod < 2 ? 0 : 11 - mod).toString();
 };
@@ -49,19 +43,13 @@ const calculateAlphanumericCheckDigit = (
 const generateNumericCnpj = (): string => {
 	const base = generateRandomNumber(BASE_LENGTH);
 	const firstCheckDigit = calculateCheckDigit(base, FIRST_CHECK_DIGIT_WEIGHTS);
-	const secondCheckDigit = calculateCheckDigit(
-		base + firstCheckDigit,
-		SECOND_CHECK_DIGIT_WEIGHTS,
-	);
+	const secondCheckDigit = calculateCheckDigit(base + firstCheckDigit, SECOND_CHECK_DIGIT_WEIGHTS);
 	return base + firstCheckDigit + secondCheckDigit;
 };
 
 const generateAlphanumericCnpj = (): string => {
 	const base = generateAlphanumericCnpjBase();
-	const firstCheckDigit = calculateAlphanumericCheckDigit(
-		base,
-		FIRST_CHECK_DIGIT_WEIGHTS,
-	);
+	const firstCheckDigit = calculateAlphanumericCheckDigit(base, FIRST_CHECK_DIGIT_WEIGHTS);
 	const secondCheckDigit = calculateAlphanumericCheckDigit(
 		base + firstCheckDigit,
 		SECOND_CHECK_DIGIT_WEIGHTS,

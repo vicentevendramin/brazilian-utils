@@ -1,4 +1,4 @@
-import { describe, expect, test } from "vitest";
+import { describe, expect, test } from "../test/runtime";
 import { mod10 } from "./mod10";
 
 describe("mod10", () => {

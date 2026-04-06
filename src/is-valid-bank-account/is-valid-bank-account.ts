@@ -17,8 +17,7 @@ const validateBancoDoBrasil = (params: IsValidBankAccountParams): boolean => {
 	if (digit.length !== 1) return false;
 
 	const accountWithoutLeadingZeros = account.replace(/^0+/, "") || "0";
-	const fullNumber =
-		agency.padStart(5, "0") + accountWithoutLeadingZeros.padStart(8, "0");
+	const fullNumber = agency.padStart(5, "0") + accountWithoutLeadingZeros.padStart(8, "0");
 
 	let sum = 0;
 	let weight = 2;
@@ -29,8 +28,7 @@ const validateBancoDoBrasil = (params: IsValidBankAccountParams): boolean => {
 	}
 
 	const remainder = sum % 11;
-	const calculatedDigit =
-		remainder === 0 || remainder === 1 ? 0 : 11 - remainder;
+	const calculatedDigit = remainder === 0 || remainder === 1 ? 0 : 11 - remainder;
 
 	const digitChar = String(calculatedDigit);
 	return digitChar === digit;
@@ -79,8 +77,7 @@ const validateBradesco = (params: IsValidBankAccountParams): boolean => {
 	}
 
 	const remainder = sum % 11;
-	const calculatedDigit =
-		remainder === 0 || remainder === 1 ? 0 : 11 - remainder;
+	const calculatedDigit = remainder === 0 || remainder === 1 ? 0 : 11 - remainder;
 
 	return String(calculatedDigit) === digit;
 };
@@ -130,10 +127,7 @@ const validateGeneric = (params: IsValidBankAccountParams): boolean => {
 	return false;
 };
 
-const VALIDATORS: Record<
-	string,
-	(params: IsValidBankAccountParams) => boolean
-> = {
+const VALIDATORS: Record<string, (params: IsValidBankAccountParams) => boolean> = {
 	"001": validateBancoDoBrasil,
 	"341": validateItau,
 	"237": validateBradesco,
@@ -176,9 +170,7 @@ const VALIDATORS: Record<
  * }); // true (if valid Itaú account)
  * ```
  */
-export const isValidBankAccount = (
-	params: IsValidBankAccountParams,
-): boolean => {
+export const isValidBankAccount = (params: IsValidBankAccountParams): boolean => {
 	const { bankCode, agency, account, digit } = params;
 
 	if (
@@ -204,8 +196,7 @@ export const isValidBankAccount = (
 	if (accountDigits.length === 0 || accountDigits.length > 13) return false;
 	if (digitDigits.length === 0 || digitDigits.length > 2) return false;
 
-	const validator =
-		bankCodeDigits in VALIDATORS ? VALIDATORS[bankCodeDigits] : validateGeneric;
+	const validator = bankCodeDigits in VALIDATORS ? VALIDATORS[bankCodeDigits] : validateGeneric;
 
 	return validator({
 		bankCode: bankCodeDigits,

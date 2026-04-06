@@ -1,4 +1,4 @@
-import { describe, expect, test } from "vitest";
+import { describe, expect, test } from "../_internals/test/runtime";
 import { isValidRenavam } from "./is-valid-renavam";
 
 describe("isValidRenavam", () => {
@@ -8,29 +8,23 @@ describe("isValidRenavam", () => {
 		});
 
 		test("when it is null", () => {
-			// biome-ignore lint/suspicious/noExplicitAny: test case
 			expect(isValidRenavam(null as any)).toBe(false);
 		});
 
 		test("when it is undefined", () => {
-			// biome-ignore lint/suspicious/noExplicitAny: test case
 			expect(isValidRenavam(undefined as any)).toBe(false);
 		});
 
 		test("when it is a boolean", () => {
-			// biome-ignore lint/suspicious/noExplicitAny: test case
 			expect(isValidRenavam(true as any)).toBe(false);
-			// biome-ignore lint/suspicious/noExplicitAny: test case
 			expect(isValidRenavam(false as any)).toBe(false);
 		});
 
 		test("when it is an object", () => {
-			// biome-ignore lint/suspicious/noExplicitAny: test case
 			expect(isValidRenavam({} as any)).toBe(false);
 		});
 
 		test("when it is an array", () => {
-			// biome-ignore lint/suspicious/noExplicitAny: test case
 			expect(isValidRenavam([] as any)).toBe(false);
 		});
 

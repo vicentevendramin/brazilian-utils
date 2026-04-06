@@ -1,4 +1,4 @@
-import { describe, expect, test } from "vitest";
+import { describe, expect, test } from "../_internals/test/runtime";
 import { LENGTH } from "./constants";
 import { isValidCep } from "./is-valid-cep";
 
@@ -9,12 +9,10 @@ describe("isValidCep", () => {
 		});
 
 		test("when it is null", () => {
-			// biome-ignore lint/suspicious/noExplicitAny: test case
 			expect(isValidCep(null as any)).toBe(false);
 		});
 
 		test("when it is undefined", () => {
-			// biome-ignore lint/suspicious/noExplicitAny: test case
 			expect(isValidCep(undefined as any)).toBe(false);
 		});
 

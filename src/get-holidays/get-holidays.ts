@@ -179,9 +179,7 @@ function calculateHolidayFromEaster(year: number, offset: number): Date {
  */
 export function getHolidays(year: number): Holiday[];
 export function getHolidays(options: GetHolidaysOptions): Holiday[];
-export function getHolidays(
-	yearOrOptions: number | GetHolidaysOptions,
-): Holiday[] {
+export function getHolidays(yearOrOptions: number | GetHolidaysOptions): Holiday[] {
 	let year: number;
 	let stateCode: StateCode | undefined;
 
@@ -195,12 +193,7 @@ export function getHolidays(
 	}
 
 	// Validate year
-	if (
-		typeof year !== "number" ||
-		!Number.isInteger(year) ||
-		year < 1900 ||
-		year > 2099
-	) {
+	if (typeof year !== "number" || !Number.isInteger(year) || year < 1900 || year > 2099) {
 		return [];
 	}
 

@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it } from "../_internals/test/runtime";
 import { LENGTH } from "./constants";
 import { formatCep } from "./format-cep";
 

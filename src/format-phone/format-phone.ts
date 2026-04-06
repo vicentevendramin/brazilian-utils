@@ -25,10 +25,7 @@ const MASK: Record<Mask, string> = {
  * @param {string} options.mask - The mask to apply for formatting the phone number.
  * @returns {string} The formatted phone number as a string.
  */
-export const formatPhone = (
-	value: string | number,
-	options?: FormatPhoneOptions,
-): string => {
+export const formatPhone = (value: string | number, options?: FormatPhoneOptions): string => {
 	let mask = options?.mask ?? "sn";
 
 	const enhancedValue = sanitizeToDigits(value);

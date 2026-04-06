@@ -17,10 +17,7 @@ export type FormatCpfOptions = Pick<FormatParams, "pad">;
  * formatCpf("123456789", { pad: true }); // "001.234.567-89"
  * ```
  */
-export const formatCpf = (
-	value: string | number,
-	options?: FormatCpfOptions,
-): string =>
+export const formatCpf = (value: string | number, options?: FormatCpfOptions): string =>
 	format({
 		pad: options?.pad,
 		value: sanitizeToDigits(value),
