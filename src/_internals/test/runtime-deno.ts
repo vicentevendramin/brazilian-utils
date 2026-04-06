@@ -15,7 +15,9 @@ type MockFunction<TArgs extends unknown[] = unknown[], TResult = unknown> = ((
 	) => MockFunction<TArgs, TResult>;
 };
 
-const registeredMocks = new Set<MockFunction>();
+type AnyMockFunction = MockFunction<any[], any>;
+
+const registeredMocks = new Set<AnyMockFunction>();
 
 function isRecord(value: unknown): value is Record<string, unknown> {
 	return typeof value === "object" && value !== null;
@@ -59,7 +61,7 @@ function createMock<TArgs extends unknown[] = unknown[], TResult = unknown>(
 		return mockFn;
 	};
 
-	registeredMocks.add(mockFn);
+	registeredMocks.add(mockFn as AnyMockFunction);
 
 	return mockFn;
 }

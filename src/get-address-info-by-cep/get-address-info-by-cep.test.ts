@@ -157,15 +157,15 @@ describe("getAddressInfoByCep", () => {
 	// Error handling tests use mocks to test specific error scenarios
 	describe("error handling", () => {
 		const fetchMock = vi.fn();
-		const originalFetch = global.fetch;
+		const originalFetch = globalThis.fetch;
 
 		beforeEach(() => {
-			global.fetch = fetchMock as unknown as typeof fetch;
+			globalThis.fetch = fetchMock as unknown as typeof fetch;
 			fetchMock.mockClear();
 		});
 
 		afterEach(() => {
-			global.fetch = originalFetch;
+			globalThis.fetch = originalFetch;
 			vi.restoreAllMocks();
 		});
 
