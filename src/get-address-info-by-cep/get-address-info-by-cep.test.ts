@@ -90,7 +90,10 @@ const globalWithLiveFlag = globalThis as typeof globalThis & {
 };
 
 function shouldRunLiveCepTests() {
-	if (globalWithLiveFlag.RUN_LIVE_CEP_TESTS === "1" || globalWithLiveFlag.RUN_LIVE_CEP_TESTS === 1) {
+	if (
+		globalWithLiveFlag.RUN_LIVE_CEP_TESTS === "1" ||
+		globalWithLiveFlag.RUN_LIVE_CEP_TESTS === 1
+	) {
 		return true;
 	}
 
