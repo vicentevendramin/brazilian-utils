@@ -1,5 +1,12 @@
-import { assertEquals, assertExists, assertInstanceOf, assertObjectMatch } from "jsr:@std/assert";
-import { afterEach, beforeEach, describe, it } from "jsr:@std/testing/bdd";
+/// <reference path="./globals.d.ts" />
+
+type TestCallback = () => void | Promise<void>;
+
+type Suite = {
+	name: string;
+	afterEach: TestCallback[];
+	beforeEach: TestCallback[];
+};
 
 type MockImplementation<TArgs extends unknown[] = unknown[], TResult = unknown> = (
 	...args: TArgs
@@ -9,6 +16,7 @@ type MockFunction<TArgs extends unknown[] = unknown[], TResult = unknown> = ((
 	...args: TArgs
 ) => TResult) & {
 	mockClear: () => void;
+	mockRejectedValueOnce: (value: unknown) => MockFunction<TArgs, TResult>;
 	mockResolvedValueOnce: (value: Awaited<TResult>) => MockFunction<TArgs, TResult>;
 	mockImplementation: (
 		implementation: MockImplementation<TArgs, TResult>,
@@ -18,6 +26,7 @@ type MockFunction<TArgs extends unknown[] = unknown[], TResult = unknown> = ((
 type AnyMockFunction = MockFunction<any[], any>;
 
 const registeredMocks = new Set<AnyMockFunction>();
+const suiteStack: Suite[] = [];
 
 function isRecord(value: unknown): value is Record<string, unknown> {
 	return typeof value === "object" && value !== null;
@@ -25,6 +34,51 @@ function isRecord(value: unknown): value is Record<string, unknown> {
 
 function createAssertionError(message: string): Error {
 	return new Error(message);
+}
+
+function deepEqual(a: unknown, b: unknown): boolean {
+	if (Object.is(a, b)) {
+		return true;
+	}
+
+	if (a instanceof Date && b instanceof Date) {
+		return a.getTime() === b.getTime();
+	}
+
+	if (Array.isArray(a) && Array.isArray(b)) {
+		return a.length === b.length && a.every((value, index) => deepEqual(value, b[index]));
+	}
+
+	if (isRecord(a) && isRecord(b)) {
+		const aKeys = Object.keys(a);
+		const bKeys = Object.keys(b);
+
+		return (
+			aKeys.length === bKeys.length &&
+			aKeys.every((key) => bKeys.includes(key) && deepEqual(a[key], b[key]))
+		);
+	}
+
+	return false;
+}
+
+function objectMatches(
+	actual: Record<string, unknown>,
+	expected: Record<string, unknown>,
+): boolean {
+	return Object.entries(expected).every(([key, value]) => {
+		if (!(key in actual)) {
+			return false;
+		}
+
+		const actualValue = actual[key];
+
+		if (isRecord(value) && isRecord(actualValue)) {
+			return objectMatches(actualValue, value);
+		}
+
+		return deepEqual(actualValue, value);
+	});
 }
 
 function createMock<TArgs extends unknown[] = unknown[], TResult = unknown>(
@@ -55,6 +109,12 @@ function createMock<TArgs extends unknown[] = unknown[], TResult = unknown>(
 		return mockFn;
 	};
 
+	mockFn.mockRejectedValueOnce = (value: unknown) => {
+		queue.push(() => Promise.reject(value) as TResult);
+
+		return mockFn;
+	};
+
 	mockFn.mockImplementation = (nextImplementation: MockImplementation<TArgs, TResult>) => {
 		implementation = nextImplementation;
 
@@ -74,10 +134,14 @@ function createExpect(actual: unknown) {
 			}
 		},
 		toEqual(expected: unknown) {
-			assertEquals(actual, expected);
+			if (!deepEqual(actual, expected)) {
+				throw createAssertionError("Expected values to be deeply equal");
+			}
 		},
 		toStrictEqual(expected: unknown) {
-			assertEquals(actual, expected);
+			if (!deepEqual(actual, expected)) {
+				throw createAssertionError("Expected values to be strictly equal");
+			}
 		},
 		toContain(expected: unknown) {
 			if (typeof actual === "string") {
@@ -97,17 +161,7 @@ function createExpect(actual: unknown) {
 				throw createAssertionError("Expected value to be an array");
 			}
 
-			const found = actual.some((value) => {
-				try {
-					assertEquals(value, expected);
-
-					return true;
-				} catch {
-					return false;
-				}
-			});
-
-			if (!found) {
+			if (!actual.some((value) => deepEqual(value, expected))) {
 				throw createAssertionError("Expected array to contain a deeply equal value");
 			}
 		},
@@ -128,10 +182,24 @@ function createExpect(actual: unknown) {
 			}
 		},
 		toBeDefined() {
-			assertExists(actual);
+			if (actual === undefined || actual === null) {
+				throw createAssertionError("Expected value to be defined");
+			}
+		},
+		toBeUndefined() {
+			if (actual !== undefined) {
+				throw createAssertionError(`Expected ${String(actual)} to be undefined`);
+			}
+		},
+		toBeTruthy() {
+			if (!actual) {
+				throw createAssertionError(`Expected ${String(actual)} to be truthy`);
+			}
 		},
 		toBeInstanceOf(expected: new (...args: any[]) => unknown) {
-			assertInstanceOf(actual, expected);
+			if (!(actual instanceof expected)) {
+				throw createAssertionError(`Expected value to be instance of ${expected.name}`);
+			}
 		},
 		toBeGreaterThan(expected: number) {
 			if (!(typeof actual === "number" && actual > expected)) {
@@ -153,11 +221,9 @@ function createExpect(actual: unknown) {
 			}
 		},
 		toMatchObject(expected: Record<string, unknown>) {
-			if (!isRecord(actual)) {
-				throw createAssertionError("Expected value to be an object");
+			if (!isRecord(actual) || !objectMatches(actual, expected)) {
+				throw createAssertionError("Expected object to match");
 			}
-
-			assertObjectMatch(actual, expected);
 		},
 		get rejects() {
 			return {
@@ -165,8 +231,8 @@ function createExpect(actual: unknown) {
 					try {
 						await (actual as Promise<unknown>);
 					} catch (error) {
-						if (expected) {
-							assertInstanceOf(error, expected);
+						if (expected && !(error instanceof expected)) {
+							throw createAssertionError(`Expected error to be instance of ${expected.name}`);
 						}
 
 						return;
@@ -179,7 +245,76 @@ function createExpect(actual: unknown) {
 	};
 }
 
-export { afterEach, beforeEach, describe, it };
+async function runHooks(hooks: TestCallback[]) {
+	for (const hook of hooks) {
+		await hook();
+	}
+}
+
+function currentSuiteChain() {
+	return [...suiteStack];
+}
+
+type DescribeFunction = ((name: string, callback: TestCallback) => void) & {
+	skip: (name: string, callback: TestCallback) => void;
+};
+
+const describe: DescribeFunction = (name, callback) => {
+	suiteStack.push({
+		afterEach: [],
+		beforeEach: [],
+		name,
+	});
+
+	try {
+		callback();
+	} finally {
+		suiteStack.pop();
+	}
+};
+
+describe.skip = () => {};
+
+export function beforeEach(callback: TestCallback) {
+	const currentSuite = suiteStack.at(-1);
+
+	if (!currentSuite) {
+		throw new Error("beforeEach must be used inside describe");
+	}
+
+	currentSuite.beforeEach.push(callback);
+}
+
+export function afterEach(callback: TestCallback) {
+	const currentSuite = suiteStack.at(-1);
+
+	if (!currentSuite) {
+		throw new Error("afterEach must be used inside describe");
+	}
+
+	currentSuite.afterEach.push(callback);
+}
+
+export function it(name: string, callback: TestCallback, timeout?: number) {
+	const suites = currentSuiteChain();
+	const testName = [...suites.map((suite) => suite.name), name].join(" > ");
+
+	Deno.test({
+		fn: async () => {
+			await runHooks(suites.flatMap((suite) => suite.beforeEach));
+
+			try {
+				await callback();
+			} finally {
+				await runHooks([...suites].reverse().flatMap((suite) => suite.afterEach));
+			}
+		},
+		name: testName,
+		sanitizeOps: false,
+		sanitizeResources: false,
+		...(timeout ? { sanitizeExit: false } : {}),
+	});
+}
 
 export const test = it;
 
@@ -193,3 +328,5 @@ export const vi = {
 		}
 	},
 };
+
+export { describe };

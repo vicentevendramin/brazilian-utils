@@ -1,5 +1,5 @@
-import * as brazilianUtils from ".";
 import { describe, expect, test } from "./_internals/test/runtime";
+import * as brazilianUtils from "./index";
 
 const PUBLIC = [
 	"formatCep",
