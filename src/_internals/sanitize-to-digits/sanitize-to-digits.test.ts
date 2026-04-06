@@ -1,5 +1,4 @@
-import { describe, expect, it } from "vite-plus/test";
-
+import { describe, expect, it } from "../test/runtime";
 import { sanitizeToDigits } from "./sanitize-to-digits";
 
 describe("sanitizeToDigits", () => {

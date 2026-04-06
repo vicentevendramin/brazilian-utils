@@ -1,5 +1,4 @@
-import { describe, expect, it } from "vite-plus/test";
-
+import { describe, expect, it } from "../_internals/test/runtime";
 import { parseCnpj } from "./parse-cnpj";
 
 describe("parseCnpj", () => {

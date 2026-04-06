@@ -1,5 +1,4 @@
-import { describe, expect, it } from "vite-plus/test";
-
+import { describe, expect, it } from "../test/runtime";
 import { format } from "./format";
 
 describe("format", () => {

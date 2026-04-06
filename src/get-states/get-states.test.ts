@@ -1,6 +1,5 @@
-import { describe, expect, it } from "vite-plus/test";
-
 import { DATA } from "../_internals/constants/states";
+import { describe, expect, it } from "../_internals/test/runtime";
 import { getStates } from "./get-states";
 
 describe("getStates", () => {

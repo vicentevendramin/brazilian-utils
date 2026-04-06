@@ -5,8 +5,7 @@
  * Error handling tests use mocks to test specific error scenarios.
  */
 
-import { afterEach, beforeEach, describe, expect, it, vi } from "vite-plus/test";
-
+import { afterEach, beforeEach, describe, expect, it, vi } from "../_internals/test/runtime";
 import {
 	GetAddressInfoByCepNotFoundError,
 	GetAddressInfoByCepServiceError,

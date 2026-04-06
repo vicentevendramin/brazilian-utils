@@ -1,6 +1,5 @@
-import { describe, expect, test } from "vite-plus/test";
-
 import * as brazilianUtils from ".";
+import { describe, expect, test } from "./_internals/test/runtime";
 
 const PUBLIC = [
 	"formatCep",

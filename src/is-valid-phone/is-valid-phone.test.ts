@@ -1,5 +1,4 @@
-import { describe, expect, test } from "vite-plus/test";
-
+import { describe, expect, test } from "../_internals/test/runtime";
 import { isValidPhone } from "./is-valid-phone";
 
 describe("isValidPhone", () => {

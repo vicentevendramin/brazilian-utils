@@ -1,5 +1,4 @@
-import { describe, expect, test } from "vite-plus/test";
-
+import { describe, expect, test } from "../_internals/test/runtime";
 import { generateCpf } from "../generate-cpf/generate-cpf";
 import { LENGTH, RESERVED_NUMBERS } from "./constants";
 import { isValidCpf } from "./is-valid-cpf";

@@ -24,6 +24,8 @@
 	"scripts": {
 		"test": "vp test",
 		"test:coverage": "vp test run --coverage",
+		"test:bun": "bun test src",
+		"test:deno": "deno test --unstable-sloppy-imports --allow-net src",
 		"test:edge-browser": "vp test --browser=edge",
 		"test:chrome-browser": "vp test --browser=chrome",
 		"test:safari-browser": "vp test --browser=safari --browser.headless=false",

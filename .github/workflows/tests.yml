@@ -39,84 +39,37 @@ jobs:
       - name: Run tests
         run: vp test
 
-  build-artifact:
-    name: Build artifact
+  test-bun:
+    name: Test on Bun
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
     steps:
       - name: Checkout code
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-
-      - name: Setup Vite+
-        uses: voidzero-dev/setup-vp@v1
-        with:
-          cache: true
-
-      - name: Build package
-        run: vp run build
-
-      - name: Upload build artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: dist
-          path: dist
-
-  smoke-bun:
-    name: Smoke on Bun
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-    needs: build-artifact
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-
-      - name: Setup Node.js
-        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
-        with:
-          node-version: 24
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
 
-      - name: Download build artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: dist
-          path: dist
+      - name: Run tests
+        run: bun test src
 
-      - name: Smoke test ESM bundle in Bun
-        run: bun -e "const mod = await import('./dist/brazilian-utils.js'); if (!('isValidCpf' in mod)) throw new Error('Missing isValidCpf export');"
-
-  smoke-deno:
-    name: Smoke on Deno
+  test-deno:
+    name: Test on Deno
     runs-on: ubuntu-latest
     timeout-minutes: 15
-    needs: build-artifact
 
     steps:
       - name: Checkout code
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-
-      - name: Setup Node.js
-        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
-        with:
-          node-version: 24
 
       - name: Setup Deno
         uses: denoland/setup-deno@v2
         with:
           deno-version: v2.x
 
-      - name: Download build artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: dist
-          path: dist
-
-      - name: Smoke test ESM bundle in Deno
-        run: deno eval --allow-read "const mod = await import('./dist/brazilian-utils.js'); if (!('isValidCpf' in mod)) throw new Error('Missing isValidCpf export');"
+      - name: Run tests
+        run: deno test --unstable-sloppy-imports --allow-net src
 
   test-browsers:
     name: Test on Browsers (${{ matrix.browser }})
