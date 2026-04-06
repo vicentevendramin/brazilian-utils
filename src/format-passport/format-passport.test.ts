@@ -2,13 +2,13 @@ import { describe, expect, test } from "vitest";
 import { formatPassport } from "./format-passport";
 
 describe("formatPassport", () => {
-    describe("should return the formatted passport", () => {
-        test("when passport is valid", () => {
-            expect(formatPassport("AB123456")).toBe("AB123456");
-        });
+	describe("should return the formatted passport", () => {
+		test("when passport is valid", () => {
+			expect(formatPassport("AB123456")).toBe("AB123456");
+		});
 
-        test("when passport has lowercase letters", () => {
-            expect(formatPassport("acd12736")).toBe("ACD12736");
-        });
-    });
+		test("when passport has lowercase letters", () => {
+			expect(formatPassport("acd12736")).toBe("ACD12736");
+		});
+	});
 });

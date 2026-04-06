@@ -17,6 +17,6 @@ import { PASSPORT_REGEX } from "./constants";
  * isValidPassport("DC-221345") // false
  */
 export const isValidPassport = (passport: string | number): boolean => {
-    if (passport === null || passport === undefined) return false;
-    return PASSPORT_REGEX.test(String(passport));
+	if (passport === null || passport === undefined) return false;
+	return PASSPORT_REGEX.test(String(passport));
 };
