@@ -3,10 +3,7 @@ import { sanitizeToDigits } from "../_internals/sanitize-to-digits/sanitize-to-d
 
 export type FormatCnpjOptions = Pick<FormatParams, "pad"> & { version?: 1 | 2 };
 
-const sanitize = (
-	value: string | number,
-	version?: FormatCnpjOptions["version"],
-) => {
+const sanitize = (value: string | number, version?: FormatCnpjOptions["version"]) => {
 	if (version === 2) {
 		const enhancedValue = value.toString();
 		return enhancedValue.replace(/[^A-Za-z0-9]/g, "").toUpperCase();
@@ -33,10 +30,7 @@ const sanitize = (
  * formatCnpj("q0SLFMBD7VX439", { version: 2 }); // "Q0.SLF.MBD/7VX4-39"
  * ```
  */
-export const formatCnpj = (
-	value: string | number,
-	options?: FormatCnpjOptions,
-): string =>
+export const formatCnpj = (value: string | number, options?: FormatCnpjOptions): string =>
 	format({
 		pad: options?.pad,
 		value: sanitize(value, options?.version),

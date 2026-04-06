@@ -99,9 +99,7 @@ const fetchViaCep = async (cep: string): Promise<AddressInfo> => {
 };
 
 const fetchWidenet = async (cep: string): Promise<AddressInfo> => {
-	const response = await fetch(
-		`https://apps.widenet.com.br/busca-cep/api/cep/${cep}.json`,
-	);
+	const response = await fetch(`https://apps.widenet.com.br/busca-cep/api/cep/${cep}.json`);
 
 	if (!response.ok) {
 		throw new Error(`Widenet request failed with status ${response.status}`);
@@ -144,12 +142,11 @@ const fetchBrasilApi = async (cep: string): Promise<AddressInfo> => {
 	};
 };
 
-const providerMap: Record<CepProvider, (cep: string) => Promise<AddressInfo>> =
-	{
-		viacep: fetchViaCep,
-		widenet: fetchWidenet,
-		brasilapi: fetchBrasilApi,
-	};
+const providerMap: Record<CepProvider, (cep: string) => Promise<AddressInfo>> = {
+	viacep: fetchViaCep,
+	widenet: fetchWidenet,
+	brasilapi: fetchBrasilApi,
+};
 
 /**
  * Fetches address information for a given CEP using multiple providers simultaneously.
@@ -194,15 +191,11 @@ export const getAddressInfoByCep = async (
 	let providersToUse: CepProvider[];
 	if (options?.providers !== undefined) {
 		if (options.providers.length === 0) {
-			throw new GetAddressInfoByCepValidationError(
-				"Nenhum provedor válido especificado",
-			);
+			throw new GetAddressInfoByCepValidationError("Nenhum provedor válido especificado");
 		}
 		providersToUse = options.providers.filter((p) => p in providerMap);
 		if (providersToUse.length === 0) {
-			throw new GetAddressInfoByCepValidationError(
-				"Nenhum provedor válido especificado",
-			);
+			throw new GetAddressInfoByCepValidationError("Nenhum provedor válido especificado");
 		}
 	} else {
 		providersToUse = ["viacep", "widenet", "brasilapi"] as CepProvider[];
@@ -219,9 +212,7 @@ export const getAddressInfoByCep = async (
 	} catch {
 		const results = await Promise.allSettled(providerPromises);
 
-		const rejections = results.filter(
-			(result) => result.status === "rejected",
-		) as PromiseRejectedResult[];
+		const rejections = results.filter((result) => result.status === "rejected");
 
 		const notFoundErrors = rejections.filter((rejection) => {
 			const error = rejection.reason?.error || rejection.reason;
@@ -234,9 +225,7 @@ export const getAddressInfoByCep = async (
 		});
 
 		if (notFoundErrors.length === rejections.length) {
-			throw new GetAddressInfoByCepNotFoundError(
-				"CEP não encontrado em nenhum serviço",
-			);
+			throw new GetAddressInfoByCepNotFoundError("CEP não encontrado em nenhum serviço");
 		}
 
 		if (networkErrors.length === rejections.length) {
@@ -246,13 +235,9 @@ export const getAddressInfoByCep = async (
 		}
 
 		if (notFoundErrors.length > 0) {
-			throw new GetAddressInfoByCepNotFoundError(
-				"CEP não encontrado em nenhum serviço",
-			);
+			throw new GetAddressInfoByCepNotFoundError("CEP não encontrado em nenhum serviço");
 		}
 
-		throw new GetAddressInfoByCepServiceError(
-			"Erro ao consultar os serviços de CEP",
-		);
+		throw new GetAddressInfoByCepServiceError("Erro ao consultar os serviços de CEP");
 	}
 };

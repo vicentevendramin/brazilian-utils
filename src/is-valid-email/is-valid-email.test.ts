@@ -1,4 +1,5 @@
-import { describe, expect, test } from "vitest";
+import { describe, expect, test } from "vite-plus/test";
+
 import { isValidEmail } from "./is-valid-email";
 
 describe("isValidEmail", () => {
@@ -8,12 +9,10 @@ describe("isValidEmail", () => {
 		});
 
 		test("when it is null", () => {
-			// biome-ignore lint/suspicious/noExplicitAny: test case
 			expect(isValidEmail(null as any)).toBe(false);
 		});
 
 		test("when it is undefined", () => {
-			// biome-ignore lint/suspicious/noExplicitAny: test case
 			expect(isValidEmail(undefined as any)).toBe(false);
 		});
 

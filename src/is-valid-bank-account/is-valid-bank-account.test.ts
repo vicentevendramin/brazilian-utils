@@ -1,4 +1,5 @@
-import { describe, expect, test } from "vitest";
+import { describe, expect, test } from "vite-plus/test";
+
 import { isValidBankAccount } from "./is-valid-bank-account";
 
 describe("isValidBankAccount", () => {
@@ -50,7 +51,6 @@ describe("isValidBankAccount", () => {
 		test("when bankCode is null", () => {
 			expect(
 				isValidBankAccount({
-					// biome-ignore lint/suspicious/noExplicitAny: testing invalid inputs
 					bankCode: null as any,
 					agency: "1234",
 					account: "12345678",
@@ -62,7 +62,6 @@ describe("isValidBankAccount", () => {
 		test("when bankCode is undefined", () => {
 			expect(
 				isValidBankAccount({
-					// biome-ignore lint/suspicious/noExplicitAny: testing invalid inputs
 					bankCode: undefined as any,
 					agency: "1234",
 					account: "12345678",
@@ -74,7 +73,6 @@ describe("isValidBankAccount", () => {
 		test("when bankCode is not a string", () => {
 			expect(
 				isValidBankAccount({
-					// biome-ignore lint/suspicious/noExplicitAny: testing invalid inputs
 					bankCode: 123 as any,
 					agency: "1234",
 					account: "12345678",

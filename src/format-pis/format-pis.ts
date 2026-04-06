@@ -18,10 +18,7 @@ export type FormatPisOptions = Pick<FormatParams, "pad">;
  * formatPis("123456789", { pad: true }); // "001.23456.78-9"
  * ```
  */
-export const formatPis = (
-	value: string | number,
-	options?: FormatPisOptions,
-): string =>
+export const formatPis = (value: string | number, options?: FormatPisOptions): string =>
 	format({
 		pad: options?.pad,
 		value: sanitizeToDigits(value),

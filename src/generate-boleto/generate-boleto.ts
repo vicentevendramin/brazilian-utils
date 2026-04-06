@@ -13,7 +13,7 @@ import { mod11 } from "../_internals/mod11/mod11";
  * ```
  */
 export const generateBoleto = (): string => {
-	const line = new Array(47);
+	const line = Array.from<string>({ length: 47 });
 
 	const p1Base = generateRandomNumber(9);
 	for (let i = 0; i < 9; i++) line[i] = p1Base[i];
@@ -31,9 +31,7 @@ export const generateBoleto = (): string => {
 	for (let i = 0; i < 15; i++) line[32 + i] = lastDigits[i];
 
 	const boletoWithoutCheck =
-		line
-			.slice(0, 4)
-			.join("") + // [0-3]
+		line.slice(0, 4).join("") + // [0-3]
 		line.slice(33, 47).join("") + // [33-46] (skip [32])
 		line.slice(4, 9).join("") + // [4-8]
 		line.slice(10, 20).join("") + // [10-19]

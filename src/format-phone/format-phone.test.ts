@@ -1,4 +1,5 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it } from "vite-plus/test";
+
 import { formatPhone } from "./format-phone";
 
 describe("formatPhone", () => {
@@ -27,9 +28,7 @@ describe("formatPhone", () => {
 		expect(formatPhone("11988887", { mask: "nanp" })).toBe("(11) 98888-7");
 		expect(formatPhone("119888877", { mask: "nanp" })).toBe("(11) 98888-77");
 		expect(formatPhone("1198888777", { mask: "nanp" })).toBe("(11) 98888-777");
-		expect(formatPhone("11988887777", { mask: "nanp" })).toBe(
-			"(11) 98888-7777",
-		);
+		expect(formatPhone("11988887777", { mask: "nanp" })).toBe("(11) 98888-7777");
 	});
 
 	it("should auto format phone", () => {
@@ -44,8 +43,6 @@ describe("formatPhone", () => {
 		expect(formatPhone("11988887", { mask: "auto" })).toBe("11988-887");
 		expect(formatPhone("119888877", { mask: "auto" })).toBe("11988-8877");
 		expect(formatPhone("1198888777", { mask: "auto" })).toBe("(11) 98888-777");
-		expect(formatPhone("11988887777", { mask: "auto" })).toBe(
-			"(11) 98888-7777",
-		);
+		expect(formatPhone("11988887777", { mask: "auto" })).toBe("(11) 98888-7777");
 	});
 });

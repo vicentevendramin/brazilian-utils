@@ -1,4 +1,5 @@
-import { describe, expect, test } from "vitest";
+import { describe, expect, test } from "vite-plus/test";
+
 import { generateCpf } from "../generate-cpf/generate-cpf";
 import { LENGTH, RESERVED_NUMBERS } from "./constants";
 import { isValidCpf } from "./is-valid-cpf";
@@ -16,29 +17,23 @@ describe("isValidCpf", () => {
 		});
 
 		test("when it is null", () => {
-			// biome-ignore lint/suspicious/noExplicitAny: testing invalid inputs
 			expect(isValidCpf(null as any)).toBe(false);
 		});
 
 		test("when it is undefined", () => {
-			// biome-ignore lint/suspicious/noExplicitAny: testing invalid inputs
 			expect(isValidCpf(undefined as any)).toBe(false);
 		});
 
 		test("when it is a boolean", () => {
-			// biome-ignore lint/suspicious/noExplicitAny: testing invalid inputs
 			expect(isValidCpf(true as any)).toBe(false);
-			// biome-ignore lint/suspicious/noExplicitAny: testing invalid inputs
 			expect(isValidCpf(false as any)).toBe(false);
 		});
 
 		test("when it is an object", () => {
-			// biome-ignore lint/suspicious/noExplicitAny: testing invalid inputs
 			expect(isValidCpf({} as any)).toBe(false);
 		});
 
 		test("when it is an array", () => {
-			// biome-ignore lint/suspicious/noExplicitAny: testing invalid inputs
 			expect(isValidCpf([] as any)).toBe(false);
 		});
 

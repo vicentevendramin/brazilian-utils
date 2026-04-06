@@ -1,4 +1,5 @@
-import { describe, expect, test } from "vitest";
+import { describe, expect, test } from "vite-plus/test";
+
 import { DATA } from "../_internals/constants/states";
 import { isValidCpf } from "../is-valid-cpf/is-valid-cpf";
 import { LENGTH } from "./constants";

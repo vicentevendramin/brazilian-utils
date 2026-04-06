@@ -1,4 +1,5 @@
-import { describe, expect, test } from "vitest";
+import { describe, expect, test } from "vite-plus/test";
+
 import { isValidCnpj } from "../is-valid-cnpj/is-valid-cnpj";
 import { LENGTH } from "./constants";
 import { generateCnpj } from "./generate-cnpj";

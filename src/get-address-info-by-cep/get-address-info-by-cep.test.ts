@@ -5,7 +5,8 @@
  * Error handling tests use mocks to test specific error scenarios.
  */
 
-import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vite-plus/test";
+
 import {
 	GetAddressInfoByCepNotFoundError,
 	GetAddressInfoByCepServiceError,
@@ -22,15 +23,13 @@ describe("getAddressInfoByCep", () => {
 			await expect(getAddressInfoByCep("123456789")).rejects.toThrow(
 				GetAddressInfoByCepValidationError,
 			);
-			await expect(getAddressInfoByCep("")).rejects.toThrow(
-				GetAddressInfoByCepValidationError,
-			);
+			await expect(getAddressInfoByCep("")).rejects.toThrow(GetAddressInfoByCepValidationError);
 		});
 
 		it("should throw GetAddressInfoByCepValidationError for empty providers array", async () => {
-			await expect(
-				getAddressInfoByCep("01310100", { providers: [] }),
-			).rejects.toThrow(GetAddressInfoByCepValidationError);
+			await expect(getAddressInfoByCep("01310100", { providers: [] })).rejects.toThrow(
+				GetAddressInfoByCepValidationError,
+			);
 		});
 
 		it("should accept valid CEP as string", async () => {
@@ -90,7 +89,6 @@ describe("getAddressInfoByCep", () => {
 
 		it("should filter out invalid provider names", async () => {
 			const result = await getAddressInfoByCep("01310100", {
-				// biome-ignore lint/suspicious/noExplicitAny: test case
 				providers: ["viacep", "invalid" as any, "brasilapi"],
 			});
 
@@ -180,9 +178,9 @@ describe("getAddressInfoByCep", () => {
 				}),
 			});
 
-			await expect(
-				getAddressInfoByCep("00000000", { providers: ["viacep"] }),
-			).rejects.toThrow(GetAddressInfoByCepNotFoundError);
+			await expect(getAddressInfoByCep("00000000", { providers: ["viacep"] })).rejects.toThrow(
+				GetAddressInfoByCepNotFoundError,
+			);
 		});
 
 		it("should throw GetAddressInfoByCepNotFoundError when Widenet returns invalid status", async () => {
@@ -194,9 +192,9 @@ describe("getAddressInfoByCep", () => {
 				}),
 			});
 
-			await expect(
-				getAddressInfoByCep("00000000", { providers: ["widenet"] }),
-			).rejects.toThrow(GetAddressInfoByCepNotFoundError);
+			await expect(getAddressInfoByCep("00000000", { providers: ["widenet"] })).rejects.toThrow(
+				GetAddressInfoByCepNotFoundError,
+			);
 		});
 
 		it("should throw GetAddressInfoByCepNotFoundError when BrasilAPI returns errors", async () => {
@@ -207,9 +205,9 @@ describe("getAddressInfoByCep", () => {
 				}),
 			});
 
-			await expect(
-				getAddressInfoByCep("00000000", { providers: ["brasilapi"] }),
-			).rejects.toThrow(GetAddressInfoByCepNotFoundError);
+			await expect(getAddressInfoByCep("00000000", { providers: ["brasilapi"] })).rejects.toThrow(
+				GetAddressInfoByCepNotFoundError,
+			);
 		});
 
 		it("should throw GetAddressInfoByCepNotFoundError when all providers return not found", async () => {

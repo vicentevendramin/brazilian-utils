@@ -1,4 +1,5 @@
-import { describe, expect, test } from "vitest";
+import { describe, expect, test } from "vite-plus/test";
+
 import { mod10 } from "./mod10";
 
 describe("mod10", () => {

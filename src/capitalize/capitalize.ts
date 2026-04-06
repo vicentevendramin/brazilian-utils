@@ -20,10 +20,7 @@ export type CapitalizeOptions = {
  */
 export const capitalize = (
 	value: string,
-	{
-		lowerCaseWords = PREPOSITIONS,
-		upperCaseWords = ACRONYMS,
-	}: CapitalizeOptions = {},
+	{ lowerCaseWords = PREPOSITIONS, upperCaseWords = ACRONYMS }: CapitalizeOptions = {},
 ): string => {
 	const lowerCaseSet = new Set(lowerCaseWords);
 

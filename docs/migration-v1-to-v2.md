@@ -40,7 +40,7 @@ The codebase has been reorganized for better maintainability:
 ### 🔧 Modern Tooling
 
 Updated to modern, faster tooling:
-- **Build**: Migrated from `tsdx` to **Bun** for faster builds and scripts
+- **Build**: Migrated from `tsdx` to a **Vite+** toolchain for faster builds and scripts
 - **Testing**: Migrated from `jest` to **Vitest** (faster, Jest-compatible, ESM-native)
 - **Linting/Formatting**: Migrated from `prettier` + `eslint` to **Biome** (faster, all-in-one)
 - **TypeScript**: Modern configuration optimized for bundlers
@@ -64,7 +64,7 @@ npm run test:edge-browser
 
 Reduced development dependencies while maintaining zero runtime dependencies:
 - **v1**: Multiple tools (tsdx, jest, prettier, eslint, husky, lint-staged, commitlint, etc.)
-- **v2**: Minimal dependencies (biome, vitest, webdriverio, bun types)
+- **v2**: Minimal dependencies (Vite+, Vitest browser support, webdriverio)
 - Simpler maintenance and faster CI/CD pipelines
 - Zero runtime dependencies (maintained)
 
@@ -439,4 +439,3 @@ If you encounter any issues during migration, please:
 1. Check the [utilities documentation](utilities.md) for the correct function signatures
 2. Review the examples in this migration guide
 3. Open an issue on the [GitHub repository](https://github.com/brazilian-utils/brazilian-utils) if you find a bug
-

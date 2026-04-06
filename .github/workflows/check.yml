@@ -9,13 +9,12 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
-      - name: Install Bun
-        uses: oven-sh/setup-bun@v1
+      - name: Setup Vite+
+        uses: voidzero-dev/setup-vp@b5d848f4a12639022d2463fda46eacb0a0dcb9ff # v1.0.0
+        with:
+          cache: true
 
-      - name: Install dependencies
-        run: bun install
-
-      - name: Run tests
-        run: bun run ci
+      - name: Run checks
+        run: vp check

@@ -1,4 +1,5 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it } from "vite-plus/test";
+
 import { formatCurrency } from "./format-currency";
 
 describe("formatCurrency", () => {
@@ -41,9 +42,7 @@ describe("formatCurrency", () => {
 		expect(formatCurrency(1000.01, { symbol: true })).toBe("R$ 1.000,01");
 		expect(formatCurrency(10000.01, { symbol: true })).toBe("R$ 10.000,01");
 		expect(formatCurrency(100000.01, { symbol: true })).toBe("R$ 100.000,01");
-		expect(formatCurrency(1000000.01, { symbol: true })).toBe(
-			"R$ 1.000.000,01",
-		);
+		expect(formatCurrency(1000000.01, { symbol: true })).toBe("R$ 1.000.000,01");
 	});
 
 	it("should formatCurrency negative currency into BRL with currency sign", () => {
@@ -57,9 +56,7 @@ describe("formatCurrency", () => {
 		expect(formatCurrency(-1000.01, { symbol: true })).toBe("-R$ 1.000,01");
 		expect(formatCurrency(-10000.01, { symbol: true })).toBe("-R$ 10.000,01");
 		expect(formatCurrency(-100000.01, { symbol: true })).toBe("-R$ 100.000,01");
-		expect(formatCurrency(-1000000.01, { symbol: true })).toBe(
-			"-R$ 1.000.000,01",
-		);
+		expect(formatCurrency(-1000000.01, { symbol: true })).toBe("-R$ 1.000.000,01");
 	});
 
 	it("should formatCurrency with different precision", () => {

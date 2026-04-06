@@ -11,10 +11,7 @@ export type FormatBoletoOptions = Pick<FormatParams, "pad">;
  * @param {boolean} options.pad - Whether to pad the value with leading zeros.
  * @returns {string} The formatted boleto string in the pattern "00000000000000000000000000000000000000000000000".
  */
-export const formatBoleto = (
-	value: string | number,
-	options?: FormatBoletoOptions,
-): string =>
+export const formatBoleto = (value: string | number, options?: FormatBoletoOptions): string =>
 	format({
 		pad: options?.pad,
 		value: sanitizeToDigits(value),

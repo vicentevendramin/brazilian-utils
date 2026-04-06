@@ -1,4 +1,5 @@
-import { describe, expect, test } from "vitest";
+import { describe, expect, test } from "vite-plus/test";
+
 import { isValidBoleto } from "../is-valid-boleto/is-valid-boleto";
 import { LENGTH } from "./constants";
 import { generateBoleto } from "./generate-boleto";

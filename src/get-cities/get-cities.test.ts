@@ -1,4 +1,5 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it } from "vite-plus/test";
+
 import { DATA } from "../_internals/constants/cities";
 import { getStates } from "../get-states/get-states";
 import { getCities } from "./get-cities";
@@ -14,7 +15,6 @@ describe("getCities", () => {
 	});
 
 	it("should return empty array if state does not exist", () => {
-		// biome-ignore lint/suspicious/noExplicitAny: testing invalid inputs
 		expect(getCities("ACC" as any)).toEqual([]);
 	});
 

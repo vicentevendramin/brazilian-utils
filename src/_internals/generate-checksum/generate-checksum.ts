@@ -5,10 +5,7 @@ export interface GenerateChecksumParams {
 	weight: number | number[];
 }
 
-export function generateChecksum({
-	base,
-	weight,
-}: GenerateChecksumParams): number {
+export function generateChecksum({ base, weight }: GenerateChecksumParams): number {
 	const digits = sanitizeToDigits(base);
 
 	let sum = 0;

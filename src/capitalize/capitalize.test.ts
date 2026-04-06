@@ -1,4 +1,5 @@
-import { describe, expect, test } from "vitest";
+import { describe, expect, test } from "vite-plus/test";
+
 import { capitalize } from "./capitalize";
 
 describe("capitalize", () => {
@@ -28,20 +29,16 @@ describe("capitalize", () => {
 		});
 
 		test("when the value does contain upper case words", () => {
-			expect(
-				capitalize("doc da empresa ab", { upperCaseWords: ["DOC", "AB"] }),
-			).toBe("DOC da Empresa AB");
-			expect(capitalize("doc inválido", { upperCaseWords: ["DOC"] })).toBe(
-				"DOC Inválido",
+			expect(capitalize("doc da empresa ab", { upperCaseWords: ["DOC", "AB"] })).toBe(
+				"DOC da Empresa AB",
 			);
+			expect(capitalize("doc inválido", { upperCaseWords: ["DOC"] })).toBe("DOC Inválido");
 		});
 		test("when the value does contain lower case words", () => {
-			expect(capitalize("josé Ama MARIA", { lowerCaseWords: ["ama"] })).toBe(
-				"José ama Maria",
+			expect(capitalize("josé Ama MARIA", { lowerCaseWords: ["ama"] })).toBe("José ama Maria");
+			expect(capitalize("josé Não Ama MARIA", { lowerCaseWords: ["não", "ama"] })).toBe(
+				"José não ama Maria",
 			);
-			expect(
-				capitalize("josé Não Ama MARIA", { lowerCaseWords: ["não", "ama"] }),
-			).toBe("José não ama Maria");
 		});
 	});
 });
