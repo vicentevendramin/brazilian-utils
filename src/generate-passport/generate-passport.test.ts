@@ -1,4 +1,4 @@
-import { describe, expect, test } from "vitest";
+import { describe, expect, test } from "../_internals/test/runtime";
 import { isValidPassport } from "../is-valid-passport/is-valid-passport";
 import { generatePassport } from "./generate-passport";
 

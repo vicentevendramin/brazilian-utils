@@ -1,4 +1,4 @@
-import { describe, expect, test } from "vitest";
+import { describe, expect, test } from "../_internals/test/runtime";
 import { formatPassport } from "./format-passport";
 
 describe("formatPassport", () => {
