@@ -53,10 +53,10 @@ export { parseCep } from "./parse-cep/parse-cep";
 export { parseCnpj } from "./parse-cnpj/parse-cnpj";
 export { parseCpf } from "./parse-cpf/parse-cpf";
 export { parseCurrency } from "./parse-currency/parse-currency";
+export { parsePassport } from "./parse-passport/parse-passport";
 export { parsePhone } from "./parse-phone/parse-phone";
 export { parsePis } from "./parse-pis/parse-pis";
 export { parseProcessoJuridico } from "./parse-processo-juridico/parse-processo-juridico";
-export { parsePassport } from "./parse-passport/parse-passport";
 
 // ============================================================================
 // DEPRECATED EXPORTS - Will be removed in v3.0.0
